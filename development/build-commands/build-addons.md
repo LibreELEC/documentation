@@ -51,3 +51,8 @@ PROJECT=Generic ARCH=x86_64 scripts/create_addon --help
 ## Note
 
 In LibreELEC 10.x and newer ARM SoC devices (Allwinner, Amlogic, NXP, Qualcomm, Rockchip, Samsung) use the `ARMv7` or `ARMv8` project. This project uses a minimal distro configuration (disabling most features) to reduce the overall time spent on building add-on dependencies.
+
+```console
+PROJECT=ARM ARCH=arm DEVICE=ARMv7 scripts/create_addon all
+PROJECT=ARM ARCH=arm DEVICE=ARMv8 scripts/create_addon all
+```
