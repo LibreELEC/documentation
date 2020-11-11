@@ -11,8 +11,8 @@ Amlogic images based on the legacy Linux 3.14 kernel were dropped for this relea
 | Raspberry Pi 0/1 | PROJECT=RPi ARCH=arm DEVICE=RPi make image |
 | Raspberry Pi 2/3 | PROJECT=RPi ARCH=arm DEVICE=RPi2 make image |
 | Raspberry Pi 4 | PROJECT=RPi ARCH=arm DEVICE=RPi4 make image |
-| Rockchip RK3328 | PROJECT=Rockchip DEVICE=RK3328 ARCH=arm make image |
-| Rockchip MiQi | PROJECT=Rockchip DEVICE=MiQi ARCH=arm make image |
+| Rockchip RK3328 | PROJECT=Rockchip ARCH=arm DEVICE=RK3328 make image |
+| Rockchip MiQi | PROJECT=Rockchip ARCH=arm DEVICE=MiQi make image |
 | Rockchip Tinkerboard/S | PROJECT=Rockchip ARCH=arm DEVICE=Tinkerboard make image |
 | Rockchip RK3399 | PROJECT=Rockchip ARCH=arm DEVICE=RK3399 make image |
 
@@ -20,7 +20,7 @@ Amlogic images based on the legacy Linux 3.14 kernel were dropped for this relea
 
 To improve Jenkins/CI automation with ARM SoC projects that support multiple `$DEVICE` types `make image` will iterate through all board/u-boot configurations for the device defined in `scripts/uboot_helper` resulting in ~3-10 images in the target folder. To avoid this behaviour and build a single board-specific image `UBOOT_SYSTEM=<board>` can be appended to the build command, e.g. to build an Amlogic image for a LibreComputer LePotato board:
 
-```
+```console
 PROJECT=Amlogic ARCH=arm DEVICE=AMLGX UBOOT_SYSTEM=lepotato make image
 ```
 
