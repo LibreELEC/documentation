@@ -8,13 +8,13 @@ Amlogic images based on the legacy Linux 3.14 kernel were dropped for this relea
 | Allwinner H3 | PROJECT=Allwinner ARCH=arm DEVICE=H3 make image |
 | Allwinner H6 | PROJECT=Allwinner ARCH=arm DEVICE=H6 make image |
 | Generic Intel/AMD x86_64 | PROJECT=Generic ARCH=x86_64 make image |
-| Raspberry Pi 0/1 | PROJECT=RPi DEVICE=RPi ARCH=arm make image |
-| Raspberry Pi 2/3 | PROJECT=RPi DEVICE=RPi2 ARCH=arm make image |
-| Raspberry Pi 4 | PROJECT=RPi DEVICE=RPi4 ARCH=arm make image |
+| Raspberry Pi 0/1 | PROJECT=RPi ARCH=arm DEVICE=RPi make image |
+| Raspberry Pi 2/3 | PROJECT=RPi ARCH=arm DEVICE=RPi2 make image |
+| Raspberry Pi 4 | PROJECT=RPi ARCH=arm DEVICE=RPi4 make image |
 | Rockchip RK3328 | PROJECT=Rockchip DEVICE=RK3328 ARCH=arm make image |
 | Rockchip MiQi | PROJECT=Rockchip DEVICE=MiQi ARCH=arm make image |
-| Rockchip Tinkerboard/S | PROJECT=Rockchip DEVICE=Tinkerboard ARCH=arm make image |
-| Rockchip RK3399 | PROJECT=Rockchip DEVICE=RK3399 ARCH=arm make image |
+| Rockchip Tinkerboard/S | PROJECT=Rockchip ARCH=arm DEVICE=Tinkerboard make image |
+| Rockchip RK3399 | PROJECT=Rockchip ARCH=arm DEVICE=RK3399 make image |
 
 ## Notes
 
