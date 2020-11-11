@@ -34,7 +34,7 @@ MTIMMEDIATE=${MTIMMEDIATE:-no}
 
 If you are bulding and sharing images via the LibreELEC forums it is good to include a custom "builder" name with your images. This allows the team to count the number of active installs using your images (we can share this info on request). Builder name also populates into `/etc/os-release` and logfiles, which helps forum staff supporting users differentiate between official releases and community created images. It is also possible to set custom versioning. e.g.
 
-```
+```console
 PROJECT=Generic ARCH=x86_64 BUILDER_NAME=yourname BUILDER_VERSION=123 make image
 ```
 
@@ -44,13 +44,13 @@ It is also possible to set persistent `BUILDER_NAME` and `BUILDER_VERSION` in "o
 
 The build-system automatically strips debug symbols from most packages. To disable this and include debug symbols and common debugging packagess in the image, enable `DEBUG`, e.g. 
 
-```
+```console
 PROJECT=Generic ARCH=x86_64 DEBUG=yes make image
 ```
 
 To also include valgrind:
 
-```
+```console
 PROJECT=Generic ARCH=x86_64 DEBUG=yes VALGRIND=yes make image
 ```
 
