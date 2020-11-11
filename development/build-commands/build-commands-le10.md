@@ -11,14 +11,14 @@
 | Amlogic G12A/G12B/SM1 | PROJECT=Amlogic ARCH=arm DEVICE=AML12 make image |
 | Generic Intel/AMD x86_64 | PROJECT=Generic ARCH=x86_64 make image |
 | NXP/Freescale iMX.6 | PROJECT=NXP ARCH=arm DEVICE=imx6 make image |
-| Qualcomm DragonBoard | PROJECT = Qualcomm ARCH=arm DEVICE=Dragonboard make image |
-| Raspberry Pi 0/1 | PROJECT=RPi DEVICE=RPi ARCH=arm make image |
-| Raspberry Pi 2/3 | PROJECT=RPi DEVICE=RPi2 ARCH=arm make image |
-| Raspberry Pi 4 | PROJECT=RPi DEVICE=RPi4 ARCH=arm make image |
+| Qualcomm DragonBoard | PROJECT=Qualcomm ARCH=arm DEVICE=Dragonboard make image |
+| Raspberry Pi 0/1 | PROJECT=RPi ARCH=arm DEVICE=RPi make image |
+| Raspberry Pi 2/3 | PROJECT=RPi ARCH=arm DEVICE=RPi2 make image |
+| Raspberry Pi 4 | PROJECT=RPi ARCH=arm DEVICE=RPi4 make image |
 | Samsung Exynos | PROJECT=Samsung ARCH=arm DEVICE=Exynos make image |
-| Rockchip RK3328 | PROJECT=Rockchip DEVICE=RK3328 ARCH=arm make image |
-| Rockchip RK3288 | PROJECT=Rockchip DEVICE=RK3288 ARCH=arm make image |
-| Rockchip RK3399 | PROJECT=Rockchip DEVICE=RK3399 ARCH=arm make image |
+| Rockchip RK3328 | PROJECT=Rockchip ARCH=arm DEVICE=RK3328 make image |
+| Rockchip RK3288 | PROJECT=Rockchip ARCH=arm DEVICE=RK3288 make image |
+| Rockchip RK3399 | PROJECT=Rockchip ARCH=arm DEVICE=RK3399 make image |
 
 ## Notes
 
