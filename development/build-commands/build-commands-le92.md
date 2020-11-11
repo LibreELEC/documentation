@@ -11,10 +11,10 @@ Amlogic images based on the legacy Linux 3.14 kernel were dropped for this relea
 | Raspberry Pi 0/1 | PROJECT=RPi ARCH=arm DEVICE=RPi make image |
 | Raspberry Pi 2/3 | PROJECT=RPi ARCH=arm DEVICE=RPi2 make image |
 | Raspberry Pi 4 | PROJECT=RPi ARCH=arm DEVICE=RPi4 make image |
-| Rockchip RK3328 | PROJECT=Rockchip ARCH=arm DEVICE=RK3328 make image |
 | Rockchip MiQi | PROJECT=Rockchip ARCH=arm DEVICE=MiQi make image |
-| Rockchip Tinkerboard/S | PROJECT=Rockchip ARCH=arm DEVICE=Tinkerboard make image |
+| Rockchip RK3328 | PROJECT=Rockchip ARCH=arm DEVICE=RK3328 make image |
 | Rockchip RK3399 | PROJECT=Rockchip ARCH=arm DEVICE=RK3399 make image |
+| Rockchip Tinkerboard/S | PROJECT=Rockchip ARCH=arm DEVICE=Tinkerboard make image |
 
 ## Notes
 
