@@ -24,7 +24,7 @@
 
 To improve Jenkins/CI automation with ARM SoC `$PROJECT`(s) that support multiple `$DEVICE` types `make image` will iterate through all board/u-boot configurations defined in `scripts/uboot_helper` resulting in ~3-10 images in the target folder. To avoid this behaviour and build a single board-specific image `UBOOT_SYSTEM=<board>` can be appended to the build command, e.g. to build an Amlogic image for a LibreComputer LePotato board:
 
-```
+```console
 PROJECT=Amlogic ARCH=arm DEVICE=AMLGX UBOOT_SYSTEM=lepotato make image
 ```
 
