@@ -36,7 +36,7 @@ Testing with large CPU counts shows build times continue to decrease as CPU coun
 
 Before you can build, it is important to update the OS and install build dependencies:
 
-```
+```console
 sudo apt update
 sudo apt upgrade
 sudo apt install gcc make git unzip wget xz-utils bc gperf zip unzip makeinfo g++ mkfontscale mkfontdir bdftopcf xsltproc java
@@ -48,7 +48,7 @@ Note: The first time the build-system runs it will validate and prompt you to in
 
 Use `git` to clone the LibreELEC sources to your user folder:
 
-```
+```console
 cd ~
 git clone https://github.com/LibreELEC/LibreELEC.tv.git
 cd LibreELEC.tv
@@ -58,13 +58,13 @@ cd LibreELEC.tv
 
 After cloning you are now at the current `HEAD` position of the `master` development branch. To compile a specific LibreELEC release we need to `checkout` the specific version `tag` or `githash` associated with the release, e.g. to build the LibreELEC 9.2.0 release we checkout the `9.2.0` tag:
 
-```
+```console
 git checkout 9.2.0
 ```
 
 You can also build at a specific point in the git revision history identified by a commit githash:
 
-```
+```console
 git checkout 65136474fda5302f427f492d40da66645b125cf1
 ```
 
@@ -74,7 +74,7 @@ You are now in the root folder of the build-system and ready to build!
 
 The first time the build-system runs it will download and cache package sources, but there are ~260-380 packages to cache (depending on the build `PROJECT`) and some sources are large, and others are download from super-slow servers. To download sources in advance of building, use `download-tool`, e.g.
 
-```
+```console
 PROJECT=Generic ARCH=x86_64 tools/download-tool
 ```
 
@@ -82,7 +82,7 @@ PROJECT=Generic ARCH=x86_64 tools/download-tool
 
 As a normal user (not as root, and not using sudo) run a build command, e.g.
 
-```
+```console
 PROJECT=Generic ARCH=x86_64 make image
 ```
 This will compile the `Generic` build `PROJECT` for the `x86_64` arch, and `make image` will generate an .img.gz file that can be written to USB/SD media for installation, and a .tar file that can update an existing installtion (.img.gz files can also be used for updates, but .tar files are faster).
@@ -97,30 +97,30 @@ After completing your first build, you probably want to make some nip-tuck chang
 
 If you see strange or transient compilation errors, start by cleaning the sources for the failing package and clear the compiler cache (ccache), e.g. to clean the linux package:
 
-```
+```console
 PROJECT=Generic ARCH=x86_64 scripts/clean linux
 ```
 
 You can also remove all build directories (keeping ccache):
 
-```
+```console
 make clean
 ```
 
 Or just for one project:
 
-```
+```console
 PROJECT=Generic ARCH=x86_64 make clean
 ```
 
 To remove everything and ccache:
 
-```
+```console
 make distclean
 ```
 
 Or just for one project:
 
-```
+```console
 PROJECT=Generic ARCH=x86_64 make distclean
 ```
