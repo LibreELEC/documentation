@@ -19,7 +19,7 @@ The Virtual project was combined into the Generic image. Running `make image` wi
 
 Amlogic, Raspberry Pi, and Rockchip build projects require a `DEVICE=<name>` to be specified. For example, to build an Amlogic image for a LibreComputer LePotato board:
 
-```
+```console
 PROJECT=Amlogic ARCH=arm DEVICE=LePotato make image
 ```
 
