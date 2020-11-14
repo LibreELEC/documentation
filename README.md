@@ -4,13 +4,13 @@ LibreELEC is a minimalistic operating system for digital devices, which is based
 
 ## Table of Contents
 
-### Installation
+* Installation
 
-### Usage
+* Usage
 
-### Configuration
+* Configuration
 
-### Building Your Own LibreELEC
+* Building Your Own LibreELEC
 
 ## Contributing
 
