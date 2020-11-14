@@ -4,21 +4,21 @@ LibreELEC is a minimalistic operating system for digital devices, which is based
 
 ## Table of Contents
 
-* [Installation](https://github.com/LibreELEC/documentation/install)
+* [Installation](https://github.com/LibreELEC/documentation/tree/master/install)
 
 * Usage
 
-* [Configuration](https://github.com/LibreELEC/documentation/configure)
+* [Configuration](https://github.com/LibreELEC/documentation/tree/master/configure)
 
-* [Updating LibreELEC and Add-Ons](https://github.com/LibreELEC/documentation/update)
+* [Updating LibreELEC and Add-Ons](https://github.com/LibreELEC/documentation/tree/master/update)
 
 * Logging and Debugging
 
-* [Infrastructure](https://github.com/LibreELEC/documentation/infrastructure)
+* [Infrastructure](https://github.com/LibreELEC/documentation/tree/master/infrastructure)
 
-* [Building Your Own LibreELEC](https://github.com/LibreELEC/documentation/development)
+* [Building Your Own LibreELEC](https://github.com/LibreELEC/documentation/tree/master/development)
 
-* [Release List](https://github.com/LibreELEC/documentation/releases)
+* [Release List](https://github.com/LibreELEC/documentation/tree/master/releases)
 
 ## Contributing
 
