@@ -13,17 +13,17 @@
 * [Add-Ons](installation/add-ons.md)
 * [Containers](installation/docker.md)
 
-## Hardware Guides
+## Hardware
 
-* [Allwinner](hardware-guides/allwinner.md)
-* [Amlogic](hardware-guides/amlogic.md)
-* [NXP \(iMX6\)](hardware-guides/nxp-imx6.md)
-* [Intel x86-64 \(Generic\)](hardware-guides/intel-x86-64-generic.md)
-* [Qualcomm](hardware-guides/qualcomm.md)
-* [Raspberry Pi](hardware-guides/raspberry-pi.md)
-* [Rockchip](hardware-guides/rockchip.md)
-* [Samsung \(Exynos\)](hardware-guides/samsung-exynos.md)
-* [Virtual Image](hardware-guides/virtual.md)
+* [Allwinner](hardware/allwinner.md)
+* [Amlogic](hardware/amlogic.md)
+* [NXP \(iMX6\)](hardware/nxp-imx6.md)
+* [Intel x86-64 \(Generic\)](hardware/intel-x86-64-generic.md)
+* [Qualcomm](hardware/qualcomm.md)
+* [Raspberry Pi](hardware/raspberry-pi.md)
+* [Rockchip](hardware/rockchip.md)
+* [Samsung \(Exynos\)](hardware/samsung-exynos.md)
+* [Virtual Image](hardware/virtual.md)
 
 ## Configuration
 
