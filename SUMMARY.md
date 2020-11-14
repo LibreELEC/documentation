@@ -9,17 +9,21 @@
 
 ## Installation
 
+* [Create Media](installation/create-media.md)
 * [Add-Ons](installation/add-ons.md)
 * [Containers](installation/docker.md)
-* [Allwinner](installation/allwinner.md)
-* [Amlogic](installation/amlogic.md)
-* [NXP \(iMX6\)](installation/nxp-imx6.md)
-* [Intel x86-64 \(Generic\)](installation/intel-x86-64-generic.md)
-* [Qualcomm](installation/qualcomm.md)
-* [Raspberry Pi](installation/raspberry-pi.md)
-* [Rockchip](installation/rockchip.md)
-* [Samsung \(Exynos\)](installation/samsung-exynos.md)
-* [Virtual Image](installation/virtual.md)
+
+## Hardware Guides
+
+* [Allwinner](hardware-guides/allwinner.md)
+* [Amlogic](hardware-guides/amlogic.md)
+* [NXP \(iMX6\)](hardware-guides/nxp-imx6.md)
+* [Intel x86-64 \(Generic\)](hardware-guides/intel-x86-64-generic.md)
+* [Qualcomm](hardware-guides/qualcomm.md)
+* [Raspberry Pi](hardware-guides/raspberry-pi.md)
+* [Rockchip](hardware-guides/rockchip.md)
+* [Samsung \(Exynos\)](hardware-guides/samsung-exynos.md)
+* [Virtual Image](hardware-guides/virtual.md)
 
 ## Configuration
 

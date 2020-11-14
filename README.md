@@ -1,6 +1,14 @@
 # Introduction
 
-LibreELEC is a minimalistic operating system for digital devices, which is based on Linux and runs Kodi media center. The goal of this documentation is to provide instructions on how to install, use, configure, and build LibreELEC. These pages are maintained on [GitHub](https://github.com/LibreELEC/documentation) allowing you to add or edit content.
+LibreELEC is a minimalistic 'Just enough OS' Linux distribution for running [Kodi](https://kodi.tv) on modern digital \(HTPC\) devices. Our documentation can help you install, configure, and use LibreELEC to run Kodi, or develop and build installation images using our buildsystem.
+
+These pages are maintained on [GitHub](https://github.com/LibreELEC/documentation) so anyone can submit changes to the content. All content is licensed under the Creative Commons [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
+
+## Support 
+
+User support is managed through our forum: [https://forum.libreelec.tv](https://forum.libreelec.tv) and the \#libreelec IRC channel on freenode. Start a forum thread to ask a question, and someone will reply. Please be patient and wait for answers, we are all unpaid volunteers with jobs and families!
+
+For support on Kodi itself, please refer to the official [Kodi Wiki](https://kodi.wiki/view/Main_Page) and [Kodi Forums](https://forum.kodi.tv).
 
 ## Table of Contents
 
@@ -13,11 +21,5 @@ LibreELEC is a minimalistic operating system for digital devices, which is based
 * [Building Your Own LibreELEC](https://github.com/LibreELEC/documentation/tree/master/development)
 * [Release List](https://github.com/LibreELEC/documentation/tree/master/releases)
 
-## Contributing
 
-User support is managed through the forum: [https://forum.libreelec.tv](https://forum.libreelec.tv). There is also the \#libreelec IRC channel on freenode. Start a thread or ask a question, and someone will reply. If you don't get a quick answer please be patient, we are all volunteers with jobs and families!
-
-## Credits
-
-## License
 
