@@ -2,7 +2,7 @@
 
 PXE booting with `SYSTEM` and `/storage` mounted via NFS is supported on Generic x86\_64 and Raspberry Pi devices. In the following writeup the server is Ubuntu 18.04 LTS.
 
-## LibreELEC
+## Client \(LibreELEC\)
 
 Download the image for your device.
 
@@ -22,7 +22,7 @@ LABEL LibreELEC
 
 Replace `192.168.0.1` with the NFS server IP address. The `overlay` parameter is not required if you only intend to boot one system. LibreELEC is now configured to boot using TFTP and NFS!
 
-## Ubuntu
+## Server \(Ubuntu\)
 
 In Ubuntu we need to install and configure DHCP, TFTP, and NFS services:
 
@@ -30,7 +30,7 @@ In Ubuntu we need to install and configure DHCP, TFTP, and NFS services:
 sudo apt install isc-dhcp-server tftpd-hpa nfs-kernel-server
 ```
 
-## DHCP
+### DHCP
 
 Edit `/etc/dhcp/dhcpd.conf` and change the DHCP `range` if needed. Create entries in the `host` section for your client\(s\):
 
@@ -63,13 +63,13 @@ subnet 192.168.0.0 netmask 255.255.255.0
 }
 ```
 
-Edit `/etc/default/isc-dhcp-server` and set the interface name that will handle DHCP requests:
+Edit `/etc/default/isc-dhcp-server` to set the interface name handling DHCP requests:
 
 ```text
 INTERFACES="eth0"
 ```
 
-## NFS
+### NFS
 
 Create the directories that will contain your `/storage` userdata and TFTP boot files, e.g.
 
@@ -92,7 +92,7 @@ Then add the following lines to the `/etc/exports` file:
 /mnt/tftpboot           192.168.0.2/255.255.255.0(no_root_squash,rw,async,no_subtree_check)
 ```
 
-## TFTP
+### TFTP
 
 Create directories for the TFTP bootfiles. In this example they are served from a different disk:
 
@@ -124,7 +124,7 @@ kernel /KERNEL
 append ip=dhcp boot=NFS=192.168.0.2:/mnt/tftpboot disk=NFS=192.168.0.2:/mnt/media/storage
 ```
 
-## Firewall
+### Firewall
 
 If using the default Ubuntu firewall \(UFW\) add the following rules to allow ports for TFTP \(69\) and ONRPC \(111\):
 
@@ -147,7 +147,7 @@ Create a matching firewall rule to allow the port:
 sudo ufw allow proto tcp from 192.168.0.0/24 to any port 8765
 ```
 
-## Services
+### Services
 
 And finally, start services:
 

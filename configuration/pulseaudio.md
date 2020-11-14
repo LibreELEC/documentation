@@ -2,8 +2,6 @@
 
 Pulseaudio is used for routing audio to a Bluetooth device. With additional configuration it can also be used to receive audio and stream to multi-device \(multi-room\) configurations.
 
-## Commands
-
 The tutorials on this page are basically using four commands:
 
 * `pactl load-module <name>` to load a pulseaudio module \(not all are loaded by default\)
