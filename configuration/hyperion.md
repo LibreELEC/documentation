@@ -15,7 +15,7 @@ If you want hardware that will work on any LibreELEC device, an "Adalight" setup
 
 ![Adalight wiring](../.gitbook/assets/hyperion-adalight.png)
 
-You can follow the tutorial here [https://learn.adafruit.com/adalight-diy-ambient-tv-lighting/overview](https://learn.adafruit.com/adalight-diy-ambient-tv-lighting/overview).
+Follow the tutorial here [https://learn.adafruit.com/adalight-diy-ambient-tv-lighting/overview](https://learn.adafruit.com/adalight-diy-ambient-tv-lighting/overview).
 
 In [Hypercon](hypercon.md) you will need to enable:
 
