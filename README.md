@@ -1,6 +1,6 @@
 # LibreELEC
 
-LibreELEC is a minimalistic operating system for digital devices, which is based on Linux and runs the Kodi media center. The goal of this documentation is to provide instructions on how to install, configure, and build, LibreELEC images. These pages are maintained on [GitHub](https://github.com/LibreELEC/documentation) allowing you to add/edit the content.
+LibreELEC is a minimalistic operating system for digital devices, which is based on Linux and runs Kodi media center. The goal of this documentation is to provide instructions on how to install, use, configure, and build LibreELEC. These pages are maintained on [GitHub](https://github.com/LibreELEC/documentation) allowing you to add or edit content.
 
 ## Table of Contents
 
