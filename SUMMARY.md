@@ -58,6 +58,7 @@
 ## Project
 
 * [Releases](project/releases.md)
+* [Forks](project/forks.md)
 * [Licenses](project/license/README.md)
   * [Source Code](project/license/source-code.md)
   * [Documentation](project/license/documentation.md)
