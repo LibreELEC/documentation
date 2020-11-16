@@ -8,7 +8,7 @@ The following are known forks of our codebase:
 
 | Name | URL | Purpose |
 | :--- | :--- | :--- |
-| Lakka \(Libretro\) | [https://laka.tv](https://laka.tv) | Retro Gaming |
+| Lakka \(Libretro\) | [https://lakka.tv](https://lakka.tv) | Retro Gaming |
 | RetroELEC | n/a | Retro Gaming |
 | CoreELEC | [https://coreelec.org](https://coreelec.org) | Kodi |
 
