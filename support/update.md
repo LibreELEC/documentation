@@ -59,7 +59,7 @@ In 2016 when we forked from OpenELEC the differences between projects were small
 * Older Kodi add-ons are frequently incompatible with newer Kodi versions, causing crashes when the system restarts, and the bigger the version jump the more likely add-ons will cause problems. LibreELEC will detect when Kodi repeatedly fails to start and will run with a "safe mode" configuration, but this normally requires SSH console fiddling to get back to a working setup.
 * Kodi does not self-manage media and add-on package caches so over-time filesystem litter accumulates. Starting from a clean install removes all the not-needed junk resulting in a faster/lighter installation with an improved Kodi user experience.
 
-To migrate essential Kodi data from the old installation before migrating \(which is likely to fail\) or making a clean installation, stop Kodi and back-up the userdata folder:
+To migrate essential Kodi data from the old installation before migrating \(which is likely to fail\) or making a clean installation, enable the SSH service in the Settings add-on, then log-in over SSH to stop Kodi and back-up the userdata folder:
 
 ```text
 cd /storage/backup
