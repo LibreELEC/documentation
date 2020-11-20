@@ -1,3 +1,14 @@
 redirects:  
+    de/main_page: README.md
+    de/releases: project/releases.md
+    how_to/add_firmware: how-to/add-firmware.md
+    how_to/blacklist_module: how-to/add-firmware.md
+    how_to/change_bootscreen: how-to/change-bootscreen.md
+    how_to/provide_logfile: support/log-files.md
+    infrared_remotes: configuration/ir-remotes.md
+    libreelec: README.md
     libreelec_usb-sd_creator: installation/create-media.md
+    mirrors: project/mirrors.md
+    raspberry_pi_faq: hardware/raspberry-pi.md
+    releases: project/releases.md
 
