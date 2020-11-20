@@ -64,3 +64,7 @@
   * [Documentation](project/license/documentation.md)
 * [Mirrors](project/mirrors.md)
 
+## How To
+
+* [Change Bootscreen](how-to/change-bootscreen.md)
+
