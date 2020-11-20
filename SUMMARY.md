@@ -40,6 +40,13 @@
 * [Useful Scripts](configuration/useful_scripts.md)
 * [WireGuard](configuration/wireguard.md)
 
+## How To
+
+* [Add Firmware](how-to/add-firmware.md)
+* [Blacklist Kernel Module](how-to/blacklist-kernel-module.md)
+* [Change Bootscreen](how-to/change-bootscreen.md)
+* [Force Add-on Update](how-to/force-add-on-update.md)
+
 ## Development <a id="development-1"></a>
 
 * [Building \(Basics\)](development-1/build-basics.md)
@@ -63,8 +70,4 @@
   * [Source Code](project/license/source-code.md)
   * [Documentation](project/license/documentation.md)
 * [Mirrors](project/mirrors.md)
-
-## How To
-
-* [Change Bootscreen](how-to/change-bootscreen.md)
 
