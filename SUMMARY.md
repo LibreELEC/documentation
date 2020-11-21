@@ -30,6 +30,7 @@
 * [Blu-Ray Playback](configuration/blu-ray.md)
 * [Config.txt](configuration/config_txt.md)
 * [Dual Boot](configuration/dual-boot.md)
+* [EDID](configuration/edid.md)
 * [Hypercon](configuration/hypercon.md)
 * [Hyperion](configuration/hyperion.md)
 * [Infra-Red Remotes](configuration/ir-remotes.md)
