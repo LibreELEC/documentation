@@ -1,7 +1,5 @@
 # EDID
 
-
-
 ## Custom EDID
 
 To change the order of turning on your devices \(normally your HTPC has to be powered on last\) or to use your LibreELEC device without the TV turned on, you need to dump/save the EDID information from your TV \(or AVR\).
@@ -12,7 +10,7 @@ In the steps below we will explain how this can be done:
 
 In the tabs below we explain different ways how to dump the EDID information. Intel explains the steps which need to be done for Intel based GPUs and nVidia will explain the same steps for nVidia based GPUs which will differ much from each other. We also provide a script which does the needed things for the specific GPUs automatically.
 
-## Generic
+## Generic x86\_64
 
 **Note:** This script will also only work for Intel or nVidia based GPUs. AMD/ATI GPU's are not supported.
 
@@ -298,7 +296,7 @@ systemctl restart xorg.service
 
 If all has gone to plan Xorg now detects the EDID file and the order of powering on equipment no longer matters!
 
-### Amlogic
+## Amlogic
 
 Amlogic devices do not capture "edid.bin" files like Intel and nVidia devices, but a similar process can capture, store and force the resolutions of a device. Connect your HTPC device directly to the HDMI source that you want to capture EDID information from, then login over SSH and run the following command.
 
