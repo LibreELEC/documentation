@@ -15,7 +15,9 @@ Auto-Update is enabled by default and tracks minor version updates, e.g. LibreEL
 
 Navigate to the Update section of the settings add-on, select the update channel \(LibreELEC major version\) and then the specific minor version to update to. The update .tar file will start downloading, and once complete the system will reboot to perform the update. 
 
-Please see the following video: [https://www.youtube.com/embed/CjlHY6syRHw](https://www.youtube.com/embed/CjlHY6syRHw)
+Please see the following video
+
+{% embed url="https://www.youtube.com/watch?v=CjlHY6syRHw" %}
 
 ## Samba Share
 
