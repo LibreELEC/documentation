@@ -1,6 +1,6 @@
 # Hypercon
 
-HyperCon allows you to configure Hyperion on a remote LibreELEC device from a Windows, macOS or Linux desktop GUI application. Hypercon is a Java application so you must have a Java runtime environment \(JRE\) installed to run it. Java v1.7 or higher is required.
+HyperCon is a graphical application which allows you to configure [Hyperion](/hyperion.md) (an ambient lighting system) running on a remote LibreELEC device, from a Windows, macOS or Linux desktop. Hypercon is a Java application, and so requires you to have a working Java runtime environment \(JRE\) installed to run it. Java v1.7 or higher is required.
 
 The latest version is here [http://releases.libreelec.tv/hypercon-LE.jar](http://releases.libreelec.tv/hypercon-LE.jar)
 
