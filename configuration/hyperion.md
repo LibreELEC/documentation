@@ -1,6 +1,10 @@
 # Hyperion
 
-Hyperion requires some hardware and software configuration. For the software configuration pls head over to [Hypercon](hypercon.md). This page will describe the process to add Hyperion to Generic x86\_64 and Raspberry Pi hardware.
+[Hyperion](https://github.com/hyperion-project/hyperion.ng) is an open source project providing an ambient lighting system, compatiblie with Kodi.
+
+Hyperion requires some hardware and software configuration. This page will describe the process of adding Hyperion to Generic x86\_64 and Raspberry Pi hardware.
+
+For the software configuration, please head over to [Hypercon](hypercon.md). 
 
 ## Adalight
 
