@@ -162,7 +162,7 @@ Last step is to reboot the device.
 reboot
 ```
 
-### Nvidia
+### nVidia
 
 If you boot your nVidia GPU based LibreELEC box before the TV/AVR and you see a black screen on boot - follow this guide to create an edid.bin file that tricks Xorg into thinking the TV/AVR are powered on at boot time.
 
@@ -296,9 +296,9 @@ systemctl restart xorg.service
 
 If all has gone to plan Xorg now detects the EDID file and the order of powering on equipment no longer matters!
 
-## Amlogic
+## Amlogic \(Legacy\)
 
-Amlogic devices do not capture "edid.bin" files like Intel and nVidia devices, but a similar process can capture, store and force the resolutions of a device. Connect your HTPC device directly to the HDMI source that you want to capture EDID information from, then login over SSH and run the following command.
+Amlogic legacy kernel devices \(using 3.10, 3.14 kernels\) do not capture "edid.bin" files like Intel and nVidia devices, but a similar process can capture, store and force the resolutions of a device. Connect your HTPC device directly to the HDMI source that you want to capture EDID information from, then login over SSH and run the following command.
 
 ```text
 cat /sys/class/amhdmitx/amhdmitx0/disp_cap > /storage/.kodi/userdata/disp_cap
