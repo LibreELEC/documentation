@@ -1,7 +1,3 @@
----
-description: Add a firmware to LibreELEC
----
-
 # Add Firmware
 
 Linux kernel firmware files are normally installed in `/usr/lib/firmware` but in LibreELEC this directory is inside the read-only `SYSTEM` file preventing you from adding more files. To allow user changes we support an overlay system. You can copy your firmware files and subfolders to `/storage/.config/firmware` and reboot. On boot the new folders/files will be overlaid onto `/usr/lib/firmware` where kernel drivers expect to see them.

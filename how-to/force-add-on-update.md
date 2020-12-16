@@ -1,12 +1,6 @@
----
-description: Force Add-on repository update
----
-
 # Force Add-on Update
 
-
-
-To force a add-on repository update go to
+To force-update an add-on repository:
 
 1. Kodi 
 2. Add-ons
