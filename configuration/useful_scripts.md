@@ -6,7 +6,7 @@ This script uses the `kodi-send` tool to prevent Kodi from shutting down if ther
 
 Create `/storage/.config/prevent_idle.sh` with the following content:
 
-```text
+```bash
 #!/bin/sh
 
 IDLE_SHUTDOWN_ALLOWED_LAST_STATE=-1
@@ -35,7 +35,7 @@ done
 
 Call the script from `/storage/.config/autostart.sh` so it runs as a background task. It will continue to monitor the state of connections until the device is halted.
 
-```text
+```bash
 (
 /usr/bin/bash /storage/.config/prevent_idle.sh
 )&
@@ -47,7 +47,7 @@ This script identifies your public IP address and updates a [https://dynu.com](h
 
 Create `/storage/.config/dynu_update.sh` with the following content:
 
-```text
+```bash
 #!/bin/sh
 
 DYNU_USERNAME="username"
@@ -93,7 +93,7 @@ done
 
 Call the script from `/storage/.config/autostart.sh` so it runs as a background task. It will continue to monitor the state of connections until the device is halted.
 
-```text
+```bash
 (
 /usr/bin/bash /storage/.config/dynu_update.sh
 )&
