@@ -1,8 +1,8 @@
 # Log Files
 
-If you experience problems, the best explanation of the issue is often in a log file. If you want to investigate yourself or ask others for support in the forum or the IRC channel, they will ask for a log file \(or files\) and configuration data to look at.
+If you experience problems and want to investigate yourself or ask others for help in the forum or the IRC channel, a log file \(or files\) and configuration data provides useful info.
 
-Kodi has `default` and `debug` log modes. Debug logs show more detail and are more useful for staff and forum regulars to work with. If you are asked for a log - assume the request is for a `debug` log and for the entire log file, and not just the small snippet you think is useful \(often we need to see and understand the configuration too\).
+Kodi has `default` and `debug` log modes. As you'd expect, debug logs show more detail and are more useful for staff and forum regulars to work with. If you are asked for a log - assume the request is for a `debug` log and for the entire log file, not just the small snippet you think is useful \(often we need to see and understand the configuration too\).
 
  Enable 'debug logging' at Settings → System → Logging, then paste or copy/share the logs.
 
