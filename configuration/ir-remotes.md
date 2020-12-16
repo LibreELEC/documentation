@@ -1,6 +1,18 @@
 # Infra-Red Remotes
 
-Like mst current Linux distros LibreELEC uses `ir-keytable` to configure Infra-Red Remotes. Each IR receiver kernel driver installs a default `keytable` which specifies the IR protocol to use, e.g. RC5, RC6, NEC, and the scancode to Linux keycode mappings.
+## Introduction
+
+Modern Linux kernels \(used in LibreELEC\) have built-in support for IR remotes. IR signals are decoded by the kernel and programs see button presses from IR remotes in the same way as key presses from a normal keyboard, as Linux input events. This approach is the successor to LIRC where a separate program, lircd, decodes IR signals and programs obtain button presses from a socket as LIRC events.
+
+While this new scheme is really handy, there's a small gotcha: Kodi's remote handling is built for LIRC and it doesn't cope well with Linux input events. In general all buttons also present on a normal keyboard, like arrows and numbers, work fine but rather important buttons like `OK` and `channel up/down` don't. To solve this LibreELEC runs `eventlircd` in the background to translate Linux input events into LIRC events. So "under the hood" the new scheme is being used, but remote buttons still show up as LIRC events in Kodi.
+
+Kodi then translates the LIRC events to Kodi button names via `Lircmap.xml` and then buttons are mapped to Kodi actions via `remote.xml` and `keyboard.xml` files. This wiki page describes the LibreELEC configuration. Information on Kodi configuration is available in the [Kodi LIRC](http://web.archive.org/web/20201111212253/https://kodi.wiki/view/LIRC) and [Kodi Keyboard.xml](http://web.archive.org/web/20201111212253/https://kodi.wiki/view/Keyboard.xml) wiki pages.
+
+LibreELEC still ships with LIRC so IR remotes with non-standard protocols and rather special setups can be supported. In general, keep LIRC disabled \(in LibreELEC Settings → Services\) and only enable it for exceptional cases where you actually need it.
+
+## Configuration
+
+Like most current Linux distros LibreELEC uses `ir-keytable` to configure Infra-Red Remotes. Each IR receiver kernel driver installs a default `keytable` which specifies the IR protocol to use, e.g. RC5, RC6, NEC, and the scancode to Linux keycode mappings.
 
 Most universal receivers work with the rc-rc6-mce table so RC6 MCE remotes can be used without further configuration. Drivers for DVB devices sold with a remote usually install their own keytable, e.g. the Hauppauge remote that came with a Hauppauge DVB stick.
 
