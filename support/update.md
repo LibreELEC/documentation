@@ -49,6 +49,12 @@ Once the download has completed, reboot to start the update process
 reboot
 ```
 
+## USB drive
+1. Download the update file and place it to USB drive
+2. Connect the USB drive to your LibreELEC device and navigate to the \(hidden\) `/storage/.update/` update folder using the Kodi File manager
+3. Copy the update file from your USB drive into the _.update_ folder
+4. Restart your LibreELEC device to launch the update process
+
 ## Downgrade
 
 Kodi does not support downgrading. If "updating" within the same LibreELEC/Kodi major release, e.g. LibreELEC 9.2.6 to 9.2.5, the downgrade will normally work. If downgrading to an older LibreELEC/Kodi major version e.g. LibreELEC 9.2.6 to 9.0.2, the downgrade process will complete but Kodi may not gracefully handle being restarted with configuration files and add-ons from the \(newer\) previous release. Always make a backup before upgrading so that you can clean install then restore the backup to effect a downgrade without problems.
