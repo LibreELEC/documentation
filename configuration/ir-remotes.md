@@ -22,7 +22,7 @@ As most of the LibreELEC filesystem is read-only, we use a system of boot-time f
 
 * `/storage/.config/rc_maps.cfg` overrides `/etc/rc_maps.cfg`.
 * `/storage/.config/rc_maps.cfg.sample` has simple examples.
-* `/storage/.config/rc_keymaps overridess`/usr/lib/udev/rc\_keymaps\`.
+* `/storage/.config/rc_keymaps` overrides `/usr/lib/udev/rc\_keymaps\`.
 * `/etc/rc_maps.cfg` uses the `libreelec_multi` keytable instead of rc6\_mce.
 
 The default `libreelec_multi` keytable allows us to support Xbox 360/One remotes "out of box" in addition to MCE/RC6 remotes. This is configured via the following change:
