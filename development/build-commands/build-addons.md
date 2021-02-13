@@ -12,13 +12,13 @@ To compile all `game.libretro` add-ons:
 PROJECT=Generic ARCH=x86_64 scripts/create_addon game.*
 ```
 
-To compile all [https://github.com/LibreELEC/LibreELEC.tv/tree/master/packages/mediacenter/kodi-binary-addons](Kodi binary add-ons):
+To compile all [Kodi binary add-ons](https://github.com/LibreELEC/LibreELEC.tv/tree/master/packages/mediacenter/kodi-binary-addons):
 
 ```
 PROJECT=Generic ARCH=x86_64 scripts/create_addon binary
 ```
 
-To compile all [https://github.com/LibreELEC/LibreELEC.tv/tree/master/packages/addons](LibreELEC binary add-ons):
+To compile all [LibreELEC binary add-ons](https://github.com/LibreELEC/LibreELEC.tv/tree/master/packages/addons):
 
 ```
 PROJECT=Generic ARCH=x86_64 scripts/create_addon official
