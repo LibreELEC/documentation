@@ -8,7 +8,8 @@
 | Allwinner H6 | PROJECT=Allwinner ARCH=arm DEVICE=H6 make image |
 | Amlogic GXBB/GXL/GXM/G12/SM1 | PROJECT=Amlogic ARCH=arm DEVICE=AMLGX make image |
 | Generic Intel/AMD x86\_64 | PROJECT=Generic ARCH=x86\_64 make image |
-| NXP/Freescale iMX.6 | PROJECT=NXP ARCH=arm DEVICE=imx6 make image |
+| NXP/Freescale iMX.6 | PROJECT=NXP ARCH=arm DEVICE=iMX6 make image |
+| NXP/Freescale iMX.8 | PROJECT=NXP ARCH=arm DEVICE=iMX8 make image |
 | Qualcomm DragonBoard | PROJECT=Qualcomm ARCH=arm DEVICE=Dragonboard make image |
 | Raspberry Pi 0/1 | PROJECT=RPi ARCH=arm DEVICE=RPi make image |
 | Raspberry Pi 2/3 | PROJECT=RPi ARCH=arm DEVICE=RPi2 make image |
