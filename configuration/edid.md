@@ -82,13 +82,13 @@ mkdir -p /storage/.config/firmware/edid
 HDMI-A-1
 
 ```text
-cat /sys/class/drm/card0-HDMI-A-1/edid > /storage/.config/firmware/edid/edid.bin</code>
+cat /sys/class/drm/card0-HDMI-A-1/edid > /storage/.config/firmware/edid/edid.bin
 ```
 
 HDMI-A-2
 
 ```text
-cat /sys/class/drm/card0-HDMI-A-2/edid > /storage/.config/firmware/edid/edid.bin</code>
+cat /sys/class/drm/card0-HDMI-A-2/edid > /storage/.config/firmware/edid/edid.bin
 ```
 
 Next a cpio archive file will be created which will be loaded at boot.
@@ -121,39 +121,41 @@ Search for "extlinux.conf" or "syslinux.cfg" and edit it. Only one of them is av
 **syslinux.cfg**
 
 ```text
-nano -w /flash/syslinux.cfg
+nano /flash/syslinux.cfg
 ```
 
 **extlinux.conf**
 
 ```text
-nano -w /flash/extlinux.conf
+nano /flash/extlinux.conf
 ```
+
+Note: If you are not using LibreELEC 9.0 or newer please use nano -w instead of nano
 
 Add to the APPEND line the following things.
 
 HDMI-A-1
 
 ```text
-initrd=/edid.cpio drm_kms_helper.edid_firmware=HDMI-A-1:edid/edid.bin video=HDMI-A-1:D
+initrd=/edid.cpio drm.edid_firmware=edid/edid.bin video=HDMI-A-1:D
 ```
 
 The APPEND line should look this like this after \(everything in a single line\):
 
 ```text
-APPEND boot=LABEL=System disk=LABEL=Storage ssh quiet initrd=/edid.cpio drm_kms_helper.edid_firmware=HDMI-A-1:edid/edid.bin video=HDMI-A-1:D
+APPEND boot=LABEL=System disk=LABEL=Storage ssh quiet initrd=/edid.cpio drm.edid_firmware=edid/edid.bin video=HDMI-A-1:D
 ```
 
 HDMI-A-2
 
 ```text
-initrd=/edid.cpio drm_kms_helper.edid_firmware=HDMI-A-2:edid/edid.bin video=HDMI-A-2:D
+initrd=/edid.cpio drm.edid_firmware=edid/edid.bin video=HDMI-A-2:D
 ```
 
 The APPEND line should look this like this after \(everything in a single line\).
 
 ```text
-APPEND boot=LABEL=System disk=LABEL=Storage ssh quiet initrd=/edid.cpio drm_kms_helper.edid_firmware=HDMI-A-2:edid/edid.bin video=HDMI-A-2:D
+APPEND boot=LABEL=System disk=LABEL=Storage ssh quiet drm.edid_firmware=edid/edid.bin video=HDMI-A-2:D
 ```
 
 Last step is to reboot the device.
