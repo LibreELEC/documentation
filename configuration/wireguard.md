@@ -160,6 +160,33 @@ RPi4:~ # systemctl start wireguard.service
 
 Check the WireGuard tunnel is active using "ifconfig" and "ping" and if all is good, reboot to test the WireGuard tunnel comes up automatically on boot.
 
+## Known issues
+Connman makes wg0 route for all traffic by default, no matter what `WireGuard.AllowedIPs` you will set. 
+
+To workaround this problem if you really need route only specific networks via wireguard tunnel (e.g. to watch IPTV from abroad), you can use tips and systemd config example from this forum tread https://forum.libreelec.tv/thread/21906-wireguard-changes-the-default-route-although-not-configured/
+
+Note `sleep` `connmanctl move-after` and `route add` commands added to config.
+
+```
+[Unit]
+Description=WireGuard VPN Service
+After=network-online.target nss-lookup.target connman.service connman-vpn.service bluetooth.service
+Wants=network-online.target nss-lookup.target connman.service connman-vpn.service bluetooth.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/sleep 5
+ExecStart=/usr/bin/connmanctl connect vpn_X_klaus
+ExecStart=/usr/bin/connmanctl move-after vpn_X_klaus ethernet_b827eb10c45a_cable
+ExecStart=/usr/bin/connmanctl move-after vpn_X_klaus ethernet_b827eb10c45a_cable
+ExecStart=/usr/sbin/route add -net 192.168.2.0 netmask 255.255.255.0 gw 10.0.0.2
+ExecStop=/usr/bin/connmanctl disconnect vpn_X_klaus
+
+[Install]
+WantedBy=multi-user.target
+```
+
 ## Thanks
 
 Big thanks! to ConnMan maintainer Daniel Wagner \(wagi\) who worked with LibreELEC staff to implement WireGuard support in ConnMan \(he wrote the code, we ~~abused~~ tested it\).
