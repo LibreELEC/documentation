@@ -172,7 +172,7 @@ If you boot your nVidia GPU based LibreELEC box before the TV/AVR and you see a 
 
 #### Get the needed information about your system
 
-Open an SSH session to your LibreELEC machine. Once logged into the console we need to work out the DFP number. 
+Open an SSH session to your LibreELEC machine. Once logged into the console we need to work out the DFP number.
 
 ```text
 grep ": connected" /var/log/Xorg.0.log | head -n 1

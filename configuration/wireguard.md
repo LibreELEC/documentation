@@ -6,7 +6,7 @@ WireGuard tunnels are managed by a ConnMan VPN plugin \(connman-vpn.service\) th
 
 ## Sample Config
 
-ConnMan uses its own configuration file format \(see below\) so you cannot import/use the   files exported from WireGuard server tools and third-party VPN services - the format is different. Those files will contain everything you need, but you must manually transpose the information into the ConnMan format:
+ConnMan uses its own configuration file format \(see below\) so you cannot import/use the files exported from WireGuard server tools and third-party VPN services - the format is different. Those files will contain everything you need, but you must manually transpose the information into the ConnMan format:
 
 ```text
 [provider_wireguard]
@@ -160,14 +160,13 @@ RPi4:~ # systemctl start wireguard.service
 
 Check the WireGuard tunnel is active using "ifconfig" and "ping" and if all is good, reboot to test the WireGuard tunnel comes up automatically on boot.
 
-## Known issues
-Connman makes wg0 route for all traffic by default, no matter what `WireGuard.AllowedIPs` you will set. 
+## Known Issues
 
-To workaround this problem if you really need route only specific networks via wireguard tunnel (e.g. to watch IPTV from abroad), you can use tips and systemd config example from this forum tread https://forum.libreelec.tv/thread/21906-wireguard-changes-the-default-route-although-not-configured/
+ConnMan makes wg0 route all traffic over the WireGuard tunnel by default, no matter what `WireGuard.AllowedIPs` configuration you set. To route only specific networks via the tunnel the ConnMan service order \(which influences routing order\) must be changed. 
 
-Note `sleep` `connmanctl move-after` and `route add` commands added to config.
+Note the`sleep` and `connmanctl move-after` and `route add` commands used in the following tweaked systemd service file:
 
-```
+```text
 [Unit]
 Description=WireGuard VPN Service
 After=network-online.target nss-lookup.target connman.service connman-vpn.service bluetooth.service
@@ -186,6 +185,8 @@ ExecStop=/usr/bin/connmanctl disconnect vpn_X_klaus
 [Install]
 WantedBy=multi-user.target
 ```
+
+The following forum thread has tips and examples: [https://forum.libreelec.tv/thread/21906-wireguard-changes-the-default-route-although-not-configured/](https://forum.libreelec.tv/thread/21906-wireguard-changes-the-default-route-although-not-configured/) 
 
 ## Thanks
 
