@@ -107,6 +107,7 @@ On the pulseaudio source \(LibreELEC\) device, stop Kodi and find the output dev
 
 ```text
 systemctl stop kodi
+pactl load-module module-zeroconf-discover
 pactl list short sinks
 ```
 
