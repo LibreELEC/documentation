@@ -8,6 +8,8 @@ Nightly test and development snapshot images are here: [https://test.libreelec.t
 
 | Version | Status | Release Post |
 | :--- | :--- | :--- |
+| 9.2.8 | Hotfix | [Blog](https://libreelec.tv/2021/07/le-9-2-fix-2-for-widevine/) |
+| 9.2.7 | Hotfix | [Blog](https://libreelec.tv/2021/05/le-9-2-7-10b4-fix-widevine/) |
 | 9.2.6 | Stable | [Blog](https://libreelec.tv/2020/11/libreelec-leia-9-2-6) |
 | 9.2.5 | Hotfix | [Blog](https://libreelec.tv/2020/08/libreelec-leia-9-2-5) |
 | 9.2.4 | Stable | [Blog](https://libreelec.tv/2020/08/libreelec-leia-9-2-4) |
