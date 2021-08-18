@@ -4,6 +4,7 @@ redirects:
     how_to/add_firmware: how-to/add-firmware.md
     how_to/blacklist_module: how-to/add-firmware.md
     how_to/change_bootscreen: how-to/change-bootscreen.md
+    how_to/mount_network_share: how-to/mount_network_share.md
     how_to/provide_logfile: support/log-files.md
     infrared_remotes: configuration/ir-remotes.md
     libreelec: README.md
