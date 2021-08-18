@@ -47,6 +47,7 @@
 * [Blacklist Kernel Module](how-to/blacklist-kernel-module.md)
 * [Change Bootsplash](how-to/change-bootscreen.md)
 * [Force Add-on Update](how-to/force-add-on-update.md)
+* [Mount Network Share](how-to/mount_network_share.md)
 
 ## Development <a id="development-1"></a>
 
