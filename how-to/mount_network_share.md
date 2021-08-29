@@ -1,19 +1,16 @@
 # Mount Network Share
 
-## Mounting network shares
+Kodi can natively mount SMB, NFS, SFTP, WebDAV \(and more\) remote filesystems \(shares\) to read media for playback, but many applications that write content, e.g. TVHeadend storing TV recordings, must write to "local" storage. Remote SMB and NFS shares can be "mounted" to the local filesystem using kernel mounts configured through systemd .mount files.
 
-Examples for mounting an network share to LibreELEC. This might be useful if you run a Tvheadend Server at LE and like to record to your NAS and similar tasks where you need a connection to an network storage because the software can't handle it.
-
-#### Sample NAS setup
+The following NAS configuration is used in the examples below:
 
 * NAS IP: `192.168.1.222`
-* Share user/pass: `nasuser1` / `123nas`
+* Username: `nasuser1` 
+* Password: `123nas`
 * Share name: `recordings`
 * Full address to share: `\\192.168.1.222\recordings`
 
-## Samba Share
-
-### Mounting a Samba share
+## SMB Shares
 
 #### 1. Create the folder where the share should be mounted
 
@@ -21,15 +18,15 @@ Connect to your LibreELEC HTPC with SSH.
 
 `mkdir /storage/recordings`
 
-#### 2. Create the systemd definition file
+#### 2. Create the systemd .mount file
 
-**Important:** you need to use the filename for the definition file according to the folder where you want to mount your share .  
-In our case `storage-recordings.mount` represent path -&gt; `/storage/recordings`.  
-If you like an subfolder `storage-recordings-tv.mount` represent path -&gt; `/storage/recordings/tv`.
+**IMPORTANT:** The filename uses hypens to separate elements of the fileystem path to the share mount-point, e.g. `/storage/recordings` will be `storage-recordings.mount` and sub folders, e.g. `/storage/recordings/tv` would be `storage-recordings-tv.mount`
+
+Create the .mount file:
 
 `nano /storage/.config/system.d/storage-recordings.mount`
 
-Content of the definition file for a Samba share.
+Below is an example of the mount definition file for a Samba share:
 
 ```text
 [Unit]
@@ -50,7 +47,7 @@ WantedBy=multi-user.target
 
 #### 3. Things to edit
 
-Address of your share, remember to use / slashes:
+Address of your share. Remember to always use / slashes:
 
 `What=//192.168.1.222/recordings`
 
@@ -87,9 +84,7 @@ Remove mount point and disabling it.
 
 `systemctl disable storage-recordings.mount`
 
-## NFS Share
-
-### Mounting a NFS share
+## NFS Shares
 
 #### 1. Create the folder where the share should be mounted
 
