@@ -20,7 +20,7 @@ Connect to your LibreELEC HTPC with SSH.
 
 #### 2. Create the systemd .mount file
 
-**IMPORTANT:** The filename uses hypens to separate elements of the fileystem path to the share mount-point, e.g. `/storage/recordings` will be `storage-recordings.mount` and sub folders, e.g. `/storage/recordings/tv` would be `storage-recordings-tv.mount`
+**IMPORTANT:** The filename uses hyphens to separate elements of the fileystem path to the share mount-point, e.g. `/storage/recordings` will be `storage-recordings.mount` and sub folders, e.g. `/storage/recordings/tv` would be `storage-recordings-tv.mount`
 
 Create the .mount file:
 
