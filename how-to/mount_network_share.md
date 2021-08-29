@@ -164,3 +164,13 @@ Remove mount point and disabling it.
 
 `systemctl disable storage-recordings.mount`
 
+## **Apple TimeCapsule**
+
+TimeCapsule devices share files using an Apple dialect of SMB that is not compatible with the Samba smbclient Kodi uses to connect to SMB shares. To access media on a TimeCapsule you can follow the steps described above for connecting to Samba shares with a systemd storage mount, but with one difference: the `Options` configuration must force SMB v1.0 and legacy NTLM authentication or the mount will fail. See below:
+
+```text
+Options=username=MyUser,password=MyPass,sec=ntlm,vers=1.0
+```
+
+SMB v1.0 is widely considered to be insecure, but TimeCapsules no longer receive software updates and there is no alternative; SMB v2/v3 are not supported.
+
