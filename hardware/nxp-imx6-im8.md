@@ -1,10 +1,12 @@
-# NXP \(iMX6\)
+# NXP - iMX6/iMX8
 
 Current iMX6 images support the dual-lite and quad versions of the following boards:
 
 * Cubox-i
 * Wandboard
 * Udoo
+
+Current iMX8 images are experimental and do not support a specific board.
 
 Installation is done by writing the LibreELEC \*.img file to an SD card. The boards have internal hardware identifiers so there is no need to edit `extlinux.conf` on the card. Selection of the correct device dtb is handled internally within u-boot.
 

@@ -17,7 +17,7 @@
 
 * [Allwinner](hardware/allwinner.md)
 * [Amlogic](hardware/amlogic.md)
-* [NXP \(iMX6\)](hardware/nxp-imx6.md)
+* [NXP - iMX6/iMX8](hardware/nxp-imx6-im8.md)
 * [Intel x86-64 \(Generic\)](hardware/intel-x86-64-generic.md)
 * [Qualcomm](hardware/qualcomm.md)
 * [Raspberry Pi](hardware/raspberry-pi.md)
