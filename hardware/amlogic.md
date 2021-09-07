@@ -1,6 +1,6 @@
 # Amlogic
 
-Current LibreELEC 10.0+ images for Amlogic hardware using modern "mainline" Linux kernels use different boot processes and device-tree files that are not compatible with older LibreELEC images that use Amlogic Linux 3.14 or 4.9 kernels. The change to boot processes means you cannot update from older releases and must make a new/clean installation.
+Current LibreELEC 10.0+ images for Amlogic using modern Linux kernels use different boot processes and device-tree files that are not compatible with older LibreELEC images that use Amlogic Linux 3.14 or 4.9 kernels. The change to boot processes means you cannot update from older releases and must make a new/clean installation.
 
 There are two images supporting Amlogic Gen10+ \(64-bit\) SoCs and older Gen8 \(32-bit\) SoCs used in a range of Linux SBC and Android STB devices:
 
