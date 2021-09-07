@@ -1,8 +1,10 @@
 # Amlogic
 
-Images for Amlogic hardware using modern, a.k.a "mainline" Linux kernels use different boot processes and device-tree files that are not compatible with Android or the older LibreELEC images using Amlogic Linux 3.14 or 4.9 kernels. The change to boot processes means you cannot update from older releases. You must make a new/clean installation.
+Current LibreELEC 10.0+ images for Amlogic hardware using modern "mainline" Linux kernels use different boot processes and device-tree files that are not compatible with older LibreELEC images that use Amlogic Linux 3.14 or 4.9 kernels. The change to boot processes means you cannot update from older releases and must make a new/clean installation.
 
-The `AMLGX` image ships with "box" and "board" configurations for the following SoCs:
+There are two images supporting Amlogic Gen10+ \(64-bit\) SoCs and older Gen8 \(32-bit\) SoCs used in a range of Linux SBC and Android STB devices:
+
+`AMLGX` supports the following 64-bit SoCs:
 
 * GXBB \(S905\)
 * GXL \(S805X/S905X/D/W/L\)
@@ -11,16 +13,24 @@ The `AMLGX` image ships with "box" and "board" configurations for the following 
 * G12B \(S922X/A311D\)
 * SM1 \(S905X3/D3\)
 
-The image type is identified by the -suffix appended:
+`AMLMX` supports the following 32-bit SoCs:
 
-* `LibreELEC-AMLGX.arm-10.0.0-box.img.gz` is the "box" image for Android devices
-* `LibreELEC-AMLGX-arm-10.0.0-khadas-vim3.img.gz` is a "board" image \(for Khadas VIM3\)
+* Meson 8 \(S805\)
+* Meson 8b \(S802\)
+* Meson 8m2 \(S812\)
+
+There is low support for Meson 6 \(8726MX\) hardware in the upstream kernel and not much chance of support evolving to a point where modern-kernel LibreELEC images are viable.
+
+`AMLGX` and `AMLMX` provide a "box" image for use with devices that run Amlogic \(aka Vendor or Legacy\) boot firmware \(U-Boot 2015.01 with Amlogic and manufacturer customisations\) and "board" images using modern boot firmware \(mainline U-Boot\) specific to a single SBC board or STB device. The image type can be identified by the filename `-suffix`:
+
+* `LibreELEC-AMLGX.arm-10.0.0-box.img.gz` is the `AMLGX` "box" image
+* `LibreELEC-AMLGX-arm-10.0.0-khadas-vim3.img.gz` is a "board" image for Khadas VIM3
 
 ## Box Images
 
-The "box" image supports Set-Top "Box" \(STB\) and other devices with Android or Legacy Kernel Linux images \(and vendor u-boot\) installed on the internal eMMC storage. It is common for box vendors to make device-specific u-boot customisations so it is best to run LibreELEC from an SD card via the original bootloader. To use a box image you trigger "update" mode in the vendor u-boot. This causes u-boot to look for some standard filesnames which we have tweaked to load the LibreELEC `KERNEL` and `SYSTEM` files to boot the device.
+Box images support SBC and STB devices with Android or "vendor" boot firmware running on the internal eMMC storage. LibreELEC is installed  by triggering "recovery" mode boot in the Amlogic U-Boot firmware. Recovery mode searches for some standard files on SD and USB media. LibreELEC provides files tweaked to boot and run LibreELEC instead of recovering the device. Once recovery mode is activated the device will seach \(and find LibreELEC\) on each boot; until Android recovery completes \(it never does\).
 
-As `box` images can be used on many devices, you must configure the device-tree file to use first. This is done by editing the uEnv.ini file in the root folder of the SD card and changing `@@DTB_NAME@@` with the name of the .dtb file to use. The device-tree files are in the `dtb` folder.
+As `box` images can be used on many devices you must configure the device-tree file to use first. This is done by editing `uEnv.ini` in the root folder of the SD card. Change `@@DTB_NAME@@` to the name of the .dtb file to use. Current supported device-tree files are in the `dtb` folder.
 
 For example, here is the default `uEnv.ini` file:
 
@@ -29,14 +39,21 @@ dtb_name=/dtb/@@DTB_NAME@@
 bootargs=boot=UUID=2306-0801 disk=UUID=8268da37-3a8d-4f6d-aba0-08918faded56 quiet systemd.debug_shell=ttyAML0 console=ttyAML0,115200n8 console=tty0
 ```
 
-To boot a Beelink GT-King Pro box change `@@DTB_NAME` to `meson-g12b-gtking-pro.dtb`
+To boot a Beelink GT-King box change `@@DTB_NAME` to `meson-g12b-gtking.dtb`
 
 ```text
-dtb_name=/dtb/meson-g12b-gtking-pro.dtb
+dtb_name=/dtb/meson-g12b-gtking.dtb
 bootargs=boot=UUID=2306-0801 disk=UUID=8268da37-3a8d-4f6d-aba0-08918faded56 quiet systemd.debug_shell=ttyAML0 console=ttyAML0,115200n8 console=tty0
 ```
 
-Once the device-tree name has been set you can insert the SD card in the box and power on. Some box devices will detect the card automatically. Others need you to trigger recovery mode using a reset button on the device. Sometimes the reset button is obvious. Sometimes it is hidden behind a small hole in the case requiring a paper-clip or needle to press it. Sometimes it is hidden at the end of the 3.5mm audio jack requiring a toothpick or paper-clip to press it. If a reset button is required you press the button and hold it then apply power to the box, and after 5-7 seconds you release the button. Due to differences in vendor u-boot configuration the exact timing varies and you may need to experiment a few times to get it right.
+Once the device-tree name is set you can insert the SD card in the box and power on. Some box devices will detect the presence of the SD card automatically. Others need you to trigger recovery mode using a reset button on the device. Common locations for the button are:
+
+* Visible button marked "reset" or "recovery" or "power" button
+* Visible pin-hole on the underside of the case
+* Hidden button visible through ventilation holes in the case
+* Hidden at the end of the 3.5mm audio jack
+
+In most cases you will need a small pin, unfolded paper-clip, or wooden toothpick to press the reset button with - hence the install process is often referred to as the "toothpick method" in forum posts. Press and hold the button, then power-on the box. After 5-7 seconds release the button to interrupt boot and start the recovery process. Due to differences in box speeds and vendor u-boot customisations the exact timing for button release varies and you will need to experiment to find the timing that works for your board. It is possible to see U-Boot output and remove the guesswork by attaching a UART serial cable to the board, although most STB box devices will need connector pins soldering to the board as most manufacturers omit them to save some pennies.
 
 ## Board Images
 
