@@ -11,7 +11,6 @@
 | NXP/Freescale iMX.6 | PROJECT=NXP ARCH=arm DEVICE=iMX6 make image |
 | NXP/Freescale iMX.8 | PROJECT=NXP ARCH=arm DEVICE=iMX8 make image |
 | Qualcomm DragonBoard | PROJECT=Qualcomm ARCH=arm DEVICE=Dragonboard make image |
-| Raspberry Pi 0/1 | PROJECT=RPi ARCH=arm DEVICE=RPi make image |
 | Raspberry Pi 2/3 | PROJECT=RPi ARCH=arm DEVICE=RPi2 make image |
 | Raspberry Pi 4 | PROJECT=RPi ARCH=arm DEVICE=RPi4 make image |
 | Samsung Exynos | PROJECT=Samsung ARCH=arm DEVICE=Exynos make image |
