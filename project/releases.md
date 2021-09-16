@@ -85,3 +85,7 @@ Nightly test and development snapshot images are here: [https://test.libreelec.t
 | 7.0.1 | Stable | [Blog](https://libreelec.tv/2016/05/libreelec-jarvis-v7-0-1) |
 | 7.0.0 | Stable | [Blog](https://libreelec.tv/2016/04/libreelec-jarvis-v7-0-0-release) |
 
+## 6.0 - 1.0
+
+LibreELEC releases start at 7.0.0 after the project forked from OpenELEC. The team chose to continue the existing numbering scheme.
+
