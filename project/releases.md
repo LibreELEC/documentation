@@ -4,6 +4,12 @@ An offical archive of all Alpha, Beta, and Release images is here: [http://archi
 
 Nightly test and development snapshot images are here: [https://test.libreelec.tv](https://test.libreelec.tv)
 
+## 10.0 \(Kodi v19, Matrix\)
+
+| Version | Status | Release Post |
+| :--- | :--- | :--- |
+| 10.0.0 | Stable | [Blog](https://libreelec.tv/2021/08/26/libreelec-matrix-10-0/) |
+
 ## 9.2 \(Kodi v18, Leia\)
 
 | Version | Status | Release Post |
