@@ -55,6 +55,7 @@
 * [Building \(Advanced\)](development-1/build-advanced.md)
 * [Beginners Guide to Git](development-1/git-tutorial.md)
 * [Build Commands](development-1/build-commands/README.md)
+  * [Build Commands LE 11.0.x](development-1/build-commands/build-commands-le-11.0.x.md)
   * [Build Commands \(Add-ons\)](development-1/build-commands/build-addons.md)
   * [Build Commands LE 10.0.x](development-1/build-commands/build-commands-le10.md)
   * [Build Commands LE 9.2.x](development-1/build-commands/build-commands-le92.md)
