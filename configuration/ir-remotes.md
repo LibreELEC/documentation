@@ -310,3 +310,33 @@ Although lircd disables all remote protocols \(and thus in-kernel decoding\) on 
 
 Note: If you stop or disable LIRC in LibreELEC Settings you will need too reboot or set ir-keytable manually from the SSH console. Disabling LIRC does not automatically re-enable in-kernel decoding.
 
+## Apple IR Remotes
+
+Older LibreELEC relases used `atvclient` to support the Apple IR sensor and send LIRC events to Kodi. Since 9.2.0 we use the native Linux kernel driver for the IR sensor, which sends normal HID events. Create a custom keymap in `/storage/.kodi/userdata/keymaps/keymap.xml` with the following content to map a White or Silver remote:
+
+```markup
+<keymap>
+    <global>
+        <keyboard>
+            <browser_back>Left</browser_back>
+            <browser_forward>Right</browser_forward>
+            <volume_up>Up</volume_up>
+            <volume_down>Down</volume_down>
+            <key id="61952">Back</key>
+        </keyboard>
+    </global>
+    <Visualisation>
+        <keyboard>
+            <volume_up>VolumeUp</volume_up>
+            <volume_down>VolumeDown</volume_down>
+        </keyboard>
+    </Visualisation>
+    <FullscreenVideo>
+        <keyboard>
+            <volume_up>VolumeUp</volume_up>
+            <volume_down>VolumeDown</volume_down>
+        </keyboard>
+    </FullscreenVideo>
+</keymap>
+```
+
