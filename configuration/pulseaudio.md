@@ -183,10 +183,10 @@ For example:
 38    module-tunnel-source    server=[[192.168.1.70]]:4713 source=alsa_input.pci-0000_00_08.0.analog-stereo format=s16le channels=2 rate=44100 source_name=tunnel.lukas-macbook-pro.local.alsa_input.pci-0000_00_08.0.analog-stereo channel_map=front-left,front-right
 ```
 
-Configure the pulseuadio input device:
+Configure the pulseaudio input device:
 
 ```text
-pactl set-default-sink tunnel.lukas-macbook-pro.local.alsa_input.pci-0000_00_08.0.analog-stereo
+pactl set-default-source tunnel.lukas-macbook-pro.local.alsa_input.pci-0000_00_08.0.analog-stereo
 ```
 
 Restart Kodi:
