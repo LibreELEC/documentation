@@ -13,11 +13,11 @@ Auto-Update is enabled by default and tracks minor version updates, e.g. LibreEL
 
 ## Setttings Add-On
 
-Navigate to the Update section of the settings add-on, select the update channel \(LibreELEC major version\) and then the specific minor version to update to. The update .tar file will start downloading, and once complete the system will reboot to perform the update. 
+Navigate to the Update section of the settings add-on, select the update channel \(LibreELEC major version\) and then the specific minor version to update to. The update .tar file will start downloading, and once complete the system will reboot to perform the update.
 
 Please see the following video
 
-{% embed url="https://www.youtube.com/watch?v=CjlHY6syRHw" %}
+{% embed url="https://www.youtube.com/watch?v=CjlHY6syRHw" caption="" %}
 
 ## Samba Share
 
@@ -49,11 +49,9 @@ Once the download has completed, reboot to start the update process
 reboot
 ```
 
-## USB drive
-1. Download the update file and place it to USB drive
-2. Connect the USB drive to your LibreELEC device and navigate to the \(hidden\) `/storage/.update/` update folder using the Kodi File manager
-3. Copy the update file from your USB drive into the _.update_ folder
-4. Restart your LibreELEC device to launch the update process
+## USB Drive
+
+Download the LibreELEC image or update file and copy it to a USB drive. Connect the USB drive to your HTPC and navigate to the `/storage/.update/` update folder using Kodi File Manager \(you will need to enable viewing of hidden files and folders in Kodi settings\). Copy the update file from the USB drive to `/storage/.update` then reboot to start the update process.
 
 ## Downgrade
 
