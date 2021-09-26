@@ -10,7 +10,17 @@ As GPU hardware is one of the major variables, please read the AMD, Intel, and n
 
 ## Intel GPUs
 
-&lt; need to add something about different \*lake generations and support &gt;
+[Intel Graphics Technology (GT)][1] was first introduced in 2010. The Eighth generation (Gen8) Intel Graphics Technology was released with the Broadwell and Braswell (Gen5) CPUs. The Ninth generation (Gen9) Intel Graphics Technology was first released with the Skylake (Gen6) range of CPUs in 2015, the first Intel GT that supported H.265 (HEVC) hardware-accelerated video decompression algorithms. This was followed by the Intel GT (Gen9.5) with the following CPUs: Apollo Lake / Kaby Lake / Kaby Lake Refresh / Amber Lake / Coffee Lake / Coffee Lake Refresh / Whiskey Lake / Comet Lake (Gen7, Gen8, Gen9). Ice Lake CPUs (Gen 10) were released in 2019 with (Gen11) GT hardware. Tiger Lake CPUs (Gen11) were released at the end of 2020 with the new Iris Xe (Gen12) GT GPU, this is the first GPU to have the AV1 hardware-accelerated video decompression algorithm.    
+
+The default Mesa OpenGL driver for the Gen8+ GT GPUs is the i915 driver since Mesa version 20. LibreELEC v10.x uses Mesa 21.x.x. The older i965 driver remains optionally available on machines with Gen8+ Intel Graphics Technology and it remains the default on machines with Gen<=7.5 GT.
+
+Hardware decoding with the i915 driver in LibreELEC v10.x works well and is tested regularly with Ninth generation (Gen9) Intel GT; specifically Skylake (SKL). 
+
+- [Gen6 Intel Core][3] CPUs (NUC6) have both a HDMI 1.4b and a DisplayPort 1.2. 
+  - The DisplayPort is capable if 3840 x 2160 @ 60Hz which the DMI port is only capable of 1920 x 1200 @ 60Hz.
+- _**For HDR support Gen7 and Gen8 Intel Core CPUs require a [LSPCON][2] (Level Shifter and Protocol Converter) for connection to a HDMI2.0 TV, if using the HDMI port**_
+- LSPCON is avaialable in the Linux Kernel from 5.12 onwards.
+- Tiger Lake (TGL) CPUs work with LibreELEC v10.0 are not fully supported in the Linux until 5.12.
 
 ## AMD GPUs
 
@@ -40,5 +50,6 @@ Despite the range of devices that Generic x86\_64 images can run on, team develo
 
 Support for i386 hardware was dropped between OpenELEC v5.x and v6.x back in 2015 due to low numbers of users and LibreELEC staff have no interest in resurrecting support. It is still technically possible to restore i386 support to our buildsystem and self-build an i386 image since we support 32-bit ARM SoC devices and use 32-bit userspace with 64-bit ARM SoCs so most packages are still 32-bit compilable with little or no tweaking. However, there are still a moderate number of package that do need tweaks to restore i386 support, and there is no HOWTO guide that you can follow. Some users relish the intellectual challenge of figuring out how to restore support, but old i386 hardware is low-spec for modern Kodi use and our normal recommendation is to invest in an inexpensive Raspberry Pi board instead of spending tens or hundreds of hours performing buildsystem archeology. It will give a better overall result, costs less to run, and be zero hassle to maintain over time.
 
-
-
+[1]: https://en.wikipedia.org/wiki/Intel_Graphics_Technology "Wikipedia: Intel Graphics Technology"
+[2]: https://www.intel.com/content/dam/support/us/en/documents/graphics/HDR_Intel_Graphics_TechWhitePaper.pdf "High Dynamic Range (HDR) on Intel Graphics: Technical White Paper"
+[3]: https://cdrdv2.intel.com/v1/dl/getContent/332687 "Intel SKL Data Sheet"
