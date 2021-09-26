@@ -32,8 +32,11 @@ Modern Intel GPUs have been shipping since "Nehalem" in 2010, and over time the 
 * Gen7 and Gen8 CPUs use an LSPCON chip for HDMI 2.0 output. HDR is supported only when the HDMI output is connected to an HDMI 2.0 port on the TV. Users with Intel NUC devices are recommended to run the latest Intel firmware for their device. Lots of bugs in original/factory LSPCON firmwares have been fixed.
 * Linux supports LSPCON chips for HDR from Linux 5.12 onwards
 * Linux has full support for Tiger-Lake CPUs from Linux 5.12 onwards
+* The GPUs found in the table above are known as _Intel Graphics Technology \(GT\) integrated graphics processors \(IGPs\)_ and are within the CPU. The GPUs do have their own generation identifiers which do not match the CPU generation, though there is only one GPU generation within a CPU generation.
 
-**LibreELEC 10.0 shipped with Linux 5.10 kernel support and Xorg graphics so it does not have support for HDR or Gen11 hardware**. Community created LibreELEC 10.0 images with newer Linux kernels supporting Gen11 hardware and `GBM` graphics with experimental HDR patches can be downloaded from the LibreELEC forums. LibreELEC 11.0 nightly development images from 21/9/21 onwards also use GBM graphics and include early \(pre-Alpha\) Kodi 20.0 support for HDR, but do not yet have newer kernels needed for Gen11 hardware support.
+  .   
+
+**LibreELEC 10.0 shipped with Linux 5.10 kernel support and Xorg graphics, so it does not have support for HDR or Gen11 hardware**. Community created LibreELEC 10.0 images with newer Linux kernels supporting Gen11 hardware and `GBM` graphics with experimental HDR patches can be downloaded from the LibreELEC forums. LibreELEC 11.0 nightly development images from 21/9/21 onwards also use GBM graphics, include early \(pre-Alpha\) Kodi 20.0 support for HDR, and an updated kernel supporting Gen11 hardware.
 
 ## AMD GPUs
 
