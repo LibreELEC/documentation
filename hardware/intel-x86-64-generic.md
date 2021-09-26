@@ -4,23 +4,36 @@ The LibreELEC "Generic" image supports a \(very\) broad range of x86\_64 compati
 
 ## HDR
 
-HDR support in the Linux kernel, in Kodi, and in LibreELEC is ongoing "work in progress" that continues to evolve. HDR depends on a combination of the media format and colourspace properties, GPU hardware, HDMI output, and TV panel capabilities. Most users wrongly view HDR support like codec support, but it is much more complicated. Few people outside the world of broadcast media truly understand how it all works, and we are fortunate to have a small number of users from that professional background who provide direct and insightful feedback as progress is made.
+HDR support in the Linux kernel, in Kodi, and in LibreELEC is ongoing "work in progress" that continues to evolve. HDR depends on a combination of the media format and colourspace properties, GPU hardware, HDMI output, and TV panel capabilities. Most users wrongly view HDR support like codec support, but it is significantly more complicated. Few people outside the broadcast media industry truly understand how it works \(in theory and in practice\) but we are fortunate to have users with that professional background providing testing and insightful feedback to the team as progress is made.
 
 As GPU hardware is one of the major variables, please read the AMD, Intel, and nVidia GPU sections below for further information relevant to HDR support on that GPU type:
 
 ## Intel GPUs
 
-[Intel Graphics Technology \(GT\)](https://en.wikipedia.org/wiki/Intel_Graphics_Technology) was first introduced in 2010. The Eighth generation \(Gen8\) Intel Graphics Technology was released with the Broadwell and Braswell \(Gen5\) CPUs. The Ninth generation \(Gen9\) Intel Graphics Technology was first released with the Skylake \(Gen6\) range of CPUs in 2015, the first Intel GT that supported H.265 \(HEVC\) hardware-accelerated video decompression algorithms. This was followed by the Intel GT \(Gen9.5\) with the following CPUs: Apollo Lake / Kaby Lake / Kaby Lake Refresh / Amber Lake / Coffee Lake / Coffee Lake Refresh / Whiskey Lake / Comet Lake \(Gen7, Gen8, Gen9\). Ice Lake CPUs \(Gen 10\) were released in 2019 with \(Gen11\) GT hardware. Tiger Lake CPUs \(Gen11\) were released at the end of 2020 with the new Iris Xe \(Gen12\) GT GPU, this is the first GPU to have the AV1 hardware-accelerated video decompression algorithm.
+Intel NUC and similar-sized Intel GPU devices are popular for building an HTPC device around since they combine well supported upstream GPU drivers with entry level Celeron and Core i3 chips to intermediate Core i5 and high-end Core i7 CPUs.
 
-The default Mesa OpenGL driver for the Gen8+ GT GPUs is the i915 driver since Mesa version 20. LibreELEC v10.x uses Mesa 21.x.x. The older i965 driver remains optionally available on machines with Gen8+ Intel Graphics Technology and it remains the default on machines with Gen&lt;=7.5 GT.
+Modern Intel GPUs have been shipping since "Nehalem" in 2010, and over time the number of different CPU and GPU generations and codenames have multiplied, making it confusing to figure out what media features a device can support. The following table is based on public sources like wikipedia, and it indicates hardware features, which do not always translate into what Linux and Kodi currently support in software:
 
-Hardware decoding with the i915 driver in LibreELEC v10.x works well and is tested regularly with Ninth generation \(Gen9\) Intel GT; specifically Skylake \(SKL\).
+| CPU | Codename | Driver | H264 | HEVC | AV1 | 4K | HDR |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Gen1 | Nehalem | i965 | Yes | No | No | No | No |
+| Gen2 | Sandy-bridge | i965 | Yes | No | No | No | No |
+| Gen3 | Ivy-Bridge | i965 | Yes | No | No | No | No |
+| Gen4 | Haswell | i965 | Yes | No | No | No | No |
+| Gen5 | Broadwell, Braswell | i915 | Yes | No | No | No | No |
+| Gen6 | Skylake | i915 | Yes | Yes | No | DP | No |
+| Gen7 | Kaby-lake, Apollo-lake  | i915 | Yes | Yes | No | Yes | HDMI |
+| Gen8 | Coffee-lake, Kaby-lake refresh, Whiskey-lake | i915 | Yes | Yes | No | Yes | HDMI |
+| Gen9 | Coffee-lake refresh | i915 | Yes | Yes | No | Yes | HDMI |
+| Gen10 | Comet-lake, Ice-lake, Amber-lake | i915 | Yes | Yes | No | Yes | Yes |
+| Gen11 | Rocket-lake, Tiger-lake | i915 | Yes | Yes | Yes | Yes | Yes |
 
-* [Gen6 Intel Core](https://cdrdv2.intel.com/v1/dl/getContent/332687) CPUs \(NUC6\) have both a HDMI 1.4b and a DisplayPort 1.2. 
-  * The DisplayPort is capable if 3840 x 2160 @ 60Hz which the DMI port is only capable of 1920 x 1200 @ 60Hz.
-* _**For HDR support Gen7 and Gen8 Intel Core CPUs require a**_ [_**LSPCON**_](https://www.intel.com/content/dam/support/us/en/documents/graphics/HDR_Intel_Graphics_TechWhitePaper.pdf) _**\(Level Shifter and Protocol Converter\) for connection to a HDMI2.0 TV, if using the HDMI port**_
-* LSPCON is avaialable in the Linux Kernel from 5.12 onwards.
-* Tiger Lake \(TGL\) CPUs work with LibreELEC v10.0 are not fully supported in the Linux until 5.12.
+* Gen6 CPUs \(Skylake\) have HDMI 1.4b and DisplayPort 1.2 connectors. HDMI can run at max 1920x1200@60 resolution, while DP can run at max 3840x2160@60 resolution.
+* Gen7 and Gen8 CPUs use an LSPCON chip for HDMI 2.0 output. HDR is supported only when the HDMI output is connected to an HDMI 2.0 port on the TV. Users with Intel NUC devices are recommended to run the latest Intel firmware for their device. Lots of bugs in original/factory LSPCON firmwares have been fixed.
+* Linux supports LSPCON chips for HDR from Linux 5.12 onwards
+* Linux has full support for Tiger-Lake CPUs from Linux 5.12 onwards
+
+**LibreELEC 10.0 shipped with Linux 5.10 kernel support and Xorg graphics so it does not have support for HDR or Gen11 hardware**. Community created LibreELEC 10.0 images with newer Linux kernels supporting Gen11 hardware and `GBM` graphics with experimental HDR patches can be downloaded from the LibreELEC forums. LibreELEC 11.0 nightly development images from 21/9/21 onwards also use GBM graphics and include early \(pre-Alpha\) Kodi 20.0 support for HDR, but do not yet have newer kernels needed for Gen11 hardware support.
 
 ## AMD GPUs
 
