@@ -40,11 +40,9 @@ Modern Intel GPUs have been shipping since "Nehalem" in 2010, and over time the 
 
 AMD GPUs are a popular option for users building custom HTPCs from motherboards without onboard Intel graphics. LibreELEC embeds two AMD drivers: `radeon` is used with older cards, and `amdgpu`  is used with newer cards \(starting from the 'Southern Islands' family\).
 
-Determining media features \(H264, HEVC, AV1, 4K, 4K60, HDR, etc.\) is complicated due to the sheer number of different AMD cards available. Each new GPU generation ships with low-end cards limited in capabilities, and high-end cards with multiple connectors. Media features like 4K and HDR have a dependency on connectors \(HDMI or Displayport\) and the standards the connectors support. For example, some cards might support HDMI 1.4b and a max resolution of up to 3840x2160@30 with 8-bit HDR output, while cards equipped with DisplayPort 1.4 or HDMI 2.0 connectors may support up to 3840x2160@60 with 10-bit output. 
+Determining media features \(H264, HEVC, AV1, 4K, 4K60, HDR, etc.\) is complicated due to the sheer number of different AMD cards available. Each new GPU generation ships with low-end cards limited in capabilities, and high-end cards with multiple connectors. Media features like 4K and HDR also have a dependency on connectors \(HDMI or Displayport\) and the standards the connectors support. For example, some cards support HDMI 1.4b and a max resolution of up to 3840x2160@30 with 8-bit HDR output, while cards with DisplayPort 1.4 or HDMI 2.0 may support up to 3840x2160@60 with 10-bit output. 
 
-The most accurate source of information is the [AMD Radeon Graphics](https://www.amd.com/en/products/specifications/graphics) website.
-
-NB: AMD cards are also highly configurable and sometimes require manual overrides via kernel boot paramaters to resolve hardware compatibility and software stability issues.
+The most accurate source of information is [https://www.x.org/wiki/RadeonFeature](https://www.x.org/wiki/RadeonFeature/)
 
 ## nVidia GPUs
 
