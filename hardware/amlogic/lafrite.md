@@ -8,7 +8,7 @@ LibreComputer LaFrite (AML-S805X-AC) is an S805X (GXL) board with 512MB or 1GB o
 
 ### Run LibreELEC from eMMC
 
-LibreComputer preinstalls their eMMC modules with Android, so if you power on the board with the module attached it will always boot into Android. To (over)write Android with LibreELEC the board must boot from USB without the module attached. Once in LibreELEC booted from USB, the module can be attached, detected, and erased or imaged with the `lafrite` image:
+LibreComputer preinstalls their eMMC modules with Android, so if you power on the board with the module attached it will always boot into Android. To erase Android or overwrite with LibreELEC the board must first boot from USB without the module attached. Once in LibreELEC booted from USB, the module can be attached, detected, and erased or imaged with the `lafrite` image:
 
 1. Power on the Board, and boot the AMLGX `box` image from USB
 2. Attach the eMMC module, and from the SSH console:
