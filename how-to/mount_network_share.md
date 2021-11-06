@@ -1,11 +1,11 @@
 # Mount Network Share
 
-Kodi can natively mount SMB, NFS, SFTP, WebDAV \(and more\) remote filesystems \(shares\) to read media for playback, but many applications that write content, e.g. TVHeadend storing TV recordings, must write to "local" storage. Remote SMB and NFS shares can be "mounted" to the local filesystem using kernel mounts configured through systemd .mount files.
+Kodi can natively mount SMB, NFS, SFTP, WebDAV (and more) remote filesystems (shares) to read media for playback, but many applications that write content, e.g. TVHeadend storing TV recordings, must write to "local" storage. Remote SMB and NFS shares can be "mounted" to the local filesystem using kernel mounts configured through systemd .mount files.
 
 The following NAS configuration is used in the examples below:
 
 * NAS IP: `192.168.1.222`
-* Username: `nasuser1` 
+* Username: `nasuser1`&#x20;
 * Password: `123nas`
 * Share name: `recordings`
 * Full address to share: `\\192.168.1.222\recordings`
@@ -28,7 +28,7 @@ Create the .mount file:
 
 Below is an example of the mount definition file for a Samba share:
 
-```text
+```
 [Unit]
 Description=cifs mount script
 Requires=network-online.service
@@ -59,9 +59,9 @@ Options:
 
 `Options=username=nasuser1,password=123nas,rw,vers=2.1`
 
-`username=` Username of your network share  
-`password` Password of your network share  
-`rw` Read/write access  
+`username=` Username of your network share\
+`password` Password of your network share\
+`rw` Read/write access\
 `vers=2.1` Version of the Samba protocol, `2.1` is supported since Windows 7 several [other versions](https://wiki.samba.org/index.php/Samba3/SMB2#Introduction) are supported too
 
 #### 4. Enable the mount
@@ -88,21 +88,21 @@ Remove mount point and disabling it.
 
 #### 1. Create the folder where the share should be mounted
 
-Connect to your LibreELEC HTPC [with SSH](/accessing_libreelec).
+Connect to your LibreELEC HTPC [with SSH](https://app.gitbook.com/accessing\_libreelec).
 
 `mkdir /storage/recordings`
 
 #### 2. Create the systemd definition file
 
-**Important:** you need to use the filename for the definition file according to the folder where you want to mount your share .  
-In our case `storage-recordings.mount` represent path -&gt; `/storage/recordings`.  
-If you like an subfolder `storage-recordings-tv.mount` represent path -&gt; `/storage/recordings/tv`.
+**Important:** you need to use the filename for the definition file according to the folder where you want to mount your share .\
+In our case `storage-recordings.mount` represent path -> `/storage/recordings`.\
+If you like an subfolder `storage-recordings-tv.mount` represent path -> `/storage/recordings/tv`.
 
 `nano /storage/.config/system.d/storage-recordings.mount`
 
 Content of the definition file for a NFS share.
 
-```text
+```
 [Unit]
 Description=test nfs mount script
 Requires=network-online.service
@@ -163,9 +163,8 @@ Remove mount point and disabling it.
 
 TimeCapsule devices share files using an Apple dialect of SMB that is not compatible with the Samba `smbclient` Kodi uses to connect to SMB shares. To access media on a TimeCapsule you can follow the steps described above for connecting to Samba shares with a systemd storage mount, but with one difference: the `Options` configuration must force SMB v1.0 and legacy NTLM authentication or the mount will fail. See below:
 
-```text
+```
 Options=username=MyUser,password=MyPass,sec=ntlm,vers=1.0
 ```
 
 SMB v1.0 is widely considered to be insecure, but TimeCapsules no longer receive software updates and there is no alternative; SMB v2/v3 are not supported.
-

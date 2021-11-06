@@ -1,47 +1,48 @@
 # Amlogic
 
-Current LibreELEC 10.0+ images for Amlogic using modern Linux kernels use different boot processes and device-tree files that are not compatible with older LibreELEC images that use Amlogic Linux 3.14 or 4.9 kernels. The change to boot processes means you cannot update from older releases and must make a new/clean installation.
+Current LibreELEC 10.0+ images for Amlogic using modern Linux kernels use boot processes and device-tree files that are not compatible with older LibreELEC images that use Amlogic Linux 3.14 or 4.9 kernels. The change to boot processes means you cannot update from older releases and must make a new/clean installation.
 
-There are two images supporting Amlogic Gen10+ \(64-bit\) SoCs and older Gen8 \(32-bit\) SoCs used in a range of Linux SBC and Android STB devices:
+There are two images supporting Amlogic Gen10+ (64-bit) SoCs and older Gen8 (32-bit) SoCs used in a range of Linux SBC and Android STB devices:
 
 `AMLGX` supports the following 64-bit SoCs:
 
-* GXBB \(S905\)
-* GXL \(S805X/S905X/D/W/L\)
-* GXM \(S912\)
-* G12A \(S905X2/D2/Y2\)
-* G12B \(S922X/A311D\)
-* SM1 \(S905X3/D3\)
+* GXBB (S905)
+* GXL (S805X/S905X/D/W/L)
+* GXM (S912)
+* G12A (S905X2/D2/Y2)
+* G12B (S922X/A311D)
+* SM1 (S905X3/D3)
 
 `AMLMX` supports the following 32-bit SoCs:
 
-* Meson 8 \(S805\)
-* Meson 8b \(S802\)
-* Meson 8m2 \(S812\)
+* Meson 8 (S805)
+* Meson 8b (S802)
+* Meson 8m2 (S812)
 
-There is low support for Meson 6 \(8726MX\) hardware in the upstream kernel and not much chance of support evolving to a point where modern-kernel LibreELEC images are viable.
+NB: The WeTek Play(1)/OpenELEC box uses Meson 6 (8726MX) hardware. There is little support for Meson 6 hardware in the upstream kernel and low probability of support evolving to the point where modern-kernel LibreELEC images are viable.
 
-`AMLGX` and `AMLMX` provide a "box" image for use with devices that run Amlogic \(aka Vendor or Legacy\) boot firmware \(U-Boot 2015.01 with Amlogic and manufacturer customisations\) and "board" images using modern boot firmware \(mainline U-Boot\) specific to a single SBC board or STB device. The image type can be identified by the filename `-suffix`:
+`AMLGX` and `AMLMX` provide a "box" image for use with devices that run Amlogic (aka Vendor or Legacy) boot firmware (U-Boot 2015.01 with Amlogic and manufacturer customisations) and "board" images using modern boot firmware (mainline U-Boot) specific to a single SBC board or STB device. The image type can be identified by the filename `-suffix`:
 
 * `LibreELEC-AMLGX.arm-10.0.0-box.img.gz` is the `AMLGX` "box" image
-* `LibreELEC-AMLGX-arm-10.0.0-khadas-vim3.img.gz` is a "board" image for Khadas VIM3
+* `LibreELEC-AMLGX-arm-10.0.0-khadas-vim3.img.gz` is a "board" image for VIM3
+* `LibreELEC-AMLMX-arm-10.0.0-box.img.gz` is a "box" image for Meson 8 devices
 
 ## Box Images
 
-Box images support SBC and STB devices with Android or "vendor" boot firmware running on the internal eMMC storage. LibreELEC is installed  by triggering "recovery" mode boot in the Amlogic U-Boot firmware. Recovery mode searches for some standard files on SD and USB media. LibreELEC provides files tweaked to boot and run LibreELEC instead of recovering the device. Once recovery mode is activated the device will seach \(and find LibreELEC\) on each boot; until Android recovery completes \(it never does\).
+Box images support SBC and STB devices with Android or "vendor" boot firmware running on the internal eMMC storage. LibreELEC is installed  by triggering "recovery" mode boot in the Amlogic U-Boot firmware. Recovery mode searches for some standard files on SD and USB media. LibreELEC provides files tweaked to boot and run LibreELEC instead of recovering the device. Once recovery mode is activated the device will seach (and find LibreELEC) on each boot; until Android recovery completes (it never does).
 
 As `box` images can be used on many devices you must configure the device-tree file to use first. This is done by editing `uEnv.ini` in the root folder of the SD card. Change `@@DTB_NAME@@` to the name of the .dtb file to use. Current supported device-tree files are in the `dtb` folder.
 
 For example, here is the default `uEnv.ini` file:
 
-```text
+```
 dtb_name=/dtb/@@DTB_NAME@@
 bootargs=boot=UUID=2306-0801 disk=UUID=8268da37-3a8d-4f6d-aba0-08918faded56 quiet systemd.debug_shell=ttyAML0 console=ttyAML0,115200n8 console=tty0
 ```
 
 To boot a Beelink GT-King box change `@@DTB_NAME` to `meson-g12b-gtking.dtb`
 
-```text
+```
 dtb_name=/dtb/meson-g12b-gtking.dtb
 bootargs=boot=UUID=2306-0801 disk=UUID=8268da37-3a8d-4f6d-aba0-08918faded56 quiet systemd.debug_shell=ttyAML0 console=ttyAML0,115200n8 console=tty0
 ```
@@ -57,7 +58,7 @@ In most cases you will need a small pin, unfolded paper-clip, or wooden toothpic
 
 ## Board Images
 
-These images are built for Single Board Computer \(SBC\) devices which boot modern u-boot via an SD card or removable eMMC module. Installation is normally simple requiring you to write the image to the SD card or eMMC module then boot the device. If the board has eMMC storage soldered \(not on a removable module\) it may be necessary to boot from the "box" image first. Once booted to a box image on SD card \(so eMMC is not in use\) you can write the correct `board` image to eMMC \(overwriting Android or other factory-installed images\).
+These images are built for Single Board Computer (SBC) devices which boot modern u-boot via an SD card or removable eMMC module. Installation is normally simple requiring you to write the image to the SD card or eMMC module then boot the device. If the board has eMMC storage soldered (not on a removable module) it may be necessary to boot from the "box" image first. Once booted to a box image on SD card (so eMMC is not in use) you can write the correct `board` image to eMMC (overwriting Android or other factory-installed images).
 
 ## install2internal
 
@@ -69,9 +70,9 @@ If you want to run LibreELEC from eMMC storage please purchase a "board" device 
 
 ## emmctool
 
-In the `AMLGX` image there is an eMMC helper script called `emmctool` that supports a range of useful functions for backup/write/erase \(and more\) for eMMC storage. See:
+In the `AMLGX` image there is an eMMC helper script called `emmctool` that supports a range of useful functions for backup/write/erase (and more) for eMMC storage. See:
 
-```text
+```
 LibreELEC:~ # emmctool 
 
 info: boot device is /dev/mmcblk0, U-boot version is 2021.04
@@ -98,5 +99,4 @@ usage: emmctool (w)rite <filename>   : write <filename>.img/.img.gz to the eMMC 
                 (h)elp               : displays this help message
 ```
 
-The `emmctool` helper supports a limited range of SBC boards with eMMC modules. On a generic Android device it will output the \(i\) info only.
-
+The `emmctool` helper supports a limited range of SBC boards with eMMC modules. On a generic Android device it will output the (i) info only.

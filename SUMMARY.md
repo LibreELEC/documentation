@@ -16,19 +16,20 @@
 ## Hardware
 
 * [Allwinner](hardware/allwinner.md)
-* [Amlogic](hardware/amlogic.md)
+* [Amlogic](hardware/amlogic/README.md)
+  * [LaFrite](hardware/amlogic/lafrite.md)
 * [NXP - iMX6/iMX8](hardware/nxp-imx6-im8.md)
-* [Intel x86-64 \(Generic\)](hardware/intel-x86-64-generic.md)
+* [Intel x86-64 (Generic)](hardware/intel-x86-64-generic.md)
 * [Qualcomm](hardware/qualcomm.md)
 * [Raspberry Pi](hardware/raspberry-pi.md)
 * [Rockchip](hardware/rockchip.md)
-* [Samsung \(Exynos\)](hardware/samsung-exynos.md)
+* [Samsung (Exynos)](hardware/samsung-exynos.md)
 * [Virtual Image](hardware/virtual.md)
 
 ## Configuration
 
 * [Blu-Ray Playback](configuration/blu-ray.md)
-* [Config.txt](configuration/config_txt.md)
+* [Config.txt](configuration/config\_txt.md)
 * [Dual Boot](configuration/dual-boot.md)
 * [EDID](configuration/edid.md)
 * [Hypercon](configuration/hypercon.md)
@@ -38,7 +39,7 @@
 * [Network Boot](configuration/network-boot.md)
 * [Pulseaudio](configuration/pulseaudio.md)
 * [Startup & Shutdown](configuration/startup-shutdown.md)
-* [Useful Scripts](configuration/useful_scripts.md)
+* [Useful Scripts](configuration/useful\_scripts.md)
 * [WireGuard](configuration/wireguard.md)
 
 ## How To
@@ -47,16 +48,16 @@
 * [Blacklist Kernel Module](how-to/blacklist-kernel-module.md)
 * [Change Bootsplash](how-to/change-bootscreen.md)
 * [Force Add-on Update](how-to/force-add-on-update.md)
-* [Mount Network Share](how-to/mount_network_share.md)
+* [Mount Network Share](how-to/mount\_network\_share.md)
 
-## Development <a id="development-1"></a>
+## Development <a href="development-1" id="development-1"></a>
 
-* [Building \(Basics\)](development-1/build-basics.md)
-* [Building \(Advanced\)](development-1/build-advanced.md)
+* [Building (Basics)](development-1/build-basics.md)
+* [Building (Advanced)](development-1/build-advanced.md)
 * [Beginners Guide to Git](development-1/git-tutorial.md)
 * [Build Commands](development-1/build-commands/README.md)
   * [Build Commands LE 11.0.x](development-1/build-commands/build-commands-le-11.0.x.md)
-  * [Build Commands \(Add-ons\)](development-1/build-commands/build-addons.md)
+  * [Build Commands (Add-ons)](development-1/build-commands/build-addons.md)
   * [Build Commands LE 10.0.x](development-1/build-commands/build-commands-le10.md)
   * [Build Commands LE 9.2.x](development-1/build-commands/build-commands-le92.md)
   * [Build Commands LE 9.0.x](development-1/build-commands/build-commands-le90.md)
@@ -73,4 +74,3 @@
   * [Source Code](project/license/source-code.md)
   * [Documentation](project/license/documentation.md)
 * [Mirrors](project/mirrors.md)
-
