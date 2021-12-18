@@ -28,6 +28,7 @@
 
 ## Configuration
 
+* [4K / HDR](configuration/4k-hdr.md)
 * [Blu-Ray Playback](configuration/blu-ray.md)
 * [Config.txt](configuration/config\_txt.md)
 * [Dual Boot](configuration/dual-boot.md)
@@ -50,7 +51,7 @@
 * [Force Add-on Update](how-to/force-add-on-update.md)
 * [Mount Network Share](how-to/mount\_network\_share.md)
 
-## Development <a href="development-1" id="development-1"></a>
+## Development <a href="#development-1" id="development-1"></a>
 
 * [Building (Basics)](development-1/build-basics.md)
 * [Building (Advanced)](development-1/build-advanced.md)
