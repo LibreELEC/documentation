@@ -12,15 +12,13 @@ This page explains the configuration points:
 
 The primary impact of the Kodi desktop resolution is GUI performance, or how Kodi feels when you navigate around menus and libraries. Kodi leverages GPU hardware to accelerate rendering of GUI elements, but fanart and thumbnails are frequently adapted from original artwork on-the-fly as you scroll around, and even when all images have been pre-processed, they must still be read from disk caches before being displayed. Higher levels of CPU activity from larger artwork and media also mean higher power consumption from the HTPC device.
 
-The second impact of the Kodi desktop resolution is how media is scaled. If "Adjust Refresh" is not enabled, Kodi will scale all media played up or down to the desktop resolution and refresh rate, which by default is 1080p @ 60 fps.
+The second impact of the Kodi desktop resolution is how media is scaled. If "Adjust Refresh" is not enabled, Kodi will scale all media played up or down to the desktop resolution and refresh rate, which by default is 1080p @ 60 fps. Scaling SD and 720p media to 1080p while adding extra frames to match 60fps is handled well, as Kodi simply needs to duplicate frames to reach the higher fps rate, and the simple scaling algorithms which Kodi uses to reduce artefacts in the upscaled image move smaller amounts of data in/out of memory. Hardware as low-spec as the first generation Raspberry Pi can normally manage this well.&#x20;
 
-Scaling SD and 720p media to 1080p while adding extra frames to match 60fps is handled well, as Kodi simply needs to duplicate frames to reach the higher fps rate, and the scaling algorithms which Kodi uses to reduce artefacts in the upscaled image move smaller amounts of data in/out of memory. Hardware as low-spec as the first generation Raspberry Pi can manage this well.&#x20;
-
-Scaling SD and 1080p media to 4K is a literally bigger challenge. Frame sizes for 4K media are 4x the size of 1080p so the amount of data being processed in/out of memory increases and the CPU resources needed also increase. Scaling 4K to 1080p is a larger challenge again. Source 4K media has large frame sizes and sophisticated scaling algorithms are required to greate a lossy image without massive artefacts.
+Scaling SD and 1080p media to 4K is a literally bigger challenge. Frame sizes for 4K media are 4x the size of 1080p so the amount of data being processed in/out of memory increases and the CPU resources needed also increase. Scaling 4K to 1080p is a larger challenge again. Source 4K media has huge frame sizes and sophisticated (down)scaling algorithms are required to greate a lossy image without massive visual artefacts.
 
 Higher-spec Intel CPU devices with recent Core i7 chips and SSD storage can normally run the Kodi GUI at 4K with 60fps refresh rates and scale media with reasonable quality, but older and lower-spec Intel CPU devices and anything running from a spinning HDD or removable USB/SD media will struggle with a 4K desktop, and ARM SoC devices simply fail as they don't have the memory bandwidth or CPU speeds to process the data volumes needed.
 
-However, all 4K resolution TV's have dedicated scaling hardware using sophiesticated algorithms to upscale 1080p images to the native 4K resolution of the screen. TVs do this better and much more efficiently than Kodi can scale images itself.
+However, all 4K resolution TV's have dedicated scaling hardware using sophisticated algorithms to upscale 1080p images to the native 4K resolution of the screen. TVs do this better and much more efficiently than Kodi can scale images itself.
 
 <mark style="color:red;">**Recommendation: Keep the Desktop resolution at 1080p, with 60fps refresh rate. Allow Kodi to upscale SD media to HD, and let the TV handle upscaling to 4K**</mark>
 
@@ -53,7 +51,7 @@ Kodi has three "Adjust Refresh" settings:
 
 ### Deinterlacing
 
-4K media is progressive, so this is not a requirement for 4K or HDR playback, but many Kodi users have DVB setups where interlaced streams are common, so we need to set the mode whitelist to support them. The challenge with interlaced media is:
+4K media is progressive so this is not a requirement for 4K or HDR playback, but many Kodi users have DVB setups where interlaced streams are common so we need to set the mode whitelist to support them. The challenge with interlaced media is:
 
 * Kodi cannot output interlaced frames, it always outputs progressive frames
 * Kodi cannot detect media is interlaced until you start playing it
