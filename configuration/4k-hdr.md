@@ -10,24 +10,34 @@ This page explains the configuration points:
 
 ### Desktop Resolution
 
-The primary impact of the Kodi desktop resolution is GUI performance, or how Kodi feels when you navigate around menus and libraries. Kodi leverages GPU hardware to accelerate rendering of GUI elements, but artwork and thumbnails (visible in most GUI views) are frequently adapted from original artwork on-the-fly, and already processed art must still be read from disk caches before being displayed.
+The primary impact of the Kodi desktop resolution is GUI performance, or how Kodi feels when you navigate around menus and libraries. Kodi leverages GPU hardware to accelerate rendering of GUI elements, but fanart and thumbnails are frequently adapted from original artwork on-the-fly as you scroll around, and even when all images have been pre-processed, they must still be read from disk caches before being displayed. Higher levels of CPU activity from larger artwork and media also mean higher power consumption from the HTPC device.
 
-Higher-spec Intel CPU devices with Core i7 chips and SSD storage can normally run the Kodi GUI at 4K with 60fps refresh rates, but older and lower-spec Intel CPU devices, anything with a HDD (not SSD) and almost all ARM SoC devices struggle with a 4K desktop. Higher CPU activity from larger art and media also means higher power consumption from the HTPC device.
+The second impact of the Kodi desktop resolution is how media is scaled. If "Adjust Refresh" is not enabled, Kodi will scale all media played up or down to the desktop resolution and refresh rate, which by default is 1080p @ 60 fps.
 
-The second impact of the Kodi desktop resolution is how media is scaled. If "Adjust Refresh" is not enabled, scaling SD and 720p media to 1080p while adding extra frames to match 60fps is handled well, as Kodi simply needs to duplicate frames, and the frames being duplicated and scaled are small in size so the amount of data being processed remains low. Hardware as low-spec as the first generation Raspberry Pi can manage this. Scaling 1080p media to 4K is a much bigger challenge. 4K is 4x the resolution of 1080p, so devices must process 4x the amount of source data. The scaling algorithms Kodi uses to create a higher resolution image from lower resolution source media also need a lot of CPU. Most devices struggle to use the best methods, e.g. Yadif, with 1080p media, let alone 4K content. Practically all hardware is insufficient for CPU upscaling to 4K resolutions. However, 4K resolution TV's have dedicated scaling hardware and handle the upscaling of a 1080p image from Kodi to the native 4K resolution of the screen much better than Kodi can scale the image itself.
+Scaling SD and 720p media to 1080p while adding extra frames to match 60fps is handled well, as Kodi simply needs to duplicate frames to reach the higher fps rate, and the scaling algorithms which Kodi uses to reduce artefacts in the upscaled image move smaller amounts of data in/out of memory. Hardware as low-spec as the first generation Raspberry Pi can manage this well.&#x20;
 
-<mark style="color:red;">**Recommendation: Keep the Desktop resolution at 1080p, with 60fps refresh rate. Let TVs handle upscaling of SD and HD media to 4K without loading the HTPC.**</mark>
+Scaling SD and 1080p media to 4K is a literally bigger challenge. Frame sizes for 4K media are 4x the size of 1080p so the amount of data being processed in/out of memory increases and the CPU resources needed also increase. Scaling 4K to 1080p is a larger challenge again. Source 4K media has large frame sizes and sophisticated scaling algorithms are required to greate a lossy image without massive artefacts.
 
-### Whitelist
+Higher-spec Intel CPU devices with recent Core i7 chips and SSD storage can normally run the Kodi GUI at 4K with 60fps refresh rates and scale media with reasonable quality, but older and lower-spec Intel CPU devices and anything running from a spinning HDD or removable USB/SD media will struggle with a 4K desktop, and ARM SoC devices simply fail as they don't have the memory bandwidth or CPU speeds to process the data volumes needed.
 
-Most 4K televisions support a broad range of resolutions and refresh rates to support different media standards. In Linux each output format is known as a "modeline" and Kodi allows you to configure a list of modes to use in combination with the "Adjust Refresh" option.
+However, all 4K resolution TV's have dedicated scaling hardware using sophiesticated algorithms to upscale 1080p images to the native 4K resolution of the screen. TVs do this better and much more efficiently than Kodi can scale images itself.
 
-<mark style="color:red;">**Recommendation: Configure Kodi for the following modes, if available:**</mark>
+<mark style="color:red;">**Recommendation: Keep the Desktop resolution at 1080p, with 60fps refresh rate. Allow Kodi to upscale SD media to HD, and let the TV handle upscaling to 4K**</mark>
+
+### Mode Whitelist
+
+Most 4K televisions support a broad range of resolutions and refresh rates to support different media standards. In Linux each output format is known as a "modeline" and Kodi allows you to configure a list of allowed modes to use in combination with the "Adjust Refresh" option.
+
+Raspberry Pi 4 devices require specific configuration in config.txt to enable 4K @ 60/59.94/50 mode output, but nearly all streaming media uses 4K@30/23.976 modes so most users do not need to enable these modes. Enabling 4K60 output also increases power consumption.
+
+4K @ 60/59.94/50 modes require hardware that supports HDMI 2.0 or higher, and an HDMI cable that supports the higher bandwidth needed. Suitable cables are normally sold as 4K@60 "certified" cables. Cheaper and lower-spec cables that support HDMI 1.4 modes (up to 4K@30) are a frequent cause of "I enabled 4K@60 but have a blank screen" issue reports in the forums.
+
+Some hardware supports 4096x2160 modes. Kodi evaulates the whitelist using the height (2160) and refresh rate, so if you include these in your whitelist selection Kodi will switch to them instead of 3840x2160 modes which are an exact or more accurate match with 4K streaming media. If you see black bars on the sides of 4K media while playing, remove 4096 modes from the whitelist.
+
+<mark style="color:red;">**Recommendation: Configure Kodi to allow the following modes, if available:**</mark>
 
 * <mark style="color:red;">**3840x2160 @ 60/59.94/50/30/29.97/25/24/23.976**</mark>
 * <mark style="color:red;">**1920x1080 @ 60/59.94/50/24/23.976**</mark>
-
-NB: You may not see 4K @ 60/59.94/50 if the hardware does not support HDMI 2.0 modes or the HDMI cable being used does not have adequate bandwidth.
 
 ### Adjust Refresh
 
@@ -43,26 +53,26 @@ Kodi has three "Adjust Refresh" settings:
 
 ### Deinterlacing
 
-The challenge with interlaced media is:
+4K media is progressive, so this is not a requirement for 4K or HDR playback, but many Kodi users have DVB setups where interlaced streams are common, so we need to set the mode whitelist to support them. The challenge with interlaced media is:
 
 * Kodi cannot output interlaced frames, it always outputs progressive frames
 * Kodi cannot detect media is interlaced until you start playing it
 
-Kodi converts interlaced media to progressive by doubling the original refresh rate and rendering each half-frame in its own full frame, e.g. PAL 1080i @ 25fps media becomes 1080p @ 50fps, and NTSC 1080i @ 29.97 becomes 1080p @ 59.94fps. For this rate doubling to work, we need to ensure the whitelisted 1080p modes do not contain 1080p @ 25/29.97/30Hz rates, else Kodi will see an exact match against resolution and refresh rate and you will see high CPU loads and 50% of frames being dropped. If the modes are removed, Kodi will use 50Hz/59.94Hz rates, and if the media is interlaced, Kodi can still render 100% of the frames.
+Kodi converts interlaced media for progressive output by doubling the original refresh rate and rendering each half-frame in its own full frame, e.g. PAL 1080i @ 25fps media becomes 1080p @ 50fps, and NTSC 1080i @ 29.97 becomes 1080p @ 59.94fps. For this rate doubling to work, we need to ensure the whitelisted 1080p modes do not contain 1080p @ 25/29.97/30Hz rates, else Kodi will see an exact match against resolution and refresh rate and you will see high CPU loads and 50% of frames being dropped. If the modes are removed, Kodi will use 50Hz/59.94Hz rates, and if the media is interlaced, Kodi can still render 100% of the frames.
 
 <mark style="color:red;">**Recommendation: Remove 1080 @ 30, 29.97 and 25 fps rates from the Modelist**</mark>
 
-NB: All 4K media is progressive, so there is no need to do the same with 4K modes.
-
 ### HDR
 
-Broadcast and Internet media follow a multitude of formal standards for resolution, refresh-rate, bit-depth, and video format. HDR adds the further complication of colour-space, using static or dynamic metadata that accompanies either the stream or individual video frames. Kodi supports static metadata UHD formats like  HDR, HDR10, HDR10+ but not proprietary dynamic metadata standards like Dolby Vision which do not have open-source implementations.
+Broadcast and Internet media follow a multitude of formal standards for resolution, refresh-rate, bit-depth, video format and colour-space. HDR formats add static or dynamic metadata to the stream or even individual video frames to enhance how colours are displayed. Kodi on Linux can support HDR formats like HLG, HDR10, and HDR10+ but not proprietary formats like Dolby Vision which do not have open-source implementations. Users should understand HDR is not a simple "My TV can do 4K" type standard. HDR is a collection of competing technical standards (format wars are in progress) and the number of variables that must be determined and processed to render something nice looking on screen is huge.&#x20;
 
-Kodi aims to hide the mind-bending complexity of choosing how HDR media will be displayed on screen by detecting what your HTPC device and TV support and what the media to be played requires, allowing the display pipeline to automatically configure itself for the best result; whether that is an exact match or the best compromise.
+Kodi aims to hide the mind-bending complexity of choosing how HDR media will be displayed on screen by detecting what your HTPC device and TV support and what the media to be played requires, allowing the display pipeline to automatically configure itself for the best result; whether that is an exact match or the best compromise. Kodi and LibreELEC support for HDR formats is still in early stages.
+
+<mark style="color:red;">**Recommendation: There is nothing specific to configure for HDR itself (only 4K things) so sit back and enjoy that Kodi and LibreELEC developers are working to bring HDR support to your living room, for free. Please be patient, because it's a long and complicated task!**</mark>&#x20;
 
 Here are some answers to common HDR questions:
 
-* Kodi does not (yet) support HDR to SDR conversion, known as tonemapping. If you play HDR media on a TV that does not support HDR, it will play but colours will be muted and washed out. In the future Kodi may support conversion, but it is not currently implemented.
+* Kodi does not (yet) support HDR to SDR conversion, known as tonemapping. If you play HDR media on a TV that does not support HDR, it will often play but colours will be muted and washed out. In the future Kodi may support conversion, but it is not currently implemented.
 * Kodi has no way to present OSD menus in SDR when playing HDR media, so menus will have bright saturated colours. In the future, plane based tonemapping may be able to correct this, but it is not currently implemented and not all hardware supports multiple planes.
 * Kodi will attempt to output in the highest bit-depth supported by the display pipeline, e.g. on a Raspberry Pi 4 it will attempt 12-bit before falling back to 10-bit, then 8-bit. Not all 4K HDR capable hardware supports higher 12-bit and 10-bit depths.
-* Kodi supports Dolby Vision under Android (if the device is licensed for it) but not Linux. Dolby requires implementations to license their Intellectual Property and use integration libraries to decode the HDR metadata. Unless FFMpeg comes up with a "clean room" reverse engineered open-source implementation, it is unlikely that Kodi will ever support it.&#x20;
+* Kodi supports Dolby Vision under Android (if the device is licensed for it) but not Linux. Dolby requires manufacturers to license their Intellectual Property and use integration libraries to decode the HDR metadata. Until FFMpeg comes up with a "clean room" reverse engineered open-source implementation, Kodi will not support it.&#x20;
