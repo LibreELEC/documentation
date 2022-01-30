@@ -184,7 +184,7 @@ The table below has a selection of common keycodes:
 | KEY\_PAUSE | KEY\_SUBTITLE | KEY\_TV |  |
 | KEY\_STOP | KEY\_LANGUAGE | KEY\_PVR |  |
 
-Once you are finished with the keytable, save the file, stop ir-keytable -t with `+` and then restart it with the keytable file:
+Once you are finished with the keytable, save the file, stop ir-keytable -t with `CTRL-C` and then restart it with the keytable file:
 
 ```text
 LibreELEC:~ # ir-keytable -c -w /storage/.config/rc_keymaps/custom_remote
