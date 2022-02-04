@@ -17,6 +17,16 @@ You can place any commands in the script, but note they will block the boot proc
 )&
 ```
 
+## autostop.sh
+
+The `autostop.sh` script runs during the shutdown process, but before the network is shutdown. It does not exist by default, but you can create it using nano.
+
+```text
+nano /storage/.config/autostop.sh
+```
+
+Like the `autostart.sh` script you can place any commands in the script, and they will block the shutdown process for up to 5 minutes and then will be terminated automatically.
+
 ## shutdown.sh
 
 The `shutdown.sh` script run during the shutdown process. It does not exist by default, but you can create it using nano.
