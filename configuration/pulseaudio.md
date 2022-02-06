@@ -199,6 +199,26 @@ systemctl start kodi
 
 Custom pulseaudio configuration must be stored in `/storage/.config/pulse-daemon.conf.d` as `/etc/pulse` is in the read-only filesystem. Files must have a `.conf` extension. The main `daemon.conf` is processed first, followed by other files in alphabetical order so if the same option is set in multiple files, the last one to be read will be used. If files have the same name as a default \(embedded\) file they override \(replace\) the embedded file.
 
+The PulseAudio sound server also interprets the file `/etc/pulse/default.pa` on startup. Most configuration like the sections above require the PulseAudio CLI. To permantly apply CLI configuration the startup script must be extended in the storage filesystem.
+
+Create `/storage/.config/pulse-daemon.conf.d/custom.conf` to override the startup script:
+
+```text
+default-script-file = /storage/.config/pulse-daemon.conf.d/custom.pa
+```
+
+Create `/storage/.config/pulse-daemon.conf.d/custom.pa` to extend the default startup script:
+
+```text
+#!/usr/bin/pulseaudio -nF
+
+.fail
+.include /etc/pulse/default.pa
+
+# extend default startup script here e.g.
+load-module module-rtp-recv latency_msec=250 sap_address=0.0.0.0
+```
+
 ## Sample Rates and Resampling
 
 Create `/storage/.config/pulse-daemon.conf.d/custom.conf` with your custom options, e.g.
