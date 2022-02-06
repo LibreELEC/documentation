@@ -55,6 +55,7 @@
 
 * [Building (Basics)](development-1/build-basics.md)
 * [Building (Advanced)](development-1/build-advanced.md)
+* [Building (Windows WSL)](development-1/building-windows-wsl.md)
 * [Beginners Guide to Git](development-1/git-tutorial.md)
 * [Build Commands](development-1/build-commands/README.md)
   * [Build Commands LE 11.0.x](development-1/build-commands/build-commands-le-11.0.x.md)
