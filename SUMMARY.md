@@ -68,6 +68,7 @@
   * [Build Commands LE 7.0.x](development-1/build-commands/build-commands-le70.md)
 * [Nightly Images](development-1/jenkins-ci.md)
 * [Release Management](development-1/release-management.md)
+* [Website](development-1/website.md)
 
 ## Project
 

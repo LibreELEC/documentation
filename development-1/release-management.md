@@ -59,7 +59,7 @@ The following image shows the **Projects of LibreELEC** monitored by **release-m
 
 Adding a project to the distro can be made by logging in using your **Fedora** ID.
 
-![](<../.gitbook/assets/image (4).png>)
+![](<../.gitbook/assets/image (4) (1).png>)
 
 Search for the project that you have developed the package.mk for and you want release-monitoring to monitor. In the example - we have added the distro **LibreELEC** to `aixlog`.
 
