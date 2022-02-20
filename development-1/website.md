@@ -40,7 +40,7 @@ It is possible to run Ruby natively in Windows but this is difficult to do. So i
 
 Run the command from the cloned website folder.
 
-`bundle exec jekyll serve force_polling --livereload --unpublished`
+`bundle exec jekyll serve --force_polling --livereload --unpublished`
 
 ![](../.gitbook/assets/wsl-website.png)
 
