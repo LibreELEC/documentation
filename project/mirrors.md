@@ -9,11 +9,11 @@ If you would like to help, you should:
 * Be able to handle at least 100Mbit/sec of traffic with no bandwidth limits
 * Be able to mirror for a long term period (years)
 
-The majority of existing mirrors are ISP's or Universities, and whilst this is not a requirement they are our preferred solution.
+The majority of existing mirrors are Telco's, ISP's or Universities, and whilst this is not a fixed requirement, they are our preferred mirror partners as we need to trust the provider.
 
 If you meet the criteria above please drop an email with the offer to [mirrors@libreelec.tv](mailto:mirrors@libreelec.tv)
 
-## Sync Details
+## Rsync Details
 
 ```
 rsync://releases.libreelec.tv/releases
@@ -42,3 +42,12 @@ rsync://releases.libreelec.tv/releases
 | United States  | Limestone Networks              | [https://mirror.lstn.net/libreelec](http://mirror.lstn.net/libreelec)                                     |
 | United States  | Georgia Tech                    | [http://www.gtlib.gatech.edu/pub/LibreELEC](http://www.gtlib.gatech.edu/pub/LibreELEC)                    |
 
+## Live Statistics
+
+Mirrorbits supports detailed statistics on downloads and available mirrors. This information can be accessed by appending `?mirrorstats` or `?mirrorlist` to the download URL, e.g.
+
+[https://releases.libreelec.tv/LibreELEC-RPi4.arm-10.0.1.img.gz?mirrorstats](https://releases.libreelec.tv/LibreELEC-RPi4.arm-10.0.1.img.gz?mirrorstats)
+
+[https://releases.libreelec.tv/LibreELEC-RPi4.arm-10.0.1.img.gz?mirrorlist](https://releases.libreelec.tv/LibreELEC-RPi4.arm-10.0.1.img.gz?mirrorlist)
+
+Global mirror statistics can be found here: [https://releases.libreelec.tv/mirrorstats](https://releases.libreelec.tv/mirrorstats)
