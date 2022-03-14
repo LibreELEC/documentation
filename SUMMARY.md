@@ -39,6 +39,7 @@
 * [LCDProc](configuration/lcdproc.md)
 * [Network Boot](configuration/network-boot.md)
 * [Pulseaudio](configuration/pulseaudio.md)
+* [Safe Mode](configuration/safe-mode.md)
 * [Startup & Shutdown](configuration/startup-shutdown.md)
 * [Useful Scripts](configuration/useful\_scripts.md)
 * [WireGuard](configuration/wireguard.md)
