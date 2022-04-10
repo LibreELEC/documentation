@@ -3,9 +3,8 @@
 The “LibreELEC USB-SD Creator” app helps you choose and download the latest image for your HTPC device and create bootable USB or SD Card media. The tool is available for Windows 7 and newer, macOS 10.9 and newer, and Ubuntu Linux 32/64 bit (and should also work on other Debian derivatives).
 
 * [LibreELEC.USB-SD.Creator.Win32.exe](https://releases.libreelec.tv/LibreELEC.USB-SD.Creator.Win32.exe)
-* [LibreELEC.USB-SD.Creator.macOS.dmg](https://releases.libreelec.tv/LibreELEC.USB-SD.Creator.macOS.dmg)
-* [LibreELEC.USB-SD.Creator.Linux-32bit.bin](https://releases.libreelec.tv/LibreELEC.USB-SD.Creator.Linux-32bit.bin)
-* [LibreELEC.USB-SD.Creator.Linux-64bit.bin](https://releases.libreelec.tv/LibreELEC.USB-SD.Creator.Linux-64bit.bin)
+* ~~LibreELEC.USB-SD.Creator.macOS.dmg~~ ([currently not available](https://libreelec.tv/2022/04/05/usb-sd-creator-1-4/))
+* ~~LibreELEC.USB-SD.Creator.Linux-64bit.bin~~ ([currently not available](https://libreelec.tv/2022/04/05/usb-sd-creator-1-4/))
 
 ## Step 1
 
