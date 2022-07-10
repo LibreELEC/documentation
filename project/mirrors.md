@@ -33,6 +33,7 @@ rsync://releases.libreelec.tv/releases
 | Germany        | RWTH Aachen University          | [https://ftp.halifax.rwth-aachen.de/libreelec](http://ftp.halifax.rwth-aachen.de/libreelec)               |
 | Greece         | University of Crete             | [https://ftp.cc.uoc.gr/mirrors/linux/libreelec](http://ftp.cc.uoc.gr/mirrors/linux/libreelec)             |
 | Netherlands    | NLUUG                           | [https://ftp.nluug.nl/pub/mediaplayer/libreelec](http://ftp.nluug.nl/pub/mediaplayer/libreelec)           |
+| Netherlands    | Serverion                       | [https://mirror.serverion.com/libreelec](https://mirror.serverion.com)           |
 | Netherlands    | WeAreTriple                     | [https://libreelec.mirror.wearetriple.com](http://libreelec.mirror.wearetriple.com)                       |
 | Netherlands    | Weppel                          | [http://mirror.ehv.weppel.nl/libreelec](http://mirror.ehv.weppel.nl/libreelec)                            |
 | Portugal       | University of Porto             | [https://mirrors.fe.up.pt/pub/libreelec](http://mirrors.fe.up.pt/pub/libreelec)                           |
