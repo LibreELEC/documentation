@@ -39,7 +39,7 @@ Before you can build, it is important to update the OS and install build depende
 ```text
 sudo apt update
 sudo apt upgrade
-sudo apt install gcc make git unzip wget xz-utils bc gperf zip unzip makeinfo g++ mkfontscale mkfontdir bdftopcf xsltproc java
+sudo apt install gcc make git unzip wget xz-utils bc gperf zip g++ xfonts-utils xsltproc openjdk-11-jre-headless
 ```
 
 Note: The first time the build-system runs it will validate and prompt you to install any missing package dependencies.
