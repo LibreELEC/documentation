@@ -1,4 +1,18 @@
-# Building \(Docker\)
+---
+description: >-
+  Docker is used to build official releases, and nightly images in Ubuntu LTS
+  20.04 Docker containers at the teams https://github.com/LibreELEC/actions
+  CI/CD.
+---
+
+# Building (Docker)
+
+## Useful links
+
+The following links will help you get started with using docker to build LibreELEC.
+
+* [https://github.com/LibreELEC/LibreELEC.tv/tree/master/tools/docker](https://github.com/LibreELEC/LibreELEC.tv/tree/master/tools/docker)
+* [https://github.com/LibreELEC/actions](https://github.com/LibreELEC/actions)
 
 ## Build Container
 
@@ -47,4 +61,3 @@ docker run \
   -e MTPROGRESS=yes \
   libreelec CMD
 ```
-
