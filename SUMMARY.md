@@ -55,6 +55,7 @@
 ## Development <a href="#development-1" id="development-1"></a>
 
 * [Building (Basics)](development-1/build-basics.md)
+* [Building (Docker)](development-1/build-docker.md)
 * [Building (Advanced)](development-1/build-advanced.md)
 * [Building (Windows WSL)](development-1/building-windows-wsl.md)
 * [Beginners Guide to Git](development-1/git-tutorial.md)

@@ -4,7 +4,7 @@ The LibreELEC “build-system” is a collection of scripts that simplify the co
 
 ## Environment
 
-The team currently builds official releases and snapshots on Ubuntu LTS server 18.04 or 20.04. It is possible to use other Linux distrutions \(Arch, Debian, Fedora, Gentoo, Manjaro, etc.\) but Ubuntu is the most-used and proven. If you plan to build on an existing Linux desktop we recommend building in a Docker container to isolate the build folders from the rest of the OS \(Dockerfiles can be found in the tools folder of the main LibreELEC git repo\). Another option is building in a Virtual Machine, e.g. Oracle Virtualbox \($free\) or vmware Workstation.
+The team currently builds official releases and snapshots on Ubuntu LTS server 18.04 or 20.04. It is possible to use other Linux distrutions \(Arch, Debian, Fedora, Gentoo, Manjaro, etc.\) but Ubuntu is the most-used and proven. If you plan to build on an existing Linux desktop we recommend building in a Docker container to isolate the build folders from the rest of the OS \(Dockerfiles can be found in the tools folder of the main LibreELEC git repo, see [Build (Docker)](build-docker.md) for more info\). Another option is building in a Virtual Machine, e.g. Oracle Virtualbox \($free\) or vmware Workstation.
 
 Note: If you want to compile older LibreELEC releases you will need to use an era-appropriate Ubuntu LTS release, e.g. LibreELEC 7.0 will need Ubuntu 14.04 or 16.04.
 
