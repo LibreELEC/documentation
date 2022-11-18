@@ -46,3 +46,7 @@ The /home folder is located at the WSL ext4.vhdx and not at the native NTFS stor
 There are several ways in moving your WSL file, the easiest solution is the dedicated tool [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline#install) . The version 3.5.0 is not supporting the current Windows Version so you need to use a more recent version or a development build.
 
 `lxrunoffline move -n Ubuntu-20.04 -d d:\wsl`
+
+###### AlpineWSL
+Or you can use https://github.com/yuk7/AlpineWSL which creates ext4.vhdx on your wanted disk and automatically mounts it to WSL2 itself on startup.
+Advanced instructions: https://gist.github.com/onomatopellan/90024008a0d8c8a2ed6fa57e8b64df54 
