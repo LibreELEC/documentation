@@ -14,7 +14,7 @@ LibreELEC builds and hosts a number of Kodi binary add-ons to extend functionali
 We also provide a range of program/service add-ons, including:
 
 * .net Core Runtime
-* Adafruit Librariess
+* Adafruit Libraries
 * BTRFS Tools
 * DVB Tools
 * FFmpeg Tools
