@@ -8,7 +8,9 @@ In the steps below we will explain how this can be done:
 
 **Note:** Your devices should all be turned on and you should have a screen and audio working. Otherwise the EDID information aren't provided properly and this How-To won't work.
 
-In the tabs below we explain different ways how to dump the EDID information. Intel explains the steps which need to be done for Intel based GPUs and nVidia will explain the same steps for nVidia based GPUs which will differ much from each other. We also provide a script which does the needed things for the specific GPUs automatically.
+In the sections below we explain different ways to dump and use the EDID information. We also provide a script which performs the specific steps for the various devices automatically.
+
+On x86\_64 the steps for Intel and nVidia based GPUs differ significantly from each other.
 
 ## Generic x86\_64
 
@@ -349,3 +351,6 @@ Ctrl+o to save, Ctrl+x to exit the nano editor. Next restart Kodi by rebooting t
 systemctl restart kodi
 ```
 
+## Raspberry Pi
+
+The getedid script can be used as described for [Generic x86\_64](#generic-x86_64).
