@@ -54,11 +54,11 @@ Once the device-tree name is set you can insert the SD card in the box and power
 * Hidden button visible through ventilation holes in the case
 * Hidden at the end of the 3.5mm audio jack
 
-In most cases you will need a small pin, unfolded paper-clip, or wooden toothpick to press the reset button with - hence the install process is often referred to as the "toothpick method" in forum posts. Press and hold the button, then power-on the box. After 5-7 seconds release the button to interrupt boot and start the recovery process. Due to differences in box speeds and vendor u-boot customisations the exact timing for button release varies and you will need to experiment to find the timing that works for your board. It is possible to see U-Boot output and remove the guesswork by attaching a UART serial cable to the board, although most STB box devices will need connector pins soldering to the board as most manufacturers omit them to save some pennies.
+In most cases you will need a small pin, unfolded paper-clip, or wooden toothpick to press the reset button with - hence the install process is often referred to as the "toothpick method" in forum posts. Press and hold the button, then power-on the box. After 5-7 seconds release the button to interrupt boot and start the recovery process. Due to differences in box speeds and vendor U-Boot customisations, the exact timing for button release varies and you will need to experiment to find the timing that works for your board. It is possible to see U-Boot output and remove the guesswork by attaching a UART serial cable to the board, although most STB box devices will need connector pins soldering to the board as most manufacturers omit them to save some pennies.
 
 ## Board Images
 
-These images are built for Single Board Computer (SBC) devices which boot modern u-boot via an SD card or removable eMMC module. Installation is normally simple requiring you to write the image to the SD card or eMMC module then boot the device. If the board has eMMC storage soldered (not on a removable module) it may be necessary to boot from the "box" image first. Once booted to a box image on SD card (so eMMC is not in use) you can write the correct `board` image to eMMC (overwriting Android or other factory-installed images).
+These images are built for Single Board Computer (SBC) devices which boot modern U-Boot via an SD card or removable eMMC module. Installation is normally simple requiring you to write the image to the SD card or eMMC module then boot the device. If the board has eMMC storage soldered (not on a removable module) it may be necessary to boot from the "box" image first. Once booted to a box image on SD card (so eMMC is not in use) you can write the correct `board` image to eMMC (overwriting Android or other factory-installed images).
 
 ## install2internal
 
@@ -75,7 +75,7 @@ In the `AMLGX` image there is an eMMC helper script called `emmctool` that suppo
 ```
 LibreELEC:~ # emmctool 
 
-info: boot device is /dev/mmcblk0, U-boot version is 2021.04
+info: boot device is /dev/mmcblk0, U-Boot version is 2021.04
 info: emmc device is /dev/mmcblk1
 
 Model: MMC 8WPD3R (sd/mmc)
@@ -94,7 +94,7 @@ usage: emmctool (w)rite <filename>   : write <filename>.img/.img.gz to the eMMC 
                 (l)abels             : change eMMC disk labels to /
                 (r)esize             : resize the storage partition to 100%
                 (s)storage           : convert emmc for use as /storage (boot from sdcard)
-                (u)boot <filename>   : write signed u-boot <filename> to the eMMC module
+                (u)boot <filename>   : write signed U-Boot <filename> to the eMMC module
                 (z)ero               : zero (erase/wipe) the eMMC module
                 (h)elp               : displays this help message
 ```

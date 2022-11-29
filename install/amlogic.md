@@ -15,7 +15,7 @@ The image type is identified by the -suffix appended, e.g. `LibreELEC-AMLGX.arm-
 
 ## Box Images
 
-The "box" image supports Set-Top "Box" (STB) and other devices with Android or Legacy Kernel Linux images (and vendor u-boot) installed on the internal eMMC storage. It is common for box vendors to make device-specific u-boot customisations so it is best to run LibreELEC from an SD card via the original bootloader. To use a box image you trigger "update" mode in the vendor u-boot. This causes u-boot to look for some standard filesnames which we have tweaked to load the LibreELEC `KERNEL` and `SYSTEM` files to boot the device.
+The "box" image supports Set-Top "Box" (STB) and other devices with Android or Legacy Kernel Linux images (and vendor U-Boot) installed on the internal eMMC storage. It is common for box vendors to make device-specific U-Boot customisations so it is best to run LibreELEC from an SD card via the original bootloader. To use a box image you trigger "update" mode in the vendor U-Boot. This causes U-Boot to look for some standard filesnames which we have tweaked to load the LibreELEC `KERNEL` and `SYSTEM` files to boot the device.
 
 As `box` images can be used on many devices, you must configure the device-tree file to use first. This is done by editing the uEnv.ini file in the root folder of the SD card and changing `@@DTB_NAME@@` with the name of the .dtb file to use. The device-tree files are in the `dtb` folder.
 
@@ -33,11 +33,11 @@ dtb_name=/dtb/meson-g12b-gtking-pro.dtb
 bootargs=boot=UUID=2306-0801 disk=UUID=8268da37-3a8d-4f6d-aba0-08918faded56 quiet systemd.debug_shell=ttyAML0 console=ttyAML0,115200n8 console=tty0
 ```
 
-Once the device-tree name has been set you can insert the SD card in the box and power on. Some box devices will detect the card automatically. Others need you to trigger recovery mode using a reset button on the device. Sometimes the reset button is obvious. Sometimes it is hidden behind a small hole in the case requiring a paper-clip or needle to press it. Sometimes it is hidden at the end of the 3.5mm audio jack requiring a toothpick to press it. If a reset button is required you press the button and hold it then apply power to the box, and after 5-7 seconds you release the button. Due to differences in vendor u-boot configuration the exact timing varies and you may need to experiment a few times to get it right.
+Once the device-tree name has been set you can insert the SD card in the box and power on. Some box devices will detect the card automatically. Others need you to trigger recovery mode using a reset button on the device. Sometimes the reset button is obvious. Sometimes it is hidden behind a small hole in the case requiring a paper-clip or needle to press it. Sometimes it is hidden at the end of the 3.5mm audio jack requiring a toothpick to press it. If a reset button is required you press the button and hold it then apply power to the box, and after 5-7 seconds you release the button. Due to differences in vendor U-Boot configuration the exact timing varies and you may need to experiment a few times to get it right.
 
 ## Board Images
 
-These images are built for Single Board Computer (SBC) devices which boot modern (mainline) u-boot via an SD card or removable eMMC module. Installation is normally simple requiring you to write the image to the SD card or eMMC module and then boot the device. If the board has non-removable eMMC storage it may be necessary to boot  from a "box" image first. Once booted to a box image you can write the `board` image for your device to eMMC (overwriting Android or other factory-installed images).
+These images are built for Single Board Computer (SBC) devices which boot modern (mainline) U-Boot via an SD card or removable eMMC module. Installation is normally simple requiring you to write the image to the SD card or eMMC module and then boot the device. If the board has non-removable eMMC storage it may be necessary to boot  from a "box" image first. Once booted to a box image you can write the `board` image for your device to eMMC (overwriting Android or other factory-installed images).
 
 ## install2internal
 

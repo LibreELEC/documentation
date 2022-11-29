@@ -2,7 +2,7 @@
 
 ## Disclaimer
 
-* **Only nightly releases are available right now. Use at your own risks!**
+* **Only nightly releases are available right now. Use at your own risk!**
 * **Boards/STBs with less than 1GiB of RAM are not supported**
 
 ## Boards Supported
