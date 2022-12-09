@@ -20,7 +20,7 @@ Connect to your LibreELEC HTPC with SSH.
 
 #### 2. Create the systemd .mount file
 
-**IMPORTANT:** The filename uses hyphens to separate elements of the fileystem path to the share mount-point, e.g. `/storage/recordings` will be `storage-recordings.mount` and sub folders, e.g. `/storage/recordings/tv` would be `storage-recordings-tv.mount`
+**IMPORTANT:** The filename uses hyphens to separate elements of the filesystem path to the share mount-point, e.g. `/storage/recordings` will be `storage-recordings.mount` and sub folders, e.g. `/storage/recordings/tv` would be `storage-recordings-tv.mount`
 
 Create the .mount file:
 
@@ -132,6 +132,8 @@ Path where the share should be mounted:
 Options: At this section you are able to define specific NFS options, such as NFS version for example. In our example here, we don't need it and we are assuming you are using a NFSv3 share.
 
 Type: `Type=nfs`
+
+If you are using a NFSv4 share, simply replace `Type=nfs` with `Type=nfs4` (see also <https://www.freedesktop.org/software/systemd/man/systemd.mount.html#Type=>)
 
 #### 4. Start it for a test:
 
