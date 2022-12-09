@@ -5,7 +5,7 @@ Kodi can natively mount SMB, NFS, SFTP, WebDAV (and more) remote filesystems (sh
 The following NAS configuration is used in the examples below:
 
 * NAS IP: `192.168.1.222`
-* Username: `nasuser1`&#x20;
+* Username: `nasuser1`
 * Password: `123nas`
 * Share name: `recordings`
 * Full address to share: `\\192.168.1.222\recordings`
@@ -129,11 +129,13 @@ Path where the share should be mounted:
 
 `Where=/storage/recordings`
 
-Options: At this section you are able to define specific NFS options, such as NFS version for example. In our example here, we don't need it and we are assuming you are using a NFSv3 share.
+Options: At this section you are able to define specific NFS options, such as the NFS version. In the example below we set Type for an NFSv3 share.
 
-Type: `Type=nfs`
+`Type=nfs`
 
-If you are using a NFSv4 share, simply replace `Type=nfs` with `Type=nfs4` (see also <https://www.freedesktop.org/software/systemd/man/systemd.mount.html#Type=>)
+To use an NFSv4 share:
+
+`Type=nfs4`&#x20;
 
 #### 4. Start it for a test:
 
