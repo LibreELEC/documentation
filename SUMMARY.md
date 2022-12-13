@@ -52,25 +52,25 @@
 * [Force Add-on Update](how-to/force-add-on-update.md)
 * [Mount Network Share](how-to/mount\_network\_share.md)
 
-## Development <a href="#development-1" id="development-1"></a>
+## Development <a href="#development" id="development"></a>
 
-* [Building (Basics)](development-1/build-basics.md)
-* [Building (Docker)](development-1/build-docker.md)
-* [Building (Advanced)](development-1/build-advanced.md)
-* [Building (Windows WSL)](development-1/building-windows-wsl.md)
-* [Beginners Guide to Git](development-1/git-tutorial.md)
-* [Build Commands](development-1/build-commands/README.md)
-  * [Build Commands LE 11.0.x](development-1/build-commands/build-commands-le-11.0.x.md)
-  * [Build Commands (Add-ons)](development-1/build-commands/build-addons.md)
-  * [Build Commands LE 10.0.x](development-1/build-commands/build-commands-le10.md)
-  * [Build Commands LE 9.2.x](development-1/build-commands/build-commands-le92.md)
-  * [Build Commands LE 9.0.x](development-1/build-commands/build-commands-le90.md)
-  * [Build Commands LE 8.2.x](development-1/build-commands/build-commands-le82.md)
-  * [Build Commands LE 8.0.x](development-1/build-commands/build-commands-le80.md)
-  * [Build Commands LE 7.0.x](development-1/build-commands/build-commands-le70.md)
-* [Nightly Images](development-1/jenkins-ci.md)
-* [Release Management](development-1/release-management.md)
-* [Website](development-1/website.md)
+* [Building (Basics)](development/build-basics.md)
+* [Building (Docker)](development/build-docker.md)
+* [Building (Advanced)](development/build-advanced.md)
+* [Building (Windows WSL)](development/building-windows-wsl.md)
+* [Beginners Guide to Git](development/git-tutorial.md)
+* [Build Commands](development/build-commands/README.md)
+  * [Build Commands (Add-ons)](development/build-commands/build-addons.md)
+  * [Build Commands LE 11.0.x](development/build-commands/build-commands-le-11.0.x.md)
+  * [Build Commands LE 10.0.x](development/build-commands/build-commands-le10.md)
+  * [Build Commands LE 9.2.x](development/build-commands/build-commands-le92.md)
+  * [Build Commands LE 9.0.x](development/build-commands/build-commands-le90.md)
+  * [Build Commands LE 8.2.x](development/build-commands/build-commands-le82.md)
+  * [Build Commands LE 8.0.x](development/build-commands/build-commands-le80.md)
+  * [Build Commands LE 7.0.x](development/build-commands/build-commands-le70.md)
+* [Nightly Images](development/jenkins-ci.md)
+* [Release Management](development/release-management.md)
+* [Website](development/website.md)
 
 ## Project
 
