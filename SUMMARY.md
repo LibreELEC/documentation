@@ -52,7 +52,7 @@
 * [Force Add-on Update](how-to/force-add-on-update.md)
 * [Mount Network Share](how-to/mount\_network\_share.md)
 
-## Development <a href="#development" id="development"></a>
+## Development
 
 * [Building (Basics)](development/build-basics.md)
 * [Building (Docker)](development/build-docker.md)
