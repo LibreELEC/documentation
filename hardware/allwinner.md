@@ -18,7 +18,7 @@
 
 * BananaPi M2+
 * Beelink X2
-* Libretech ALL-H3-CC \(Tritium\)
+* Libretech ALL-H3-CC (Tritium)
 * NanoPi M1
 * OrangePi 2
 * OrangePi PC
@@ -34,6 +34,7 @@
 
 * Beelink GS1
 * OrangePi 3
+* OrangePi 3 LTS
 * OrangePi Lite 2
 * OrangePi One Plus
 * Pine H64
@@ -42,6 +43,3 @@
 ### **R40 based boards**
 
 * BananaPi M2 Ultra
-
-
-
