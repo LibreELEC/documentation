@@ -29,7 +29,7 @@ NB: The WeTek Play(1)/OpenELEC box uses Meson 6 (8726MX) hardware. There is litt
 
 ## Box Images
 
-Box images support SBC and STB devices with Android or "vendor" boot firmware running on the internal eMMC storage. LibreELEC is installed  by triggering "recovery" mode boot in the Amlogic U-Boot firmware. Recovery mode searches for some standard files on SD and USB media. LibreELEC provides files tweaked to boot and run LibreELEC instead of recovering the device. Once recovery mode is activated the device will seach (and find LibreELEC) on each boot; until Android recovery completes (it never does).
+Box images support SBC and STB devices with Android or "vendor" boot firmware running on the internal eMMC storage. LibreELEC is installed by triggering "recovery" mode boot in the Amlogic U-Boot firmware. Recovery mode searches for some standard files on SD and USB media. LibreELEC provides files tweaked to boot and run LibreELEC instead of recovering the device. Once recovery mode is activated the device will search and find LibreELEC on each boot; until Android recovery completes (which never happens).
 
 As `box` images can be used on many devices you must configure the device-tree file to use first. This is done by editing `uEnv.ini` in the root folder of the SD card. Change `@@DTB_NAME@@` to the name of the .dtb file to use. Current supported device-tree files are in the `dtb` folder.
 
@@ -40,33 +40,33 @@ dtb_name=/dtb/@@DTB_NAME@@
 bootargs=boot=UUID=2306-0801 disk=UUID=8268da37-3a8d-4f6d-aba0-08918faded56 quiet systemd.debug_shell=ttyAML0 console=ttyAML0,115200n8 console=tty0
 ```
 
-To boot a Beelink GT-King box change `@@DTB_NAME` to `meson-g12b-gtking.dtb`
+To boot a Beelink GT-King box change `@@DTB_NAME@@` to `meson-g12b-gtking.dtb`
 
 ```
 dtb_name=/dtb/meson-g12b-gtking.dtb
 bootargs=boot=UUID=2306-0801 disk=UUID=8268da37-3a8d-4f6d-aba0-08918faded56 quiet systemd.debug_shell=ttyAML0 console=ttyAML0,115200n8 console=tty0
 ```
 
-Once the device-tree name is set you can insert the SD card in the box and power on. Some box devices will detect the presence of the SD card automatically. Others need you to trigger recovery mode using a reset button on the device. Common locations for the button are:
+Once the device-tree name is set you can insert the SD card in the box and power on. Some box devices detect the presence of the SD card automatically. Others may need recovery mode to be triggered using a reset button on the device. Common locations for the button are:
 
 * Visible button marked "reset" or "recovery" or "power" button
 * Visible pin-hole on the underside of the case
 * Hidden button visible through ventilation holes in the case
 * Hidden at the end of the 3.5mm audio jack
 
-In most cases you will need a small pin, unfolded paper-clip, or wooden toothpick to press the reset button with - hence the install process is often referred to as the "toothpick method" in forum posts. Press and hold the button, then power-on the box. After 5-7 seconds release the button to interrupt boot and start the recovery process. Due to differences in box speeds and vendor U-Boot customisations, the exact timing for button release varies and you will need to experiment to find the timing that works for your board. It is possible to see U-Boot output and remove the guesswork by attaching a UART serial cable to the board, although most STB box devices will need connector pins soldering to the board as most manufacturers omit them to save some pennies.
+In most cases you will need a small pin, unfolded paper-clip, or toothpick to press the reset button with - hence the install process is often referred to as the "toothpick method" in forum posts. Press and hold the button, then power-on the box. After 5-7 seconds release the button to interrupt boot and start the recovery process. Due to differences in box speeds and vendor U-Boot the exact timing for button release varies and you will need to experiment to find the timing that works for your box. It is possible to see U-Boot output and remove the guesswork by attaching a UART serial cable to the board, although most set-top box devices will need connector pins soldering to the board as manufacturers omit them to save manufacturing costs.
 
 ## Board Images
 
-These images are built for Single Board Computer (SBC) devices which boot modern U-Boot via an SD card or removable eMMC module. Installation is normally simple requiring you to write the image to the SD card or eMMC module then boot the device. If the board has eMMC storage soldered (not on a removable module) it may be necessary to boot from the "box" image first. Once booted to a box image on SD card (so eMMC is not in use) you can write the correct `board` image to eMMC (overwriting Android or other factory-installed images).
+These images are built for Single Board Computer (SBC) devices which boot modern U-Boot via an SD card or removable eMMC module. Installation is normally simple requiring you to write the image to the SD card or eMMC module and boot the device. If the board has eMMC storage soldered (not on a removable module) it may be necessary to boot from the "box" image first. Once booted to a box image on SD card (so eMMC is not in use) you can write the correct `board` image to eMMC (overwriting Android or other factory-installed images) using `dd` to write the image. You can use the `emmctool` command to help that process (see below).
 
 ## install2internal
 
-Community images using the legacy Amlogic kernels often include the `install2internal` script to reconfigure the factory boot process and run LibreELEC from the internal eMMC storage. In the past when most box devices had 1GB RAM and SD cards were slow the performance difference between an SD card and "internal" storage was substantial, so the script evolved a cult following and many users belive they _must_ install to internal eMMC or their box will be unusuable. This is wrong advice. On modern boxes with faster CPUs, 2GB+ RAM and better SD card support, the performance difference is often marginal.
+Community images using the legacy Amlogic kernels often include the `install2internal` script to reconfigure the factory boot process and run LibreELEC from the internal eMMC storage. We do not provide or support this script.
 
-The main reason we do not provide or support emmc installs on "box" devices is the high level of support issues. Software and hardware quality in Android STB hardware is not great, and this complicates the process of successfully installing to the internal eMMC storage so many installs have problems resulting in a "bricked" box. Amlogic builds factory-restore mechanisms into their software that mean it is always  possible to recover the box, but this usually depends on finding an Android image for the device, and the process is challenging for less technical users. Our forum staff are all volunteers who give time to the project for fun. Helping a never-ending stream of pissed-off inexperienced users recover bricked boxes is not fun, so we actively discourage the existence and use of this script.
+The simple reason we do not provide or support emmc installs on "box" devices is the high level of support issues seen from them. Software and hardware quality in Android STB hardware is not great and this complicates the process of successfully installing to the internal eMMC storage and many installs have problems resulting in a "bricked" box. Amlogic builds several factory-restore mechanisms into their software that mean it is always possible to recover the box, but this usually requires you to find an Android image for the device, and the process is challenging for less technical users. Our forum staff are all volunteers who give time to the project for fun. Helping a never-ending stream of pissed-off inexperienced users recover bricked boxes is not fun, so we actively discourage the existence and use of this script.
 
-If you want to run LibreELEC from eMMC storage please purchase a "board" device that supports it. If you find and run an `install2internal` script and something messes up; your problem is not our problem!
+To run LibreELEC from eMMC storage purchase a supported "board" device. If you find and run an `install2internal` script and something messes up (and it probably will) do not expect support or sympathy from the forum staff.
 
 ## emmctool
 
@@ -94,7 +94,6 @@ usage: emmctool (w)rite <filename>   : write <filename>.img/.img.gz to the eMMC 
                 (l)abels             : change eMMC disk labels to /
                 (r)esize             : resize the storage partition to 100%
                 (s)storage           : convert emmc for use as /storage (boot from sdcard)
-                (u)boot <filename>   : write signed U-Boot <filename> to the eMMC module
                 (z)ero               : zero (erase/wipe) the eMMC module
                 (h)elp               : displays this help message
 ```
