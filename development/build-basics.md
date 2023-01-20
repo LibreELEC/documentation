@@ -1,6 +1,6 @@
 # Building (Basics)
 
-The LibreELEC “build-system” is a collection of scripts that simplify the complex task of cross-compiling hundreds of inter-dependent source packages into a working LibreELEC image with a few simple commands. It is the "secret sauce" of the project, as it allows users of all experience levels to tinker and experiement with the distro. Forking our codebase and experimenting is encouraged!
+The LibreELEC “build-system” is a collection of scripts that simplify the complex task of cross-compiling hundreds of inter-dependent source packages into a working LibreELEC image with a few simple commands. It is the "secret sauce" of the project, as it allows users of all experience levels to tinker and experiment with the distro. Forking our codebase and experimenting is encouraged!
 
 ## Environment
 
@@ -86,7 +86,7 @@ As a normal user (not as root, and not using sudo) run a build command, e.g.
 PROJECT=Generic ARCH=x86_64 make image
 ```
 
-This will compile the `Generic` build `PROJECT` for the `x86_64` arch, and `make image` will generate an .img.gz file that can be written to USB/SD media for installation, and a .tar file that can update an existing installtion (.img.gz files can also be used for updates, but .tar files are faster).
+This will compile the `Generic` build `PROJECT` for the `x86_64` arch, and `make image` will generate an .img.gz file that can be written to USB/SD media for installation, and a .tar file that can update an existing installation (.img.gz files can also be used for updates, but .tar files are faster).
 
 It is not uncommon for first-time builds to take 6-8 hours due to the number of sources that must be downloaded. Once the build completes the finished image files will be in the `~/LibreELEC.tv/target/` directory.
 

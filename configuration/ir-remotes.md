@@ -87,7 +87,7 @@ Test the buttons work again, and if all is okay, reboot.
 
 ## Configuration (Advanced)
 
-If you cannot find a working keymap or the keymap has misssing buttons you can create your own. The keytable file is plain text with a simple format. The first line contains a header with a descriptive name (free text, but avoid special characters and spaces) and the remote protocol (important!). This is followed by lines that map remote scancode to Linux keycode. A typical keytable file looks like this:
+If you cannot find a working keymap or the keymap has missing buttons you can create your own. The keytable file is plain text with a simple format. The first line contains a header with a descriptive name (free text, but avoid special characters and spaces) and the remote protocol (important!). This is followed by lines that map remote scancode to Linux keycode. A typical keytable file looks like this:
 
 ```
 # table justboom, type: RC5
@@ -105,7 +105,7 @@ systemctl stop kodi
 systemctl stop eventlircd
 ```
 
-Next we have to identify the IR protocol. If you found a partially working keytable file (with the protocol listed in the header) you can skip this step. First we run `ir-keytable` to find out which protocols tthe receiver driver supports. Look at the `Supported protocols:` line, e.g.
+Next we have to identify the IR protocol. If you found a partially working keytable file (with the protocol listed in the header) you can skip this step. First we run `ir-keytable` to find out which protocols the receiver driver supports. Look at the `Supported protocols:` line, e.g.
 
 ```
 LibreELEC:~ # ir-keytable
@@ -285,7 +285,7 @@ The LIRC line indicates Kodi received the LIRC event. The `OnKey:` line shows th
 
 ## Known Issues
 
-USB data transfers can interfere with GPIO IR recievers on Raspberry Pi 0/1/2/3 hardware, and since Ethernet is internally connected via USB playing large movies from a NAS can exhibit the problem. This is a known issue: [see this forum post for details](https://github.com/raspberrypi/linux/issues/906) and there is nothing we can do. Common workarounds are to use a USB IR receiver like [Flirc](https://flirc.tv) or CEC.
+USB data transfers can interfere with GPIO IR receivers on Raspberry Pi 0/1/2/3 hardware, and since Ethernet is internally connected via USB playing large movies from a NAS can exhibit the problem. This is a known issue: [see this forum post for details](https://github.com/raspberrypi/linux/issues/906) and there is nothing we can do. Common workarounds are to use a USB IR receiver like [Flirc](https://flirc.tv) or CEC.
 
 ## LIRC Support
 
@@ -294,7 +294,7 @@ Most remotes are now supported by the Linux kernel but "LIRC" (the userspace lir
 * The `/etc/lirc/lirc_options.conf` file configures the default LIRC driver and /dev/lirc0.
 * The `/etc/lirc/lircd.conf` file includes remote configs for MCE, Xbox 360, Xbox One, and a few others.
 
-The embedded files can be overriden at boot time by creating `/storage/.config/lircd.conf` and `/storage/.config/lirc_options.conf` with needed changes.
+The embedded files can be overridden at boot time by creating `/storage/.config/lircd.conf` and `/storage/.config/lirc_options.conf` with needed changes.
 
 In LibreELEC `lircd-uinput` reads decoded LIRC events from `/run/lirc/lircd.socket` and translates these to Linux input events via the Linux uinput driver. The Linux input events from lircd-uinput are then picked up by `eventlircd` and fed to Kodi as LIRC events via the `/run/lirc/lircd` socket.
 
@@ -306,13 +306,13 @@ To use LIRC with an IR receiver that supports in-kernel decoding it's best to di
 touch /storage/.config/rc_maps.cfg
 ```
 
-Although lircd disables all remote protocols (and thus in-kernel decoding) on startup ir-keytable auto-configuration runs in parallel, and if it happens to run after lircd starts it can re-enable in-kernel decoding. This causes duplicate decoding as both lircd and kernel will receive and proocess the IR signals. This issue is often intermittent since it depends on the timing of lircd start. Sometimes lircd will run after ir-keytable and in-kernel decoding is disabled as expected.
+Although lircd disables all remote protocols (and thus in-kernel decoding) on startup ir-keytable auto-configuration runs in parallel, and if it happens to run after lircd starts it can re-enable in-kernel decoding. This causes duplicate decoding as both lircd and kernel will receive and process the IR signals. This issue is often intermittent since it depends on the timing of lircd start. Sometimes lircd will run after ir-keytable and in-kernel decoding is disabled as expected.
 
 Note: If you stop or disable LIRC in LibreELEC Settings you will need too reboot or set ir-keytable manually from the SSH console. Disabling LIRC does not automatically re-enable in-kernel decoding.
 
 ## Apple IR Remotes
 
-Older LibreELEC relases used `atvclient` to support the Apple IR sensor and send LIRC events to Kodi. Since 9.2.0 we use the native Linux kernel driver for the IR sensor, which sends normal HID events. Create a custom keymap in `/storage/.kodi/userdata/keymaps/keymap.xml` with the following content to map a White or Silver remote:
+Older LibreELEC releases used `atvclient` to support the Apple IR sensor and send LIRC events to Kodi. Since 9.2.0 we use the native Linux kernel driver for the IR sensor, which sends normal HID events. Create a custom keymap in `/storage/.kodi/userdata/keymaps/keymap.xml` with the following content to map a White or Silver remote:
 
 ```markup
 <keymap>

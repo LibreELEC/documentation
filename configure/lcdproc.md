@@ -58,4 +58,4 @@ In addition to normal InfoLabels, LCD InfoLabels display values without addition
 | LCD.TimeWide21, LCD.TimeWide22 | Displays the time in 2×2 sized characters |
 | LCD.Time41, LCD.Time42, LCD.Time43, LCD.Time44 | Displays the time in 4×3 sized characters |
 
-The `LCD.Time` InfoLabels can be displayed while Kodi is in screensaver mode or if the visualisation is started by the screensaver. In all other cases the play and progress icons are shown, which may give unexpectted results.
+The `LCD.Time` InfoLabels can be displayed while Kodi is in screensaver mode or if the visualisation is started by the screensaver. In all other cases the play and progress icons are shown, which may give unexpected results.

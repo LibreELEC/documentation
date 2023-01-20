@@ -11,7 +11,7 @@ The following text from `dmesg` shows the kernel failing to load `rtl8761a_confi
 [    9.241371] bluetooth hci0: Direct firmware load for rtl_bt/rtl8761a_fw.bin failed with error -2
 ```
 
-This can be fixed by creating the overlay directories and downloading the missing firware file from the linux-firmware repository, then rebooting.
+This can be fixed by creating the overlay directories and downloading the missing firmware file from the linux-firmware repository, then rebooting.
 
 ```text
 mkdir -p /storage/.config/firmware/rtl_bt

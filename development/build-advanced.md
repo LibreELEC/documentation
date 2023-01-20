@@ -32,7 +32,7 @@ MTIMMEDIATE=${MTIMMEDIATE:-no}
 
 ## Builder Name and Version
 
-If you are bulding and sharing images via the LibreELEC forums it is good to include a custom "builder" name with your images. This allows the team to count the number of active installs using your images \(we can share this info on request\). Builder name also populates into `/etc/os-release` and logfiles, which helps forum staff supporting users differentiate between official releases and community created images. It is also possible to set custom versioning. e.g.
+If you are building and sharing images via the LibreELEC forums it is good to include a custom "builder" name with your images. This allows the team to count the number of active installs using your images \(we can share this info on request\). Builder name also populates into `/etc/os-release` and logfiles, which helps forum staff supporting users differentiate between official releases and community created images. It is also possible to set custom versioning. e.g.
 
 ```text
 PROJECT=Generic ARCH=x86_64 BUILDER_NAME=yourname BUILDER_VERSION=123 make image
@@ -42,7 +42,7 @@ It is also possible to set persistent `BUILDER_NAME` and `BUILDER_VERSION` in "o
 
 ## Debug Images
 
-The build-system automatically strips debug symbols from most packages. To disable this and include debug symbols and common debugging packagess in the image, enable `DEBUG`, e.g.
+The build-system automatically strips debug symbols from most packages. To disable this and include debug symbols and common debugging packages in the image, enable `DEBUG`, e.g.
 
 ```text
 PROJECT=Generic ARCH=x86_64 DEBUG=yes make image

@@ -30,7 +30,7 @@ To compile all add-ons:
 PROJECT=Generic ARCH=x86_64 scripts/create_addon all
 ```
 
-It is also posssible to exclude specific add-ons:
+It is also possible to exclude specific add-ons:
 
 ```text
 PROJECT=Generic ARCH=x86_64 scripts/create_addon all -game.* -official -pvr.hts

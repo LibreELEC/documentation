@@ -1,6 +1,6 @@
 # Hyperion
 
-Hyperion requires some hardware and software configuration. For the software configuration pls head over to [Hypercon](hypercon.md). This page will describe the process to add Hyperion to Generic x86_64 and Raspberry Pi hardware.
+Hyperion requires some hardware and software configuration. For the software configuration please head over to [Hypercon](hypercon.md). This page will describe the process to add Hyperion to Generic x86_64 and Raspberry Pi hardware.
 
 ## Adalight
 

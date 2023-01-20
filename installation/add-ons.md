@@ -3,7 +3,7 @@
 LibreELEC builds and hosts a number of Kodi binary add-ons to extend functionality, e.g.
 
 * Audio Encoders
-* Audio Decooders
+* Audio Decoders
 * Image Decoders
 * Inputstream parsers
 * PVR clients
