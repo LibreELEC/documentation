@@ -7,7 +7,7 @@ The tutorials on this page are basically using four commands:
 * `pactl load-module <name>` to load a pulseaudio module (not all are loaded by default)
 * `pactl set-default-sink` to set the pulseaudio output device
 * `pactl set-default-source` to set the pulseaudio input device
-* `pactl info` to check the currentt sink/source configuration
+* `pactl info` to check the current sink/source configuration
 
 Sample `pactl info` output:
 
@@ -158,7 +158,7 @@ For example:
 1    alsa_output.platform-aml_m8_snd.45.analog-stereo    module-alsa-card.c    s32le 2ch 44100Hz    SUSPENDED
 ```
 
-Configre the pulseaudio output device:
+Configure the pulseaudio output device:
 
 ```
 pactl set-default-sink alsa_output.platform-aml_m8_snd.45.analog-stereo
@@ -171,7 +171,7 @@ pactl load-module module-native-protocol-tcp auth-anonymous=1
 pactl load-module module-zeroconf-discover
 ```
 
-On the target device, use `pactl` tto list available input devices:
+On the target device, use `pactl` to list available input devices:
 
 ```
 pactl list short sources

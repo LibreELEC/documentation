@@ -6,7 +6,7 @@ Updating LibreELEC is (mostly) simple and can be done automatically, manually fr
 
 Auto-Update is enabled by default and tracks minor version updates, e.g. LibreELEC 9.2.0 will update to 9.2.1, 9.2.2, etc. as they are released. It will not perform major version updates as these involve Kodi add-on updates and user-experience changes that we do not want to force onto users. If auto-update is on the latest update file will download in the background, then Kodi will prompt you to reboot and start the update process. If you prefer to manage updates manually, auto-update can be disabled in the settings add-on.
 
-## Setttings Add-On
+## Settings Add-On
 
 Navigate to the Update section of the settings add-on, select the update channel and then the specific version to update to. The update .tar file will start downloading, and once complete, LibreELEC will reboot to perform the update. Please see the following video:
 

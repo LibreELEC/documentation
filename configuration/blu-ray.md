@@ -1,6 +1,6 @@
 # Blu-Ray Playback
 
-No official Blu-Ray player software exists for Linux, but open-source libraries we include allow Kodi \(on LibreELEC\) to play most Blu-Ray discs once `/storage/.config/aacs/KEYDB.cfg` has been populated with a flat-file database of known encryption keys and certificates. To avoid legal issues with circumevntion of the DMCA laws in the USA we cannot pre-populate the file with a key database, so you must install this yourself.
+No official Blu-Ray player software exists for Linux, but open-source libraries we include allow Kodi \(on LibreELEC\) to play most Blu-Ray discs once `/storage/.config/aacs/KEYDB.cfg` has been populated with a flat-file database of known encryption keys and certificates. To avoid legal issues with circumvention of the DMCA laws in the USA we cannot pre-populate the file with a key database, so you must install this yourself.
 
 Connect to your LibreELEC device via SSH, then run the following command:
 

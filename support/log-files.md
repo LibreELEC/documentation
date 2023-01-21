@@ -35,7 +35,7 @@ If Samba \(SMB Sharing\) is enabled you can collect the log file by accessing th
 
 **!! PLEASE DO NOT UPLOAD LOG/ZIP FILES TO THE FORUM !!**
 
-Instead, open `KODI.log` in a text editor and copy/paste the content to an interenet "paste" service like [https://pastebin.com](https://pastebin.com) then share the paste URL. This makes reviewing your log a "one click" exercise so more people are likely to review it, and it saves a ton of disk space on our forum server.
+Instead, open `KODI.log` in a text editor and copy/paste the content to an internet "paste" service like [https://pastebin.com](https://pastebin.com) then share the paste URL. This makes reviewing your log a "one click" exercise so more people are likely to review it, and it saves a ton of disk space on our forum server.
 
 ## Kodi Log Uploader
 

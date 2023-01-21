@@ -61,7 +61,7 @@ Kodi does not support downgrading. If "updating" within the same LibreELEC/Kodi 
 
 In 2016 when we forked from OpenELEC the differences between projects were small and it was simple to migrate by using our update .tar file. Today there are some challenges:
 
-* LibreELEC images for Generic x86\_64 hardware have grown to 240MB+ in size and most older OpenELEC installs have a small 230MB boot partition so LibreELEC files will not fit and the manaul .tar update process will fail (gracefully). Raspberry Pi and similar images are smaller and will still fit, but read on:
+* LibreELEC images for Generic x86\_64 hardware have grown to 240MB+ in size and most older OpenELEC installs have a small 230MB boot partition so LibreELEC files will not fit and the manual .tar update process will fail (gracefully). Raspberry Pi and similar images are smaller and will still fit, but read on:
 * Older Kodi add-ons are frequently incompatible with newer Kodi versions, causing crashes when the system restarts, and the bigger the version jump the more likely add-ons will cause problems. LibreELEC will detect when Kodi repeatedly fails to start and defaults to a "safe mode" configuration, but this normally requires you to access the SSH console to get back to a working setup.
 * Kodi does not self-manage media and add-on package caches so over-time filesystem litter accumulates. Starting over from a clean install removes all the not-needed junk resulting in a faster/lighter installation with an improved Kodi user experience.
 

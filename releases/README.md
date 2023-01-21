@@ -1,6 +1,6 @@
 # Releases
 
-An offical archive of all Alpha, Beta, and Release images is here: [http://archive.libreelec.tv](http://archive.libreelec.tv)
+An official archive of all Alpha, Beta, and Release images is here: [http://archive.libreelec.tv](http://archive.libreelec.tv)
 
 Nightly test and development snapshot images are here: [https://test.libreelec.tv](https://test.libreelec.tv)
 

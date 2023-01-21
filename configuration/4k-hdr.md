@@ -30,7 +30,7 @@ Raspberry Pi 4 devices require specific configuration in config.txt to enable 4K
 
 4K @ 60/59.94/50 modes require hardware that supports HDMI 2.0 or higher, and an HDMI cable that supports the higher bandwidth needed. Suitable cables are normally sold as 4K@60 "certified" cables. Cheaper and lower-spec cables that support HDMI 1.4 modes (up to 4K@30) are a frequent cause of "I enabled 4K@60 but have a blank screen" issue reports in the forums.
 
-Some hardware supports 4096x2160 modes. Kodi evaulates the whitelist using the height (2160) and refresh rate, so if you include these in your whitelist selection Kodi will switch to them instead of 3840x2160 modes which are an exact or more accurate match with 4K streaming media. If you see black bars on the sides of 4K media while playing, remove 4096 modes from the whitelist.
+Some hardware supports 4096x2160 modes. Kodi evaluates the whitelist using the height (2160) and refresh rate, so if you include these in your whitelist selection Kodi will switch to them instead of 3840x2160 modes which are an exact or more accurate match with 4K streaming media. If you see black bars on the sides of 4K media while playing, remove 4096 modes from the whitelist.
 
 <mark style="color:red;">**Recommendation: Configure Kodi to allow the following modes, if available:**</mark>
 
@@ -39,13 +39,13 @@ Some hardware supports 4096x2160 modes. Kodi evaulates the whitelist using the h
 
 ### Adjust Refresh
 
-Kodi can either upscale media to match the desktop resolution and refresh rate, or automatically switch to a resolution and rate that exactly or better matches the media. Switching to match the rate can eliminate or minimse the need for Kodi to make corrections (to keep things in-sync) by adding or dropping frames. Adding frames to the stream is generally harmless and rarely causes noticable artefacts, but dropping frames causes skips, glitches and audio pops.
+Kodi can either upscale media to match the desktop resolution and refresh rate, or automatically switch to a resolution and rate that exactly or better matches the media. Switching to match the rate can eliminate or minimise the need for Kodi to make corrections (to keep things in-sync) by adding or dropping frames. Adding frames to the stream is generally harmless and rarely causes noticeable artefacts, but dropping frames causes skips, glitches and audio pops.
 
 Kodi has three "Adjust Refresh" settings:
 
-* Off (scale media to the dekstop resolution/rate)
+* Off (scale media to the desktop resolution/rate)
 * On start/stop (change resolution/rate when playback starts and stops)
-* Allways (change on start/stop and during playback if the media changes resolution/rate)
+* Always (change on start/stop and during playback if the media changes resolution/rate)
 
 <mark style="color:red;">**Recommendation: Set the Adjust Refresh setting to "On Start/Stop"**</mark>
 

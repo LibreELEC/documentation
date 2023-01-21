@@ -74,7 +74,7 @@ If any key that you purchased shows `disabled` check that:
 
 ## Overlays
 
-Raspberry Pi kernels use a board-specicic device-tree file to describe the board's hardware and how things are connected. As the Raspberry Pi is designed to be extended with extra hardware via HATs and peripheral connectors the kernel also supports device-tree "overlay" files. When configured, these overlay "fragments" of device-tree content that describe the extra hardware on the board device-tree, and the the kernel reads them as a single combined file.
+Raspberry Pi kernels use a board-specific device-tree file to describe the board's hardware and how things are connected. As the Raspberry Pi is designed to be extended with extra hardware via HATs and peripheral connectors the kernel also supports device-tree "overlay" files. When configured, these overlay "fragments" of device-tree content that describe the extra hardware on the board device-tree, and the the kernel reads them as a single combined file.
 
 Overlays can be found in `/flash/overlays` and they are configured in `config.txt` in the root folder of the SD card that you boot the Raspberry Pi from. The following are examples of common overlay changes.
 

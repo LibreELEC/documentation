@@ -29,7 +29,7 @@ nano /storage/.config/autostop.sh
 
 Like the `autostart.sh` script you can place any commands in the script, and they will block the shutdown process for up to 5 minutes and then will be terminated automatically.
 
-`autostop.sh` is avalable as of LibreELEC 10.0.2 or LibreELEC 11 nightlies 2022-02-04.
+`autostop.sh` is available as of LibreELEC 10.0.2 or LibreELEC 11 nightlies 2022-02-04.
 
 ## shutdown.sh
 

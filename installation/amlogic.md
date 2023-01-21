@@ -1,6 +1,6 @@
 # Amlogic
 
-Images for Amlogic hardware using modern, a.k.a "mainline" Linux kernels use different boot processes and device-tree files that are not compatible with Android or older LibreELEC images that use the Amlogic Linux 3.14 or 4.9 kernels. The change to boot processes means you cannot update from older releasesa you must make a new/clean installation.
+Images for Amlogic hardware using modern, a.k.a "mainline" Linux kernels use different boot processes and device-tree files that are not compatible with Android or older LibreELEC images that use the Amlogic Linux 3.14 or 4.9 kernels. The change to boot processes means you cannot update from older releases you must make a new/clean installation.
 
 We currently ship the `AMLGX` image with "box" and "board" configurations for the following SoCs:
 
@@ -15,7 +15,7 @@ The image type is identified by the -suffix appended, e.g. `LibreELEC-AMLGX.arm-
 
 ## Box Images
 
-The "box" image supports Set-Top "Box" \(STB\) and other devices with Android or Legacy Kernel Linux images \(and vendor U-Boot\) installed on the internal eMMC storage. It is common for box vendors to make device-specific U-Boot customisations so it is best to run LibreELEC from an SD card via the original bootloader. To use a box image you trigger "update" mode in the vendor U-Boot. This causes U-Boot to look for some standard filesnames which we have tweaked to load the LibreELEC `KERNEL` and `SYSTEM` files to boot the device.
+The "box" image supports Set-Top "Box" \(STB\) and other devices with Android or Legacy Kernel Linux images \(and vendor U-Boot\) installed on the internal eMMC storage. It is common for box vendors to make device-specific U-Boot customisations so it is best to run LibreELEC from an SD card via the original bootloader. To use a box image you trigger "update" mode in the vendor U-Boot. This causes U-Boot to look for some standard filenames which we have tweaked to load the LibreELEC `KERNEL` and `SYSTEM` files to boot the device.
 
 As `box` images can be used on many devices, you must configure the device-tree file to use first. This is done by editing the uEnv.ini file in the root folder of the SD card and changing `@@DTB_NAME@@` with the name of the .dtb file to use. The device-tree files are in the `dtb` folder.
 
@@ -41,7 +41,7 @@ These images are built for Single Board Computer \(SBC\) devices which boot mode
 
 ## install2internal
 
-Community created images using the legacy Amlogic kernels often include the `install2internal` script to reconfigure the factory boot process and run LibreELEC from the internal emmc storage. In the past when most box devices had 1GB RAM and SD cards were slow \(or badly written software ran them slower\) the performance difference was substantial, so the script evolved a cult following and many users belive they _must_ install to internal eMMC or their box will be unusuable. This is wrong advice. Using modern boxes with 2GB+ RAM and better SD card support the performance difference is marginal. You are not missing out by booting from an SD card!
+Community created images using the legacy Amlogic kernels often include the `install2internal` script to reconfigure the factory boot process and run LibreELEC from the internal emmc storage. In the past when most box devices had 1GB RAM and SD cards were slow \(or badly written software ran them slower\) the performance difference was substantial, so the script evolved a cult following and many users believe they _must_ install to internal eMMC or their box will be unusable. This is wrong advice. Using modern boxes with 2GB+ RAM and better SD card support the performance difference is marginal. You are not missing out by booting from an SD card!
 
 The main reason we do not provide or support emmc installs on "box" devices is the high level of support issues. Software and hardware quality in Android STB hardware is not great, and this complicates the process of successfully installing to the internal eMMC storage so many installs have problems resulting in a "bricked" box. Amlogic builds factory-restore mechanisms into their hardware and software that mean it is possible to recover the box, but this usually depends on finding a working Android image for the device, and the process is challenging for less technical users. Our forum staff are all volunteers who give time to the project for fun. Helping an never-ending stream of pissed-off inexperienced users recover bricked boxes is not fun.
 

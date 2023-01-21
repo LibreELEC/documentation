@@ -2,7 +2,7 @@
 
 LibreELEC can be configured as a WireGuard VPN client allowing you to accessing media in a remote location or tunnel traffic to avoid local inspection of network activity. This guide assumes configuration of a single WireGuard tunnel that is persistent, i.e. activated on device boot so that Kodi network traffic is routed through the WireGuard VPN tunnel.
 
-WireGuard tunnels are managed by a ConnMan VPN plugin \(connman-vpn.service\) that acts as a companion to the network connection manager daemon \(connman.service\). The VPN plugin watches `/storage/.config/wireguard/*.config` and definea ConnMan services from auto-discovered configuration files. Once a valid WireGuard .config has been imported it can be connected manually using `connmanctl` from the SSH console or scripted from a systemd service that runs on boot. Connections can also be managed using the network 'Connections' tab in the LibreELEC settings add-on which controls ConnMan via d-bus.
+WireGuard tunnels are managed by a ConnMan VPN plugin \(connman-vpn.service\) that acts as a companion to the network connection manager daemon \(connman.service\). The VPN plugin watches `/storage/.config/wireguard/*.config` and defines ConnMan services from auto-discovered configuration files. Once a valid WireGuard .config has been imported it can be connected manually using `connmanctl` from the SSH console or scripted from a systemd service that runs on boot. Connections can also be managed using the network 'Connections' tab in the LibreELEC settings add-on which controls ConnMan via d-bus.
 
 ## Sample Config
 
@@ -56,7 +56,7 @@ In the above example `vpn_185_210_30_121` was created \(vpn\_host\) as the ConnM
 RPi4:~ # connmanctl connect vpn_185_210_30_121
 ```
 
-ConnMan will create a new network interface, so `ifconfig` will show `wg0` or sometimes a higer number like `wg1` or `wg2`:
+ConnMan will create a new network interface, so `ifconfig` will show `wg0` or sometimes a higher number like `wg1` or `wg2`:
 
 ```text
 RPi4:~ # ifconfig
