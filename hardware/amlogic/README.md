@@ -9,11 +9,11 @@ There are two images supporting Amlogic Gen10+ (64-bit) SoCs and older Gen8 (32-
 * GXBB (S905)
 * GXL (S805X/S905X/D/W/L)
 * GXM (S912)
-* G12A (S905X2/D2/Y2) - experimental
-* G12B (S922X/A311D) - experimental
-* SM1 (S905X3/D3) - experimental
+* G12A (S905X2/D2/Y2)
+* G12B (S922X/A311D)
+* SM1 (S905X3/D3)
 
-`AMLMX` (not currently available) supports the following 32-bit SoCs:
+`AMLMX` supports the following 32-bit SoCs:
 
 * Meson 8 (S805)
 * Meson 8b (S802)
@@ -60,15 +60,17 @@ In most cases you will need a small pin, unfolded paper-clip, or toothpick to pr
 
 These images are built for Single Board Computer (SBC) devices which boot modern U-Boot via an SD card or removable eMMC module. Installation is normally simple requiring you to write the image to the SD card or eMMC module and boot the device. If the board has eMMC storage soldered (not on a removable module) it may be necessary to boot from the "box" image first. Once booted to a box image on SD card (so eMMC is not in use) you can write the correct `board` image to eMMC (overwriting Android or other factory-installed images) using `dd` to write the image. You can use the `emmctool` command to help that process (see below).
 
-## Internal Installs (Android Boxes)
+## install2internal
 
-Images using legacy Amlogic 3.14 or 4.9 Linux kernels often include an `install2internal` script to reconfigure and run LibreELEC from internal eMMC storage. Using it with modern`AMLGX` images will normally "brick" the box needing Amlogic Burning Tool and an Android factory image to recover the box. We do not support the script or Amlogic Burning Tool, there is no secret alternative, and we do not have a special collection of Android ROM images to help with. <mark style="color:red;">**If you attempt internal installation and brick your Android box it will be your problem to solve. Do not expect support or sympathy from the forum staff.**</mark>
+Community images using the legacy Amlogic kernels often include the `install2internal` script to reconfigure the factory boot process and run LibreELEC from the internal eMMC storage. We do not provide or support this script.
 
-We do not provide or support internal eMMC installs on Android "box" devices because of the high level of support issues. Hardware quality in Android STB hardware is not great and many vendors hack and customise the boot process, and a significant percentage of users "brick" their box as a result of running the `install2internal` script. Amlogic builds factory-restore mechanisms into their software and hardware that mean it is always possible to recover the box, but this varies in process and complexity and requires you to find an Android image for the specific device. This is challenging for less technical users (and often experienced ones). Our forum staff are volunteers who give time to the project for fun. Helping a never-ending stream of inexperienced and pissed-off users recover bricked boxes is not fun, so we do not support internal installs.
+The simple reason we do not provide or support emmc installs on "box" devices is the high level of support issues seen from them. Software and hardware quality in Android STB hardware is not great and this complicates the process of successfully installing to the internal eMMC storage and many installs have problems resulting in a "bricked" box. Amlogic builds several factory-restore mechanisms into their software that mean it is always possible to recover the box, but this usually requires you to find an Android image for the device, and the process is challenging for less technical users. Our forum staff are all volunteers who give time to the project for fun. Helping a never-ending stream of pissed-off inexperienced users recover bricked boxes is not fun, so we actively discourage the existence and use of this script.
 
-## Internal Installs (Boards)
+To run LibreELEC from eMMC storage purchase a supported "board" device. If you find and run an `install2internal` script and something messes up (and it probably will) do not expect support or sympathy from the forum staff.
 
-The `AMLGX` image contains a helper script called `emmctool` that supports a range of useful functions for backup, writing, erasing (and more) with eMMC storage. See:
+## emmctool
+
+In the `AMLGX` image there is an eMMC helper script called `emmctool` that supports a range of useful functions for backup/write/erase (and more) for eMMC storage. See:
 
 ```
 LibreELEC:~ # emmctool 
@@ -83,7 +85,7 @@ Partition Table: gpt
 Disk Flags: 
 
 Number  Start   End     Size    File system  Name          Flags
- 1      17.4kB  7818MB  7818MB  ext4         STORAGE
+ 1      17.4kB  7818MB  7818MB  ext4         EMMC_STORAGE
 
 usage: emmctool (w)rite <filename>   : write <filename>.img/.img.gz to the eMMC module
                 (b)backup <filename> : dump the emmc partition to an .img.gz file
@@ -96,8 +98,4 @@ usage: emmctool (w)rite <filename>   : write <filename>.img/.img.gz to the eMMC 
                 (h)elp               : displays this help message
 ```
 
-The `emmctool` helper supports a specific and limited range of SBC boards with eMMC modules and a small number of Android TV boxes that have [sources](https://github.com/LibreELEC/amlogic-boot-fip) to create the signed u-boot firmware needed to boot Amlogic boards.
-
-If used on a generic Android box devices `emmctool` will output the (i) info only.
-
-<mark style="color:red;">**Do not attempt to write board images to Android box devices.**</mark> The signed u-boot firmware in the image will not work in 99/100 cases and recovering the box is complicated. <mark style="color:red;">**Do not expect support or sympathy from the forum staff if you do this.**</mark>
+The `emmctool` helper supports a limited range of SBC boards with eMMC modules. On a generic Android device it will output the (i) info only.
