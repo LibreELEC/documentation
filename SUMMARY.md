@@ -18,6 +18,7 @@
 * [Allwinner](hardware/allwinner.md)
 * [Amlogic](hardware/amlogic/README.md)
   * [LaFrite](hardware/amlogic/lafrite.md)
+  * [WeTek Hub/Play2](hardware/amlogic/wetek-hub-play2.md)
 * [NXP - iMX6/iMX8](hardware/nxp-imx6-im8.md)
 * [Intel x86-64 (Generic)](hardware/intel-x86-64-generic.md)
 * [Qualcomm](hardware/qualcomm.md)
