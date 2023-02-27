@@ -27,6 +27,8 @@ Modern Intel GPUs have been shipping since "Nehalem" in 2010, and over time the 
 | Gen9  | Coffee-lake refresh                          | i915   | Yes  | Yes  | No  | Yes | HDMI |
 | Gen10 | Comet-lake, Ice-lake, Amber-lake             | i915   | Yes  | Yes  | No  | Yes | Yes  |
 | Gen11 | Rocket-lake, Tiger-lake                      | i915   | Yes  | Yes  | Yes | Yes | Yes  |
+| Gen12 | Alder-lake                                   | i915   | Yes  | Yes  | Yes | Yes | Yes  |
+| Gen13 | Raptor-lake                                  | i915   | Yes  | Yes  | Yes | Yes | Yes  |
 
 * Gen6 CPUs (Skylake) have HDMI 1.4b and DisplayPort 1.2 connectors. HDMI can run at max 1920x1200@60 resolution, while DP can run at max 3840x2160@60 resolution.
 * Gen7 and Gen8 CPUs use an LSPCON chip for HDMI 2.0 output. HDR is supported only when the HDMI output is connected to an HDMI 2.0 port on the TV. Users with Intel NUC devices are recommended to run the latest Intel firmware for their device. Lots of bugs in original/factory LSPCON firmwares have been fixed.
@@ -34,13 +36,13 @@ Modern Intel GPUs have been shipping since "Nehalem" in 2010, and over time the 
 * Linux has full support for Tiger-Lake CPUs from Linux 5.12 onwards
 * Intel GPUs are known as _Integrated graphics processors (IGPs)_ and are embedded within the CPU core. Each CPU generation uses a single GPU generation but the generation ID's do not match, e.g. Gen10 CPUs have Gen11 GPUs.
 
-**LibreELEC 10.0 shipped with Linux 5.10 kernel support and Xorg graphics, so it does not have support for HDR or Gen11 hardware**. Community created LibreELEC 10.0 images with newer Linux kernels supporting Gen11 hardware and `GBM` graphics with experimental HDR patches can be downloaded from the LibreELEC forums. LibreELEC 11.0 nightly development images from 21/9/21 onwards also use GBM graphics, include early (pre-Alpha) Kodi 20.0 support for HDR, and an updated kernel supporting Gen11 hardware.
+**LibreELEC 10.0 shipped with Linux 5.10 kernel support and Xorg graphics, so it does not have support for HDR or Gen11 hardware**. Community created LibreELEC 10.0 images with newer Linux kernels supporting Gen11 hardware and`GBM` graphics with experimental HDR patches can be downloaded from the LibreELEC forums. LibreELEC 11.0 use GBM graphics, include Kodi 20.0 support for HDR, and an updated kernel supporting Gen11, Gen12 hardware.
 
 ## AMD GPUs
 
-AMD GPUs are a popular option for users building custom HTPCs from motherboards without onboard Intel graphics. LibreELEC embeds two AMD drivers: `radeon` is used with older cards, and `amdgpu`  is used with newer cards (starting from the 'Southern Islands' family).
+AMD GPUs are a popular option for users building custom HTPCs from motherboards without onboard Intel graphics. LibreELEC embeds two AMD drivers: `radeon` is used with older cards, and `amdgpu` is used with newer cards (starting from the 'Southern Islands' family).
 
-Determining media features (H264, HEVC, AV1, 4K, 4K60, HDR, etc.) is complicated due to the sheer number of different AMD cards available. Each new GPU generation ships with low-end cards limited in capabilities, and high-end cards with multiple connectors. Media features like 4K and HDR also have a dependency on connectors (HDMI or DisplayPort) and the standards the connectors support. For example, some cards support HDMI 1.4b and a max resolution of up to 3840x2160@30 with 8-bit HDR output, while cards with DisplayPort 1.4 or HDMI 2.0 may support up to 3840x2160@60 with 10-bit output.&#x20;
+Determining media features (H264, HEVC, AV1, 4K, 4K60, HDR, etc.) is complicated due to the sheer number of different AMD cards available. Each new GPU generation ships with low-end cards limited in capabilities, and high-end cards with multiple connectors. Media features like 4K and HDR also have a dependency on connectors (HDMI or DisplayPort) and the standards the connectors support. For example, some cards support HDMI 1.4b and a max resolution of up to 3840x2160@30 with 8-bit HDR output, while cards with DisplayPort 1.4 or HDMI 2.0 may support up to 3840x2160@60 with 10-bit output.
 
 The most accurate source of information is [https://www.x.org/wiki/RadeonFeature](https://www.x.org/wiki/RadeonFeature/)
 
@@ -48,7 +50,9 @@ The most accurate source of information is [https://www.x.org/wiki/RadeonFeature
 
 LibreELEC v7.x - v10.x include two different nVidia GPU drivers; a "legacy" driver (340.xx) and the latest stable driver. The drivers provide `OpenGL` support via `Xorg` so Kodi can display a GUI on-screen, and Kodi supports`VDPAU` hardware decoding of H264 and some older SD era media codecs for efficient playback. Newer nVidia cards support 4K resolutions and `NVDEC` hardware decoding, but Kodi does not support `NVDEC`, and while Kodi can output 4K, nVidia VDPAU drivers have no support for HEVC or VP9 (the formats used with most 4K media) and there is no support for HDR. It is no surprise that project active-install stats show most nVidia installs are using the legacy nVidia driver, and the number of installs continues to decline over time: which means LibreELEC users are replacing older nVidia devices with something that does not use an nVidia GPU. This trend is not new and influences our technical decisions:
 
-LibreELEC v11.x will switch "Generic" from Xorg OpenGL graphics to the Mesa OpenGL and the same DRM PRIME video stack used with ARM SoC devices. It is currently still possible to build a "Generic\_Legacy" image using Xorg, but if "GBM" image development continues to progress well our intention is to drop the legacy image (and with it, nVidia support). In lieu of this:
+LibreELEC v11.x has switched "Generic" from Xorg OpenGL graphics to the Mesa OpenGL and the same DRM PRIME video stack used with ARM SoC devices.&#x20;
+
+A "Generic\_Legacy" image using Xorg is available, but if "GBM" image development continues to progress well our intention is to drop the legacy image in the future (and with it, nVidia support). In lieu of this:
 
 _**The team does not recommend users purchase nVidia hardware for use with Kodi**_
 
