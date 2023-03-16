@@ -23,9 +23,9 @@ NB: The WeTek Play(1)/OpenELEC box uses Meson 6 (8726MX) hardware. There is litt
 
 `AMLGX` and `AMLMX` provide a "box" image for use with devices that run Amlogic (aka Vendor or Legacy) boot firmware (U-Boot 2015.01 with Amlogic and manufacturer customisations) and "board" images using modern boot firmware (mainline U-Boot) specific to a single SBC board or STB device. The image type can be identified by the filename `-suffix`:
 
-* `LibreELEC-AMLGX.arm-10.0.0-box.img.gz` is the `AMLGX` "box" image
-* `LibreELEC-AMLGX-arm-10.0.0-khadas-vim3.img.gz` is a "board" image for VIM3
-* `LibreELEC-AMLMX-arm-10.0.0-box.img.gz` is a "box" image for Meson 8 devices
+* `LibreELEC-AMLGX.arm-11.0.0-box.img.gz` is the `AMLGX` "box" image
+* `LibreELEC-AMLGX.arm-11.0.0-khadas-vim3.img.gz` is a "board" image for VIM3
+* `LibreELEC-AMLMX.arm-11.0.0-box.img.gz` is a "box" image for Meson 8 devices
 
 ## Box Images
 

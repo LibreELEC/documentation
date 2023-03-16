@@ -11,15 +11,15 @@ Once the box has booted into the "box" image you can download the latest WeTek "
 Find the URL for the relevant board image on the [download page](https://libreelec.tv/downloads/amlogic/). For example, the LibreELEC v11 beta 1 image for the WeTek Play2 will be:
 
 ```
-https://releases.libreelec.tv/LibreELEC-AMLGX.arm-10.95.0-wetek-play2.img.gz
+https://releases.libreelec.tv/LibreELEC-AMLGX.arm-11.0.0-wetek-play2.img.gz
 ```
 
-Enable SSH and login, then run the following commands to download the board image to /storage and run `emmctool` to write (`w`) the `LibreELEC-AMLGX.arm-10.95.0-wetek-play2.img.gz` image to eMMC:
+Enable SSH and login, then run the following commands to download the board image to /storage and run `emmctool` to write (`w`) the `LibreELEC-AMLGX.arm-11.0.0-wetek-play2.img.gz` image to eMMC:
 
 ```
 cd /storage
-wget https://releases.libreelec.tv/LibreELEC-AMLGX.arm-10.95.0-wetek-play2.img.gz
-emmctool w LibreELEC-AMLGX.arm-10.95.0-wetek-play2.img.gz
+wget https://releases.libreelec.tv/LibreELEC-AMLGX.arm-11.0.0-wetek-play2.img.gz
+emmctool w LibreELEC-AMLGX.arm-11.0.0-wetek-play2.img.gz
 ```
 
 `The emmctool` utility will write the board image to eMMC, expand the /storage partition to 100% size and change the partition labels to `BOOT` and `DISK` to avoid clashing with the default labels used in the SD card image (so you can boot from SD card if needed).
