@@ -15,7 +15,7 @@ LibreComputer preinstalls their eMMC modules with Android, so if you power on th
 3. Run `emmctool d` to detect the module
 4. Run `emmctool z` to erase (zero) the module
 5. Copy the `lafrite` image to `/storage/` on the USB stick
-6. Run `emmctool w /storage/LibreELEC-AMLGX.arm-10.0.0-lafrite.img.gz` to write the `lafrite` image to the eMMC module.
+6. Run `emmctool w /storage/LibreELEC-AMLGX.arm-11.0.0-lafrite.img.gz` to write the `lafrite` image to the eMMC module.
 7. Power off the board, remove the USB stick
 8. Power on the board, and LibreELEC will boot to eMMC and resize /storage
 
