@@ -34,7 +34,7 @@ Turn off the Raspberry Pi, remove the SD card, and use a card reader connected t
 
 ## MPEG2 and VC-1 Licenses
 
-* Raspberry Pi 0/1/2 cannot hardware-decode MPEG2/VC-1 media files without a license key that can be purchased from the [Raspberry Pi Foundation](http://www.raspberrypi.com/license-keys). The hardware is too slow to software decode these formats without the keys.
+* Raspberry Pi 0/1/2 cannot hardware-decode MPEG2/VC-1 media files without a license key that can be purchased from the [Raspberry Pi Foundation](https://codecs.raspberrypi.com/license-keys/). The hardware is too slow to software decode these formats without the keys.
 * Raspberry Pi 3 hardware has higher spec CPUs and is capable of software-decoding without the licenses, although purchasing them allows hardware-decoding and your device will run cooler.
 * Raspberry Pi 4 is capable of software decoding these formats and license keys are not available.
 
