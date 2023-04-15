@@ -17,6 +17,7 @@
 
 * [Allwinner](hardware/allwinner.md)
 * [Amlogic](hardware/amlogic/README.md)
+  * [BananaPi M5 / M2S](hardware/amlogic/bananapi-m5-m2s.md)
   * [LaFrite](hardware/amlogic/lafrite.md)
   * [WeTek Hub/Play2](hardware/amlogic/wetek-hub-play2.md)
 * [NXP - iMX6/iMX8](hardware/nxp-imx6-im8.md)
