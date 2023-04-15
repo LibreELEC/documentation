@@ -17,8 +17,8 @@ On BPI-M2S create `/storage/.config/autostart.sh` with the following content:
 
 ```sh
 mount -o remount,rw /flash
-fdtput -t s /flash/meson-sm1-bananapi-m5.dtb /soc/sd@ffe03000 status okay
-fdtput -t s /flash/meson-sm1-bananapi-m5.dtb /soc/bus@ffd00000/serial@24000 status okay
+fdtput -t s /flash/meson-sm1-bananapi-m2s.dtb /soc/sd@ffe03000 status okay
+fdtput -t s /flash/meson-sm1-bananapi-m2s.dtb /soc/bus@ffd00000/serial@24000 status okay
 mount -o remount,ro /flash
 ```
 
