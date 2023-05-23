@@ -2,7 +2,7 @@
 
 ## Requirements
 
-* Windows 10 or Windows 11 with installed WSL2 and Ubuntu WSL
+* Windows 11 with installed WSL2 and Ubuntu WSL
 
 ## Workarounds to make it work
 
@@ -15,7 +15,7 @@ wsl@PC:~$ echo $PATH
 
 This breaks the build and leads to unpredictable problems.
 
-To disable that behavior you need to create a file at your Ubuntu WSL `/etc/wsl.conf` and add these options to disable. Afterwards you need to reboot WSL or your system.
+To disable that behaviour you need to create a file at your Ubuntu WSL `/etc/wsl.conf` and add these options to disable. Afterwards you need to reboot WSL or your system.
 
 ```
  [interop]
@@ -28,7 +28,7 @@ To disable that behavior you need to create a file at your Ubuntu WSL `/etc/wsl.
 To interoperate with your Windows Desktop you want the git tree accessible from Windows.\
 So you clone the Git Tree to a location at windows and try to use it at WSL.
 
-For this example the Git Tree is cloned at `D:\WSL\LE` - `/mnt/d/WSL/LE`. \
+For this example the Git Tree is cloned at `D:\WSL\LE` - `/mnt/d/WSL/LE`.\
 If you start building the build folder would be located at `D:\WSL\LE\build.YOURPROJECT` .
 
 To change the path for the build files you need to add some options to the LibreELEC options file `/home/YOURUSER/.libreelec/options` .
@@ -45,8 +45,8 @@ The /home folder is located at the WSL ext4.vhdx and not at the native NTFS stor
 
 There are several ways in moving your WSL file, the easiest solution is the dedicated tool [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline#install) . The version 3.5.0 is not supporting the current Windows Version so you need to use a more recent version or a development build.
 
-`lxrunoffline move -n Ubuntu-20.04 -d d:\wsl`
+`lxrunoffline move -n Ubuntu-22.04 -d d:\wsl`
 
-###### AlpineWSL
-Or you can use https://github.com/yuk7/AlpineWSL which creates ext4.vhdx on your wanted disk and automatically mounts it to WSL2 itself on startup.
-Advanced instructions: https://gist.github.com/onomatopellan/90024008a0d8c8a2ed6fa57e8b64df54 
+**AlpineWSL**
+
+Or you can use https://github.com/yuk7/AlpineWSL which creates ext4.vhdx on your wanted disk and automatically mounts it to WSL2 itself on startup. Advanced instructions: https://gist.github.com/onomatopellan/90024008a0d8c8a2ed6fa57e8b64df54

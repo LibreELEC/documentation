@@ -56,16 +56,16 @@ cd LibreELEC.tv
 
 ## Versions
 
-After cloning you are now at the current `HEAD` position of the `master` development branch. To compile a specific LibreELEC release we need to `checkout` the specific version `tag` or `githash` associated with the release, e.g. to build the LibreELEC 9.2.0 release we checkout the `9.2.0` tag:
+After cloning you are now at the current `HEAD` position of the `master` development branch. To compile a specific LibreELEC release we need to `checkout` the specific version `tag` or `githash` associated with the release, e.g. to build the LibreELEC 11.0.1 release we checkout the `11.0.1` tag:
 
 ```
-git checkout 9.2.0
+git checkout 11.0.1
 ```
 
 You can also build at a specific point in the git revision history identified by a commit githash:
 
 ```
-git checkout 65136474fda5302f427f492d40da66645b125cf1
+git checkout aae861df88959402cde174cf95e505d942d8451e
 ```
 
 You are now in the root folder of the build-system and ready to build!
