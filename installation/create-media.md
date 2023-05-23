@@ -1,6 +1,6 @@
 # Create Media
 
-The “LibreELEC USB-SD Creator” app helps you choose and download the latest image for your HTPC device and create bootable USB or SD Card media. The tool is available for Windows 7 and newer, macOS 10.9 and newer, and Ubuntu Linux 32/64 bit (and should also work on other Debian derivatives).
+The “LibreELEC USB-SD Creator” app helps you choose and download the latest image for your HTPC device and create bootable USB or SD Card media. The tool is available for Windows 10 and newer, macOS 10.9 and newer, and Ubuntu Linux 32/64 bit (and should also work on other Debian derivatives).
 
 * [LibreELEC.USB-SD.Creator.Win32.exe](https://releases.libreelec.tv/LibreELEC.USB-SD.Creator.Win32.exe)
 * ~~LibreELEC.USB-SD.Creator.macOS.dmg~~ ([currently not available](https://libreelec.tv/2022/04/05/usb-sd-creator-1-4/))
@@ -10,10 +10,9 @@ The “LibreELEC USB-SD Creator” app helps you choose and download the latest 
 
 Choose the LibreELEC image and the app will show the latest stable release, e.g.
 
-* Generic x86\_64 - LibreELEC-Generic.x86\_64-9.2.6.img.gz
-* RaspberryPi 0/1 - LibreELEC-RPi.arm-9.2.6.img.gz
-* RaspberryPi 2/3 - LibreELEC-RPi2.arm-9.2.6.img.gz
-* RaspberryPi 4 - LibreELEC-RPi4.arm-9.2.6.img.gz
+* Generic x86\_64 - LibreELEC-Generic.x86\_64-11.0.1.img.gz
+* RaspberryPi 2/3 - LibreELEC-RPi2.arm-11.0.1.img.gz
+* RaspberryPi 4 - LibreELEC-RPi4.arm-11.0.1.img.gz
 
 If you check 'Show all' the list also shows older stable releases and current Alpha (x.90.xxx) or Beta (x.95.0) releases.
 
