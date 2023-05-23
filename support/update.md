@@ -2,18 +2,18 @@
 
 Updating LibreELEC is (mostly) simple and can be done automatically, manually from inside the Kodi GUI via the LibreELEC Settings add-on, by [downloading an update file from our website](https://libreelec.tv/downloads\_new) and copying the file to a local Samba share, or by running a command from the SSH console. We publish two image file types:
 
-* LibreELEC-Project.arch-9.6.7**.tar** (update) files which are used for updates only.
-* LibreELEC-Project.arch-9.6.7**.img.gz** (image) files which are used for creating new USB/SD installation media but can also be used for updates.
+* LibreELEC-Project.arch-11.0.1.**tar** (update) files which are used for updates only.
+* LibreELEC-Project.arch-11.0.1.**img.gz** (update + image) files which are used for creating new USB/SD installation media but can also be used for updates.
 
-We can update from both **.tar** and **.img.gz** files, but .tar files are faster to process.
+We can update from both **.tar** and **.img.gz** files.
 
 ## Auto-Update
 
-Auto-Update is enabled by default and tracks minor version updates, e.g. LibreELEC 9.2.0 will update to 9.2.1, 9.2.2, etc. as they are released. It will not perform major version updates as these involve Kodi add-on updates (broken add-ons are the main source of update issues) and user-experience changes we do not want to force onto users. If auto-update is enabled the latest update file will download in the background, then Kodi will prompt you to reboot and start the update process. If you prefer to manage system updates manually, auto-update can be disabled in the settings add-on.
+Auto-Update is enabled by default and tracks minor version updates, e.g. LibreELEC 11.0.0 will update to 11.0.1, 11.0.2, etc. as they are released. It will not perform major version updates as these involve Kodi add-on updates (broken add-ons are the main source of update issues) and user-experience changes we do not want to force onto users. If auto-update is enabled the latest update file will download in the background, then Kodi will prompt you to reboot and start the update process. If you prefer to manage system updates manually, auto-update can be disabled in the settings add-on.
 
 ## Settings Add-On
 
-Navigate to the Update section of the settings add-on, select the update channel (LibreELEC major version) and then the specific minor version to update to. The update .tar file will start downloading, and once complete the system will reboot to perform the update.
+Navigate to the Update section of the settings add-on, select the update channel (LibreELEC major version) and then the specific minor version to update to. The update file will start downloading, and once complete the system will reboot to perform the update.
 
 Please see the following video
 
@@ -40,7 +40,7 @@ ls -la
 Download the update file (change the URL for the current release, etc.)
 
 ```
-wget http://releases.libreelec.tv/LibreELEC-RPi4.arm-9.2.6.img.gz
+wget http://releases.libreelec.tv/LibreELEC-RPi4.arm-11.0.1.img.gz
 ```
 
 Once the download has completed, reboot to start the update process
@@ -55,7 +55,7 @@ Download the LibreELEC image or update file and copy it to a USB drive. Connect 
 
 ## Downgrade
 
-Kodi does not support downgrading. If "updating" within the same LibreELEC/Kodi major release, e.g. LibreELEC 9.2.6 to 9.2.5, the downgrade will normally work. If downgrading to an older LibreELEC/Kodi major version e.g. LibreELEC 9.2.6 to 9.0.2, the downgrade process will complete but Kodi may not gracefully handle being restarted with configuration files and add-ons from the (newer) previous release. Always make a backup before upgrading so that you can clean install then restore the backup to effect a downgrade without problems.
+Kodi does not support downgrading. If "updating" within the same LibreELEC/Kodi major release, e.g. LibreELEC 11.0.1 to 11.0.0, the downgrade will normally work. If downgrading to an older LibreELEC/Kodi major version e.g. LibreELEC 11.0.1 to 10.0.4, the downgrade process will complete but Kodi may not gracefully handle being restarted with configuration files and add-ons from the (newer) previous release. Always make a backup before upgrading so that you can clean install then restore the backup to effect a downgrade without problems.
 
 ## Migrate OpenELEC
 
