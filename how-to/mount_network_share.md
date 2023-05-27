@@ -76,11 +76,11 @@ Reboot your system to check if the mount works.
 
 #### 6. Helpful command for troubleshooting
 
-Get status and error messages from the mount point.
+Get status and error messages from the mount point:
 
 `systemctl status storage-recordings.mount`
 
-Remove mount point and disabling it.
+Remove mount point and disable it:
 
 `systemctl disable storage-recordings.mount`
 
@@ -94,13 +94,13 @@ Connect to your LibreELEC HTPC [with SSH](https://app.gitbook.com/accessing\_lib
 
 #### 2. Create the systemd definition file
 
-**Important:** you need to use the filename for the definition file according to the folder where you want to mount your share .\
-In our case `storage-recordings.mount` represent path -> `/storage/recordings`.\
-If you like an subfolder `storage-recordings-tv.mount` represent path -> `/storage/recordings/tv`.
+**Important:** you need to set the filename for the definition file according to the folder where you want to mount your share .
+In our case: `storage-recordings.mount` represents the path -> `/storage/recordings`.
+If you add a subfolder: `storage-recordings-tv.mount` represents the path -> `/storage/recordings/tv`.
 
 `nano /storage/.config/system.d/storage-recordings.mount`
 
-Content of the definition file for a NFS share.
+Contents of the definition file for a NFS share:
 
 ```
 [Unit]
@@ -137,7 +137,7 @@ To use an NFSv4 share:
 
 `Type=nfs4`&#x20;
 
-#### 4. Start it for a test:
+#### 4. Start it for a test
 
 `systemctl start storage-recordings.mount`
 
@@ -145,7 +145,7 @@ Note: That's only a test and the mount won't be available after a reboot. To mak
 
 #### 5. Enable the mount
 
-If the previous test worked, then please enable the service via:
+If the previous test worked, enable the service via:
 
 `systemctl enable storage-recordings.mount`
 
@@ -153,13 +153,13 @@ If the previous test worked, then please enable the service via:
 
 Reboot your system to see if the mount is available after boot.
 
-#### 7. Helpful command for troubleshooting
+#### 7. Helpful commands for troubleshooting
 
-Get status and error messages from the mount point.
+Get status and error messages from the mount point:
 
 `systemctl status storage-recordings.mount`
 
-Remove mount point and disabling it.
+Remove mount point and disable it:
 
 `systemctl disable storage-recordings.mount`
 
@@ -172,3 +172,87 @@ Options=username=MyUser,password=MyPass,sec=ntlm,vers=1.0
 ```
 
 SMB v1.0 is widely considered to be insecure, but TimeCapsules no longer receive software updates and there is no alternative; SMB v2/v3 are not supported.
+
+## Auto Mounting
+
+In some edge cases where the remote filesystem may be unavailable when LibreElec boots or the remote filesystem has a chance of disconnecting, an automount is an easy way to mount without the risk of failure and with the option to attempt to connect/reconnect with no extra effort.
+
+It is basically a safe way to retry mounting the remote filesystem.
+
+### How it works
+
+Because we enable the automount service, we can disable the mount service. Which in turn allows the system to boot without errors, even if the network share is not available (it will still show the files as missing until the share is available, but this is expected). What the automount does is try to connect to the network share when the local mount path is accessed by the filesystem. So when trying to play media from the mount path, or trying to update the library (assuming the mount path is in your media library).
+
+#### 1. Create the folder and systemd `.mount` definition file
+
+Follow the relevant instructions above to create a systemd `.mount` definition file for your network share.
+
+**IMPORTANT:** It is recommened to follow the instructions above completey and add the mounted path to your library in Kodi before proceeding with the instructions below.
+
+#### 2. Disable the mount service in systemd
+
+If you've already enabled the mount service in systemd, disable it to prevent errors on boot when the network share is unavailable.
+
+`systemctl disable storage-recordings.mount`
+
+#### 3. Create a systemd `.automount` definition file
+
+Filename restrictions are the same as for the `.mount` definition file. Meaning that if your `.mount` file is named `storage-recordings.mount` your automount file should be named `storage-recordings.automount`.
+
+`nano /storage/.config/system.d/storage-recordings.automount`
+
+Contents of the automount definition file:
+
+```
+[Unit]
+
+Description=test automount for recordings
+
+
+[Automount]
+
+Where=/storage/recordings
+
+TimeoutIdleSec=0
+
+
+[Install]
+
+WantedBy=multi-user.target
+```
+
+#### 4. Things to edit
+
+Path of the mount in question:
+
+`Where=/storage/recordings`
+
+Idle timeout (time before systemd should unmount the network share, 0 means disabled):
+
+`TimeoutIdleSec=0`
+
+#### 5. Enable the automount service
+
+`systemctl enable storage-recordings.automount`
+
+#### 6. Reload systemd to apply changes
+
+`systemctl daemon-reload`
+
+#### 7. Test the automount
+
+If you have already added the mount path to your library in Kodi, you can test the automount by trying to access the folder inside Kodi. If all went well, the network share will mount as soon as you attempt to access it's mount path.
+
+If the network share is available when LibreElec is starting up, it will be mounted during the boot process.
+
+#### 8. Helpful commands for troubleshooting
+
+Get status and error messages from the automount (great for seeing when a mount was attempted):
+
+`systemctl status storage-recordings.automount`
+
+**IMPORTANT:** Running the above command will NOT show mount errors, to see mount errors you will still need to run `systemctl status` on the `.mount` service (`systemctl status storage-recordings.mount`).
+
+Disable the automount:
+
+`systemctl disable storage-recordings.automount`
