@@ -354,3 +354,25 @@ systemctl restart kodi
 ## Raspberry Pi
 
 The getedid script can be used as described for [Generic x86\_64](#generic-x86_64).
+
+## Allwinner
+
+**IMPORTANT:** Please read the instructions below carefully before attempting to follow the Intel instructions.
+
+### Creating the EDID file and editing extlinux.conf
+
+Follow instructions for Intel, ignoring the section about creating a cpio archive (you will probably need to `tail` each directory in `/sys/class/drm/` instead of running `tail /sys/class/drm/*/status`). This also means that when editing `/flash/extlinux/extlinux.conf` we must ignore the `initrd=/edid.cpio`. The end result is something like:
+
+```text
+APPEND boot=UUID=1234-5678 disk=UUID=e12345e6-acc7-89fe-1d23-e456de7eae89 quiet console=ttyS0,115200 console=tty1 drm.edid_firmware=edid/edid.bin video=HDMI-A-1:D
+```
+
+`drm.edid_firmware=edid/edid.bin video=HDMI-A-1:D` being the portion that you should have added.
+
+This will somewhat work, but you will probably get the wrong resolution. This can be fixed by setting the modes for Kodi, explained below.
+
+### Setting allowed resolutions for Kodi
+
+```text
+cat /sys/class/drm/card0-HDMI-A-1/modes > /storage/.kodi/userdata/disp_cap
+```
