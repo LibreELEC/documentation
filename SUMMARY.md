@@ -35,6 +35,7 @@
 * [Config.txt](configuration/config\_txt.md)
 * [Dual Boot](configuration/dual-boot.md)
 * [EDID](configuration/edid.md)
+* [Hidden WiFi](configuration/hidden-wifi.md)
 * [Hypercon](configuration/hypercon.md)
 * [Hyperion](configuration/hyperion.md)
 * [Infra-Red Remotes](configuration/ir-remotes.md)
