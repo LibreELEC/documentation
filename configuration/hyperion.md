@@ -1,8 +1,6 @@
 # Hyperion
 
-## <mark style="color:red;">Not working anymore since LE10</mark>
-
-<mark style="color:red;">Starting with LE10 Hyperion no longer works due to changes in the video pipeline. Consider hardware/external grabbers.</mark>
+<mark style="color:red;">WARNING: Hyperion does not support the GBM/V4L2 video pipeline used in LibreELEC 10.x and 11.x: including all Raspberry Pi and Generic x86\_64 (GBM) releases. Users with x86\_64 hardware can update to the Generic\_Legacy (X11) image. Users with Raspberry Pi hardware must use an external grabber hardware device or remain on older releases. Changes to add GBM support to Hyperion are tracked here:</mark> https://github.com/hyperion-project/hyperion.ng/pull/1422
 
 [Hyperion](https://github.com/hyperion-project/hyperion) is an open source project that provides an ambient lighting system, compatible with Kodi. Hyperion requires hardware and software configuration. This page describes the process to add Hyperion to Generic x86\_64 and Raspberry Pi hardware. For software configuration please head over to [Hypercon](hypercon.md).
 
