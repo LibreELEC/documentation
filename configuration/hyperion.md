@@ -1,19 +1,23 @@
 # Hyperion
 
-[Hyperion](https://github.com/hyperion-project/hyperion) is an open source project that provides an ambient lighting system, compatible with Kodi. Hyperion requires hardware and software configuration. This page describes the process to add Hyperion to Generic x86\_64 and Raspberry Pi hardware. For software configuration please head over to [Hypercon](hypercon.md). 
+## <mark style="color:red;">Not working anymore since LE10</mark>
+
+<mark style="color:red;">Starting with LE10 Hyperion no longer works due to changes in the video pipeline. Consider hardware/external grabbers.</mark>
+
+[Hyperion](https://github.com/hyperion-project/hyperion) is an open source project that provides an ambient lighting system, compatible with Kodi. Hyperion requires hardware and software configuration. This page describes the process to add Hyperion to Generic x86\_64 and Raspberry Pi hardware. For software configuration please head over to [Hypercon](hypercon.md).
 
 ## Adalight
 
 If you want hardware that will work on any LibreELEC device, an "Adalight" setup is the best choice. It works by sending serial data to an Arduino micro controller which controls the LEDs. You need:
 
-* Arduino \(Uno, nano, etc\)
+* Arduino (Uno, nano, etc)
 * WS2801 LED strand
 * 5V power supply
 * Wire/Jumpers
-* Breadboard/Protoboard \(optional\)
-* Soldering iron \(optional\)
+* Breadboard/Protoboard (optional)
+* Soldering iron (optional)
 
-![Adalight wiring](../.gitbook/assets/hyperion-adalight.png)
+![Adalight wiring](../configure/hyperion-adalight.png)
 
 Follow the tutorial here [https://learn.adafruit.com/adalight-diy-ambient-tv-lighting/overview](https://learn.adafruit.com/adalight-diy-ambient-tv-lighting/overview).
 
@@ -34,7 +38,7 @@ Pi devices can drive an SPI output directly, and hyperion can output to an spide
 
 You can find the pinout here [https://pinout.xyz](https://pinout.xyz). You will need to connect the following pins:
 
-```text
+```
 19 MOSI -> Data
 23 SCLK -> Clock
 25 GND  -> Ground
@@ -42,18 +46,17 @@ You can find the pinout here [https://pinout.xyz](https://pinout.xyz). You will 
 
 You need to enable SPI in the config.txt file:
 
-```text
+```
 mount -o remount,rw /flash
 nano /flash/config.txt
 ```
 
 Add the following line to the end of the file:
 
-```text
+```
 dtparam=spi=on
 ```
 
 Then reboot. In [Hypercon](hypercon.md) you will need to enable:
 
-![Hypercon configuration Raspberry Pi](../.gitbook/assets/hyperion-config-rpi.png)
-
+![Hypercon configuration Raspberry Pi](../configure/hyperion-config-rpi.png)
