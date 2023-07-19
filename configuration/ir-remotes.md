@@ -222,9 +222,7 @@ Reboot and you should have a working remote in Kodi.
 
 Check the obvious. Batteries run down and either stop the remote from working or reduce the working range. Try using the remote in-front of the receiver. You can also try pointing the IR transmitter at the sensor of a digital camera or smartphone in a dark room. If the IR transmitter works you should see it light up the camera/smartphone screen.
 
-If the remote is sending signals, we need trace the problem and
-
-There are several steps until a button press on your remote finally triggers an action in Kodi. Use this guide to check if each of the steps works. Check if the remote is transmitting signals
+If the remote is sending signals, there are several steps until a button press on your remote triggers an action in Kodi. Use this guide to check each step and trace the problem:
 
 To check if the IR receiver driver is loaded run `ir-keytable`. If you see the error message `/sys/class/rc/: No such file or directory` no driver is loaded.
 
