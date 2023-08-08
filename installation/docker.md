@@ -4,7 +4,7 @@ The awesome folks at [LinuxServer.io](https://linuxserver.io) maintain a range o
 
 It is also possible to install LinuxServer Docker containers from the SSH console, which is also how to access the full [fleet of LinuxServer containers](https://fleet.linuxserver.io).
 
-## A note on Docker image architectures
+## A note on Docker Container Architecture
 
 LibreELEC's kernel and user space may support different architectures. For instance, starting with version 10, LibreELEC on arm64-capable devices (e.g. Raspberry Pi 3/4) uses a 64-bit kernel whereas the user space is 32-bit.
 
