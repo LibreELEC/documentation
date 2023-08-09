@@ -1,14 +1,41 @@
 # Containers
 
-The awesome folks at [LinuxServer.io](https://linuxserver.io) maintain a range of popular Docker containers installable as Kodi add-ons. After installing the Docker add-on from the LibreELEC repo, you can install the LinuxServer add-on repo \(from the LibreELEC repo\) and then install specific container add-ons. The add-ons are designed to auto-pull the latest Docker image on Kodi startup to keep your Dockers fresh.
+The awesome folks at [LinuxServer.io](https://linuxserver.io) maintain a range of popular Docker containers installable as Kodi add-ons. After installing the Docker add-on (from the LibreELEC add-on repo) you can install the LinuxServer repo add-on (from the LibreELEC add-on repo) and then install container add-ons from within the Kodi GUI. To make maintenance easier LinuxServer add-ons are designed to pull the latest Docker image automatically on Kodi startup to keep the containers fresh.
 
-It is also possible to install LinuxServer Docker containers from the SSH console, which is also how to access the full [fleet of LinuxServer containers](https://fleet.linuxserver.io).
+It is also possible to install Docker containers manually from the SSH console using `docker pull` commands. This allows you to install a container from any public container repository. This is also how you can access the full [fleet of LinuxServer containers](https://fleet.linuxserver.io).
 
-## A note on Docker Container Architecture
+## Container Architecture
 
-LibreELEC's kernel and user space may support different architectures. For instance, starting with version 10, LibreELEC on ARM64-capable devices (e.g. Raspberry Pi 3/4) uses a 64-bit kernel whereas the user space is 32-bit.
+Docker containers often ship in multiple CPU "architecture" or "arch" variants. To run, the container architecture must match the "userspace" CPU arch of the LibreELEC image which can be different from "kernel" CPU architecture. The userspace arch is noted in the image filename, e.g.
 
-For Docker this means that it can only run containers from the images compatible with LibreELEC's user space. For example, if you want to run a Docker container in LibreELEC 11 on Raspberry Pi 4, the Docker image should be built for the platform `linux/arm` (same as `linux/arm/v7` or `linux/arm/v8`), but not `linux/arm64` (same as `linux/arm64/v8`) as Docker will fail to run those.
+* LibreELEC-Generic.**x86\_64**-11.0.1.img.gz has `x86_64` userspace
+* LibreELEC-RPi4.**arm**-11.0.1.img.gz has `arm` userspace
+* LibreELEC-RPi4.**aarch64**-12.0-nightly-20230310.img.gz has `aarch64` userspace
 
-Starting with LibreELEC 12, certain ARMv8 releases of LibreELEC have a 64-bit user space to accompany the 64-bit kernel.
+Userspace CPU arch can also be read from the `/etc/os-release` file in the filestem, e.g.
 
+```
+RPi4:~ # cat /etc/os-release 
+NAME="LibreELEC"
+VERSION="11.0.3"
+ID="libreelec"
+VERSION_ID="11.0"
+PRETTY_NAME="LibreELEC (official): 11.0.3"
+HOME_URL="https://libreelec.tv"
+BUG_REPORT_URL="https://github.com/LibreELEC/LibreELEC.tv"
+BUILD_ID="1189cdb0f43e6f4208f747d54fefb70478ebee9d"
+LIBREELEC_ARCH="RPi4.arm"  <= This contains the userspace CPU arch
+LIBREELEC_BUILD="official"
+LIBREELEC_PROJECT="RPi"
+LIBREELEC_DEVICE="RPi4"
+```
+
+Docker containers may also use different arch naming, e.g.
+
+* The `arm` arch may be referred to as `linux/arm` and `linux/arm/v7`&#x20;
+* The `aarch64` arch may be referred to as `linux/arm64` and `linux/arm64/v8`
+* The `x86_64` arch may be referred to as `amd64`&#x20;
+
+{% hint style="warning" %}
+LibreELEC 12 will switch most ARM SoC devices capable of running a 64-bit kernel from `arm` to `aarch64` userspace. This will require affected users to remove `arm` containers before they update and redeploy `arm64` versions post-update.
+{% endhint %}
