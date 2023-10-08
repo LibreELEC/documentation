@@ -32,7 +32,7 @@ For a list of commands, see [Build (Basics)](build-basics.md).
 
 ```bash
 docker run \
-  --it --rm \
+  -it --rm \
   --log-driver none \
   -v `pwd`:/build -w /build \
   -e PROJECT=Generic \
@@ -47,7 +47,7 @@ Limit CPU and RAM so your system remains responsive.
 
 ```bash
 docker run \
-  --it --rm \
+  -it --rm \
   --log-driver none \
   -v `pwd`:/build -w /build \
   `# setting these the same disables swapping` \
