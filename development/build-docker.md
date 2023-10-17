@@ -1,7 +1,7 @@
 ---
 description: >-
   Docker is used to build official releases, and nightly images in Ubuntu LTS
-  20.04 Docker containers at the teams https://github.com/LibreELEC/actions
+  22.04 Docker containers at the teams https://github.com/LibreELEC/actions
   CI/CD.
 ---
 
