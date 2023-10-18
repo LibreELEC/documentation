@@ -4,4 +4,4 @@ The project builds an OVA version of the Generic (x86\_64) imported which can be
 
 We have never formally supported running LibreELEC in a hypervisor. This is mainly because none of the active project maintainers do this, so when software breakage to the OVA occurs the break often goes undiscovered and unfixed for many months (until the next time some development needing it takes place).
 
-As we do not support the current VMware oritented OVA image, there are no plans to extend virtual image non-support to include Hyper-V, KVM, QEMU or any other hypervisors.&#x20;
+As we do not support the current VMware oriented OVA image, there are no plans to extend virtual image non-support to include Hyper-V, KVM, QEMU or any other hypervisors.&#x20;
