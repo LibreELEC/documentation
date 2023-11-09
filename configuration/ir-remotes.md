@@ -8,7 +8,9 @@ While this new scheme is really handy, there's a small gotcha: Kodi's remote han
 
 Kodi translates the received LIRC events to Kodi button names via `Lircmap.xml` and then buttons are mapped to Kodi actions via `remote.xml` and `keyboard.xml` files. This wiki page describes the LibreELEC configuration. Information on Kodi configuration is available in the [Kodi LIRC](http://web.archive.org/web/20201111212253/https://kodi.wiki/view/LIRC) and [Kodi Keyboard.xml](http://web.archive.org/web/20201111212253/https://kodi.wiki/view/Keyboard.xml) wiki pages.
 
-LibreELEC still ships with LIRC so IR remotes with non-standard protocols and rather special setups can be supported. In general, keep LIRC disabled (in LibreELEC Settings → Services) and only enable it for exceptional cases where you actually need it.
+LibreELEC still ships with LIRC so IR remotes with non-standard protocols and rather special setups can be supported. In general, use LIRC only in exceptional cases where you actually need it.
+
+Note that LIRC requires compatible hardware to decode IR signals.  An in-depth discussion of IR decoder hardware is outside the scope of this document.  On a Raspberry Pi, LibreELEC can use the GPIO pins to communicate with a hardware IR receiver diode, as long as `config.txt` has been suitably modified to enable GPIO support.
 
 ## Configuration
 
