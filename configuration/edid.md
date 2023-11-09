@@ -354,3 +354,79 @@ systemctl restart kodi
 ## Raspberry Pi
 
 The getedid script can be used as described for [Generic x86\_64](#generic-x86_64).
+
+## Allwinner
+
+### Locate connected device
+
+First, `tail` the `status` file for each device in `/sys/class/drm/` to find out which device is connected. 
+
+This can be done automatically using the following function:
+
+```bash
+for dir in /sys/class/drm/*/;do
+  if [ -e "$dir"status ] && [[ "connected" == $(tail "$dir"status) ]];then
+    echo $dir | sed -E 's;/sys/class/drm/;;g' | sed -E 's;/;;g'
+  fi
+done
+```
+
+The output is something like:
+
+```text
+card0-HDMI-A-1
+```
+
+This means that the connected video device is `HDMI-A-1` (short name), `card0-HDMI-A-1` being the name of the device.
+
+### Creating EDID file
+
+Create the directory for the file:
+
+```bash
+mkdir -p /storage/.config/firmware/edid
+```
+
+Create the file, replacing `card0-HDMI-A-1` with the name of the connected video device:
+
+```bash
+cat /sys/class/drm/card0-HDMI-A-1/edid > /storage/.config/firmware/edid/edid.bin
+```
+
+### Editing extlinux.conf
+
+Mount the `/flash` directory as read/write
+
+```bash
+mount -o remount,rw /flash
+```
+
+Edit `extlinux.conf`
+
+```bash
+nano /flash/extlinux/extlinux.conf
+```
+
+Add the following to the line starting with `APPEND`, replacing `HDMI-A-1` with the **short** name of the connected video device
+
+```text
+drm.edid_firmware=edid/edid.bin video=HDMI-A-1:D
+```
+
+The APPEND line should look this like this after \(everything in a single line\):
+
+```text
+APPEND boot=UUID=1234-5678 disk=UUID=e12345e6-acc7-89fe-1d23-e456de7eae89 quiet console=ttyS0,115200 console=tty1 drm.edid_firmware=edid/edid.bin video=HDMI-A-1:D
+```
+
+This will somewhat work, but you will probably get the wrong resolution. This can be fixed by setting the allowed resolutions for Kodi, explained below.
+
+### Setting allowed resolutions for Kodi
+
+Run the following command, replacing `card0-HDMI-A-1` with the name of the connected video device
+
+```bash
+cat /sys/class/drm/card0-HDMI-A-1/modes > /storage/.kodi/userdata/disp_cap
+```
+
+This will set allowed resolutions, but not refresh rates. However, your display should default to it's best capable refresh rate.
