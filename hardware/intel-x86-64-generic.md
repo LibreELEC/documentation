@@ -14,21 +14,7 @@ Intel NUC and similar-sized Intel GPU devices are popular for building an HTPC d
 
 Modern Intel GPUs have been shipping since "Nehalem" in 2010, and over time the number of different CPU and GPU generations and codenames have multiplied, making it confusing to figure out what media features a device can support. The following table is based on public sources like Wikipedia, and it indicates hardware features, which do not always translate into what Linux and Kodi currently support in software:
 
-| CPU   | Codename                                     | Driver | H264 | HEVC | AV1 | 4K  | HDR  |
-| ----- | -------------------------------------------- | ------ | ---- | ---- | --- | --- | ---- |
-| Gen1  | Nehalem                                      | i965   | Yes  | No   | No  | No  | No   |
-| Gen2  | Sandy-bridge                                 | i965   | Yes  | No   | No  | No  | No   |
-| Gen3  | Ivy-Bridge                                   | i965   | Yes  | No   | No  | No  | No   |
-| Gen4  | Haswell                                      | i965   | Yes  | No   | No  | No  | No   |
-| Gen5  | Broadwell, Braswell                          | i915   | Yes  | No   | No  | No  | No   |
-| Gen6  | Skylake                                      | i915   | Yes  | Yes  | No  | DP  | No   |
-| Gen7  | Kaby-lake, Apollo-lake                       | i915   | Yes  | Yes  | No  | Yes | HDMI |
-| Gen8  | Coffee-lake, Kaby-lake refresh, Whiskey-lake | i915   | Yes  | Yes  | No  | Yes | HDMI |
-| Gen9  | Coffee-lake refresh                          | i915   | Yes  | Yes  | No  | Yes | HDMI |
-| Gen10 | Comet-lake, Ice-lake, Amber-lake             | i915   | Yes  | Yes  | No  | Yes | Yes  |
-| Gen11 | Rocket-lake, Tiger-lake                      | i915   | Yes  | Yes  | Yes | Yes | Yes  |
-| Gen12 | Alder-lake                                   | i915   | Yes  | Yes  | Yes | Yes | Yes  |
-| Gen13 | Raptor-lake                                  | i915   | Yes  | Yes  | Yes | Yes | Yes  |
+<table><thead><tr><th>CPU</th><th>Codename</th><th width="206">Driver</th><th>H264</th><th>HEVC</th><th>AV1</th><th>4K</th><th>HDR</th></tr></thead><tbody><tr><td>Gen1</td><td>Nehalem</td><td>i965</td><td>Yes</td><td>No</td><td>No</td><td>No</td><td>No</td></tr><tr><td>Gen2</td><td>Sandy-bridge</td><td>i965</td><td>Yes</td><td>No</td><td>No</td><td>No</td><td>No</td></tr><tr><td>Gen3</td><td>Ivy-Bridge</td><td>i965</td><td>Yes</td><td>No</td><td>No</td><td>No</td><td>No</td></tr><tr><td>Gen4</td><td>Haswell</td><td>i965</td><td>Yes</td><td>No</td><td>No</td><td>No</td><td>No</td></tr><tr><td>Gen5</td><td>Broadwell, Braswell</td><td>i915</td><td>Yes</td><td>No</td><td>No</td><td>No</td><td>No</td></tr><tr><td>Gen6</td><td>Skylake</td><td>i915</td><td>Yes</td><td>Yes</td><td>No</td><td>DP</td><td>No</td></tr><tr><td>Gen7</td><td>Kaby-lake, Apollo-lake</td><td>i915</td><td>Yes</td><td>Yes</td><td>No</td><td>Yes</td><td>HDMI</td></tr><tr><td>Gen8</td><td>Coffee-lake, Kaby-lake refresh, Whiskey-lake</td><td>i915</td><td>Yes</td><td>Yes</td><td>No</td><td>Yes</td><td>HDMI</td></tr><tr><td>Gen9</td><td>Coffee-lake refresh</td><td>i915</td><td>Yes</td><td>Yes</td><td>No</td><td>Yes</td><td>HDMI</td></tr><tr><td>Gen10</td><td>Comet-lake, Ice-lake, Amber-lake</td><td>i915</td><td>Yes</td><td>Yes</td><td>No</td><td>Yes</td><td>Yes</td></tr><tr><td>Gen11</td><td>Rocket-lake, Tiger-lake</td><td>i915</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr><tr><td>Gen12</td><td>Alder-lake</td><td>i915</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr><tr><td>Gen13</td><td>Raptor-lake</td><td>i915</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr></tbody></table>
 
 * Gen6 CPUs (Skylake) have HDMI 1.4b and DisplayPort 1.2 connectors. HDMI can run at max 1920x1200@60 resolution, while DP can run at max 3840x2160@60 resolution.
 * Gen7 and Gen8 CPUs use an LSPCON chip for HDMI 2.0 output. HDR is supported only when the HDMI output is connected to an HDMI 2.0 port on the TV. Users with Intel NUC devices are recommended to run the latest Intel firmware for their device. Lots of bugs in original/factory LSPCON firmwares have been fixed.

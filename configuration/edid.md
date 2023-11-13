@@ -2,7 +2,7 @@
 
 ## Custom EDID
 
-To change the order of turning on your devices \(normally your HTPC has to be powered on last\) or to use your LibreELEC device without the TV turned on, you need to dump/save the EDID information from your TV \(or AVR\).
+To change the order of turning on your devices (normally your HTPC has to be powered on last) or to use your LibreELEC device without the TV turned on, you need to dump/save the EDID information from your TV (or AVR).
 
 In the steps below we will explain how this can be done:
 
@@ -20,13 +20,13 @@ To use the getedid script you need to have SSH access to your LibreELEC machine.
 
 Once you are in, just type in
 
-```text
+```
 getedid
 ```
 
 to see which options are available. It will look like this.
 
-![](../.gitbook/assets/image.png)
+![](<../.gitbook/assets/image (5).png>)
 
 The available options are `create`, `gpu`, `delete` and `help`. These are explained below.
 
@@ -58,15 +58,15 @@ For the source of that script please look at: [https://github.com/LibreELEC/Libr
 
 First, you have to SSH in your LibreELEC machine. Then enter the following command.
 
-```text
+```
 tail /sys/class/drm/*/status
 ```
 
 Look for the connected device:
 
-![how it looks like at the shell](../.gitbook/assets/image%20%281%29.png)
+![how it looks like at the shell](../.gitbook/assets/image.png)
 
-```text
+```
 ==> /sys/class/drm/card0-HDMI-A-2/status <==
 connected
 ```
@@ -77,25 +77,25 @@ The information we need **HDMI-A-2** is connected.
 
 Now we will create a copy of the EDID binary data and put it where it needs to go. Change the cat command to match the active HDMI/DP port. For the possibility to copy and paste the correct commands, change the tabs below to the matching port.
 
-```text
+```
 mkdir -p /storage/.config/firmware/edid
 ```
 
 HDMI-A-1
 
-```text
+```
 cat /sys/class/drm/card0-HDMI-A-1/edid > /storage/.config/firmware/edid/edid.bin
 ```
 
 HDMI-A-2
 
-```text
+```
 cat /sys/class/drm/card0-HDMI-A-2/edid > /storage/.config/firmware/edid/edid.bin
 ```
 
 Next a cpio archive file will be created which will be loaded at boot.
 
-```text
+```
 cd ~
 mkdir -p cpio/lib/firmware/edid
 cp .config/firmware/edid/edid.bin cpio/lib/firmware/edid/
@@ -107,14 +107,14 @@ find . -print | cpio -ov -H newc > ../edid.cpio
 
 Now mount the boot partition as "RW" and move the file to it
 
-```text
+```
 mount -o remount,rw /flash
 mv ../edid.cpio /flash/
 ```
 
 After the file is moved to the correct place, we have to add some boot parameters. For this we have edit either the "extlinux.conf" or the "syslinux.cfg" file in your /flash/ directory. Use this command to check which one is available.
 
-```text
+```
 ls /flash/
 ```
 
@@ -122,13 +122,13 @@ Search for "extlinux.conf" or "syslinux.cfg" and edit it. Only one of them is av
 
 **syslinux.cfg**
 
-```text
+```
 nano /flash/syslinux.cfg
 ```
 
 **extlinux.conf**
 
-```text
+```
 nano /flash/extlinux.conf
 ```
 
@@ -138,31 +138,31 @@ Add to the APPEND line the following things.
 
 HDMI-A-1
 
-```text
+```
 initrd=/edid.cpio drm.edid_firmware=edid/edid.bin video=HDMI-A-1:D
 ```
 
-The APPEND line should look this like this after \(everything in a single line\):
+The APPEND line should look this like this after (everything in a single line):
 
-```text
+```
 APPEND boot=LABEL=System disk=LABEL=Storage ssh quiet initrd=/edid.cpio drm.edid_firmware=edid/edid.bin video=HDMI-A-1:D
 ```
 
 HDMI-A-2
 
-```text
+```
 initrd=/edid.cpio drm.edid_firmware=edid/edid.bin video=HDMI-A-2:D
 ```
 
-The APPEND line should look this like this after \(everything in a single line\).
+The APPEND line should look this like this after (everything in a single line).
 
-```text
+```
 APPEND boot=LABEL=System disk=LABEL=Storage ssh quiet drm.edid_firmware=edid/edid.bin video=HDMI-A-2:D
 ```
 
 Last step is to reboot the device.
 
-```text
+```
 reboot
 ```
 
@@ -176,13 +176,13 @@ If you boot your nVidia GPU based LibreELEC box before the TV/AVR and you see a 
 
 Open an SSH session to your LibreELEC machine. Once logged into the console we need to work out the DFP number.
 
-```text
+```
 grep ": connected" /var/log/Xorg.0.log | head -n 1
 ```
 
 You should see message like the following:
 
-```text
+```
   [3241512.110] (--) NVIDIA(0): SAMSUNG (DFP-0): connected
 ```
 
@@ -192,25 +192,25 @@ Note the DFP number - in this example it is "DFP-0" but yours may be different.
 
 To extract EDID data we need we need to place Xorg into debug mode. First we stop Xorg.
 
-```text
+```
 systemctl stop xorg.service
 ```
 
 Next we clone the xorg.conf to the config override location in `/storage/.config`.
 
-```text
+```
 cp /etc/X11/xorg-nvidia.conf /storage/.config/xorg.conf
 ```
 
 Then we edit the file with `sed` to enable debug mode.
 
-```text
+```
 sed -i 's/"ModeDebug" "false"/"ModeDebug" "true"/g' /storage/.config/xorg.conf
 ```
 
 The device section in the modified file should look something like this.
 
-```text
+```
 Section "Device"
     Identifier     "nvidia"
     Driver         "nvidia"
@@ -227,7 +227,7 @@ EndSection
 
 Now restart Xorg.
 
-```text
+```
 systemctl start xorg.service
 ```
 
@@ -235,22 +235,22 @@ systemctl start xorg.service
 
 Extract the RAW binary EDID information from the debug /var/log/Xog.0.log to a file.
 
-```text
+```
 nvidia-xconfig --extract-edids-from-file=/var/log/Xorg.0.log --extract-edids-output-file=/storage/.config/edid.bin
 ```
 
 The command should output something like.
 
-```text
+```
 Found 1 EDID in "/var/log/Xorg.0.log".
 Wrote EDID for "ONK TX-NR616 (DFP-0)" to "/storage/.config/edid.bin" (256 bytes).
 ```
 
 #### Edit xorg.conf
 
-Now we edit /storage/.config/xorg.conf - set ModeDebug back to False \(edit the word true to false\) and uncomment the following lines.
+Now we edit /storage/.config/xorg.conf - set ModeDebug back to False (edit the word true to false) and uncomment the following lines.
 
-```text
+```
 Option         "ConnectedMonitor" "DFP-0"
 Option         "CustomEDID" "DFP-0:/storage/.config/edid.bin"
 Option         "IgnoreEDID" "false"
@@ -259,7 +259,7 @@ Option         "UseEDID" "true"
 
 Make sure you change the DFP number to match the one we found earlier. In the end your config will look something like.
 
-```text
+```
 Section "Device"
   Identifier     "nvidia"
   Driver         "nvidia"
@@ -294,23 +294,23 @@ EndSection
 
 Finally we stop/restart xorg.service to disable debug mode and use the new edid.bin file.
 
-```text
+```
 systemctl restart xorg.service
 ```
 
 If all has gone to plan Xorg now detects the EDID file and the order of powering on equipment no longer matters!
 
-## Amlogic \(Legacy\)
+## Amlogic (Legacy)
 
-Amlogic legacy kernel devices \(using 3.10, 3.14 kernels\) do not capture "edid.bin" files like Intel and nVidia devices, but a similar process can capture, store and force the resolutions of a device. Connect your HTPC device directly to the HDMI source that you want to capture EDID information from, then login over SSH and run the following command.
+Amlogic legacy kernel devices (using 3.10, 3.14 kernels) do not capture "edid.bin" files like Intel and nVidia devices, but a similar process can capture, store and force the resolutions of a device. Connect your HTPC device directly to the HDMI source that you want to capture EDID information from, then login over SSH and run the following command.
 
-```text
+```
 cat /sys/class/amhdmitx/amhdmitx0/disp_cap > /storage/.kodi/userdata/disp_cap
 ```
 
 This stores a list of the supported resolutions. It looks like
 
-```text
+```
 480p60hz
 480p_rpt
 576p50hz
@@ -341,16 +341,16 @@ smpte60hz420
 
 To remove or add specific resolutions, e.g. if 1080p24hz is missing, edit disp\_cap.
 
-```text
+```
 nano /storage/.kodi/userdata/disp_cap
 ```
 
 Ctrl+o to save, Ctrl+x to exit the nano editor. Next restart Kodi by rebooting the box or running.
 
-```text
+```
 systemctl restart kodi
 ```
 
 ## Raspberry Pi
 
-The getedid script can be used as described for [Generic x86\_64](#generic-x86_64).
+The getedid script can be used as described for [Generic x86\_64](edid.md#generic-x86\_64).

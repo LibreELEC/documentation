@@ -15,7 +15,7 @@ If you want hardware that will work on any LibreELEC device, an "Adalight" setup
 * Breadboard/Protoboard (optional)
 * Soldering iron (optional)
 
-![Adalight wiring](../configure/hyperion-adalight.png)
+![Adalight wiring](<../.gitbook/assets/hyperion-adalight (1).png>)
 
 Follow the tutorial here [https://learn.adafruit.com/adalight-diy-ambient-tv-lighting/overview](https://learn.adafruit.com/adalight-diy-ambient-tv-lighting/overview).
 
@@ -57,4 +57,4 @@ dtparam=spi=on
 
 Then reboot. In [Hypercon](hypercon.md) you will need to enable:
 
-![Hypercon configuration Raspberry Pi](../configure/hyperion-config-rpi.png)
+![Hypercon configuration Raspberry Pi](<../.gitbook/assets/hyperion-config-rpi (1).png>)

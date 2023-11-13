@@ -10,7 +10,7 @@ Kodi translates the received LIRC events to Kodi button names via `Lircmap.xml` 
 
 LibreELEC still ships with LIRC so IR remotes with non-standard protocols and rather special setups can be supported. In general, use LIRC only in exceptional cases where you actually need it.
 
-Note that LIRC requires compatible hardware to decode IR signals.  An in-depth discussion of IR decoder hardware is outside the scope of this document.  On a Raspberry Pi, LibreELEC can use the GPIO pins to communicate with a hardware IR receiver diode, as long as `config.txt` has been suitably modified to enable GPIO support.
+Note that LIRC requires compatible hardware to decode IR signals. An in-depth discussion of IR decoder hardware is outside the scope of this document. On a Raspberry Pi, LibreELEC can use the GPIO pins to communicate with a hardware IR receiver diode, as long as `config.txt` has been suitably modified to enable GPIO support.
 
 ## Configuration
 
@@ -22,10 +22,10 @@ After the kernel driver is loaded `ir-keytable -a` is automatically run to chang
 
 As most of the LibreELEC filesystem is read-only, we use a system of boot-time file overrides to read user-created configuration from the persistent `/storage` area:
 
-* `/storage/.config/rc_maps.cfg` overrides `/etc/rc_maps.cfg`.
-* `/storage/.config/rc_maps.cfg.sample` has simple examples.
-* `/storage/.config/rc_keymaps` overrides `/usr/lib/udev/rc\_keymaps\`.
-* `/etc/rc_maps.cfg` uses the `libreelec_multi` keytable instead of rc6\_mce.
+* `/storage/.config/rc_maps.cfg` overrides `/etc/rc_maps.cfg`
+* `/storage/.config/rc_maps.cfg.sample` has simple examples
+* `/storage/.config/rc_keymaps` overrides `/usr/lib/udev/rc_keymaps`
+* `/etc/rc_maps.cfg` uses the `libreelec_multi` keytable instead of `rc6_mce`
 
 The default `libreelec_multi` keytable allows us to support Xbox 360/One remotes "out of box" in addition to MCE/RC6 remotes. This is configured via the following change:
 
@@ -45,7 +45,7 @@ While most IR receivers can be used with a large variety of remotes the answer t
 
 ## Configuration (Basic)
 
-LibreELEC includes 100+ remote keytable files from the Linux kernel so there is a good chance your remote has a known configuration, or a partially working keytable can provide a starting point for adding the missing buttons (see the "Hard" section).
+LibreELEC includes 100+ remote keytable files included with the upstream Linux kernel so there is a good chance your remote has a known configuration, or a partially working keytable that can be used as a starting point for adding the missing buttons (see the "Advanced" section).
 
 1. Look at the keytable files in `/usr/lib/udev/rc_keymaps/`.
 2. If one of the filenames suggests it could match your remote, try using it.
@@ -89,16 +89,29 @@ Test the buttons work again, and if all is okay, reboot.
 
 ## Configuration (Advanced)
 
-If you cannot find a working keymap or the keymap has missing buttons you can create your own. The keytable file is plain text with a simple format. The first line contains a header with a descriptive name (free text, but avoid special characters and spaces) and the remote protocol (important!). This is followed by lines that map remote scancode to Linux keycode. A typical keytable file looks like this:
+If you cannot find a working keymap or the current keymap has missing buttons you can create your own. Since LibreELEC 10.x the keytable file is plain text file in `toml` markup format. The first section describes the name of the keymap (free text, but avoid special characters and spaces) and the remote protocol and variant. This is followed by lines that map the remote scancode to a Linux keycode. A typical keytable file in toml format looks like this:
 
 ```
-# table justboom, type: RC5
-0x101a KEY_UP
-0x101b KEY_DOWN
-0x1013 KEY_LEFT
-0x1014 KEY_RIGHT
-0x1015 KEY_OK
+[[protocols]]
+name = "khadas"
+protocol = "nec"
+variant = "nec"
+[protocols.scancodes]
+0x14 = "KEY_POWER"
+0x03 = "KEY_UP"
+0x02 = "KEY_DOWN"
+0x0e = "KEY_LEFT"
+0x1a = "KEY_RIGHT"
+0x07 = "KEY_OK"
+0x01 = "KEY_BACK"
+0x5b = "KEY_MUTE"
+0x13 = "KEY_MENU"
+0x58 = "KEY_VOLUMEDOWN"
+0x0b = "KEY_VOLUMEUP"
+0x48 = "KEY_HOME"
 ```
+
+Older LibreELEC releases (v7.x to v9.x) use a older plain text format not `toml` which can be seen in the existing keymaps in `/usr/lib/udev/rc_keymaps`.
 
 To capture the keycodes you must stop Kodi and eventlircd first, or these services capture IR input and you will see no output from `ir-keytable`:
 
@@ -157,7 +170,7 @@ And in the second run `ir-keytable -t` to find out the scancode of each button. 
 
 * Press a button and note the scancode (the 0x… value after scancode:)
 * Add a new line with the scancode (including 0x).
-* Add the Linux keycode, separated with a blank.
+* Add the Linux keycode in "quoted" format and separated with a blank.
 
 You can get a list of all supported Linux keycodes via `irrecord -l | grep ^KEY` but it is easiest to use keycodes listed in the `<remote device=“devinput”>` section of `/usr/share/kodi/system/Lircmap.xml` else you must also create a Kodi `lircmap.xml` with Linux keycode to action mappings.
 
