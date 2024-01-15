@@ -2,13 +2,13 @@
 
 LibreELEC can be configured as a WireGuard VPN client allowing you to accessing media in a remote location or tunnel traffic to avoid local inspection of network activity. This guide assumes configuration of a single WireGuard tunnel that is persistent, i.e. activated on device boot so that Kodi network traffic is routed through the WireGuard VPN tunnel.
 
-WireGuard tunnels are managed by a ConnMan VPN plugin \(connman-vpn.service\) that acts as a companion to the network connection manager daemon \(connman.service\). The VPN plugin watches `/storage/.config/wireguard/*.config` and defines ConnMan services from auto-discovered configuration files. Once a valid WireGuard .config has been imported it can be connected manually using `connmanctl` from the SSH console or scripted from a systemd service that runs on boot. Connections can also be managed using the network 'Connections' tab in the LibreELEC settings add-on which controls ConnMan via d-bus.
+WireGuard tunnels are managed by a ConnMan VPN plugin (connman-vpn.service) that acts as a companion to the network connection manager daemon (connman.service). The VPN plugin watches `/storage/.config/wireguard/*.config` and defines ConnMan services from auto-discovered configuration files. Once a valid WireGuard .config has been imported it can be connected manually using `connmanctl` from the SSH console or scripted from a systemd service that runs on boot. Connections can also be managed using the network 'Connections' tab in the LibreELEC settings add-on which controls ConnMan via d-bus.
 
 ## Sample Config
 
-ConnMan uses its own configuration file format \(see below\) so you cannot import/use the files exported from WireGuard server tools and third-party VPN services - the format is different. Those files will contain everything you need, but you must manually transpose the information into the ConnMan format:
+ConnMan uses its own configuration file format (see below) so you cannot import/use the files exported from WireGuard server tools and third-party VPN services - the format is different. Those files will contain everything you need, but you must manually transpose the information into the ConnMan format:
 
-```text
+```
 [provider_wireguard]
 Type = WireGuard
 Name = WireGuard (Home)
@@ -24,17 +24,19 @@ WireGuard.EndpointPort = 51820
 WireGuard.PersistentKeepalive = 25
 ```
 
-Name = AnythingYouLike  
-Host = IP of the WireGuard **server**  
-WireGuard.Address = The internal IP of the **client** node, e.g. a /24 address  
-WireGuard.ListenPort = The **client** listen port \(optional\)  
-WireGuard.PrivateKey = The **client** private key  
-WireGuard.PublicKey = The **server** public key  
-WireGuard.PresharedKey = The **server** pre-shared key \(optional\)  
-WireGuard.DNS = Nameserver to be used with the connection \(optional\)  
-WireGuard.AllowedIPs = Subnets accessed via the tunnel, 0.0.0.0/0 is "route all traffic"  
-WireGuard.EndpointPort = The **server** ListenPort  
-WireGuard.PersistentKeepalive = Periodic keepalive in seconds \(optional\)
+Name = AnythingYouLike\
+Host = IP of the WireGuard **server**\
+WireGuard.Address = The internal IP of the **client** node, e.g. a /24 address\
+WireGuard.ListenPort = The **client** listen port (optional)\
+WireGuard.PrivateKey = The **client** private key\
+WireGuard.PublicKey = The **server** public key\
+WireGuard.PresharedKey = The **server** pre-shared key (optional)\
+WireGuard.DNS = Nameserver to be used with the connection (optional)\
+WireGuard.AllowedIPs = Subnets accessed via the tunnel, 0.0.0.0/0 is "route all traffic"\
+WireGuard.EndpointPort = The **server** ListenPort\
+WireGuard.PersistentKeepalive = Periodic keepalive in seconds (optional)
+
+Note: Using WireGuard.PresharedKey is optional, but if your WireGuard configuration omits this you must remove the line from the config. If you leave it blank, e.g. `WireGuard.PresharedKey =` it will be actively with a null value, causing connections to fail.
 
 ## Creating Keys
 
@@ -44,21 +46,21 @@ If you need to create some, run `wg-keygen` from the SSH console and `/storage/.
 
 Once you have saved a configuration file, check it is valid:
 
-```text
+```
 RPi4:~ # connmanctl services
 * R home              vpn_185_210_30_121
 *AO Wired             ethernet_dca622135939_cable
 ```
 
-In the above example `vpn_185_210_30_121` was created \(vpn\_host\) as the ConnMan service name. Test the service will connect using:
+In the above example `vpn_185_210_30_121` was created (vpn\_host) as the ConnMan service name. Test the service will connect using:
 
-```text
+```
 RPi4:~ # connmanctl connect vpn_185_210_30_121
 ```
 
 ConnMan will create a new network interface, so `ifconfig` will show `wg0` or sometimes a higher number like `wg1` or `wg2`:
 
-```text
+```
 RPi4:~ # ifconfig
 eth0      Link encap:Ethernet  HWaddr DC:A6:32:13:26:3b  
           inet addr:192.168.10.25  Bcast:192.168.10.255  Mask:255.255.255.0
@@ -86,9 +88,9 @@ wg0       Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00
           RX bytes:13775220 (13.1 MiB)  TX bytes:1232552 (1.1 MiB)
 ```
 
-You should be able to `ping` the remote \(server\) side of the WireGuard VPN tunnel. In our example this is 10.2.0.1:
+You should be able to `ping` the remote (server) side of the WireGuard VPN tunnel. In our example this is 10.2.0.1:
 
-```text
+```
 RPi4:~ # ping 10.2.0.1
 PING 10.2.0.1 (10.2.0.1): 56 data bytes
 64 bytes from 10.2.0.1: seq=0 ttl=64 time=147.936 ms
@@ -97,7 +99,7 @@ PING 10.2.0.1 (10.2.0.1): 56 data bytes
 
 The routing table will show normal traffic routed to the wg0 interface:
 
-```text
+```
 RPi4:~ # route
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
@@ -112,7 +114,7 @@ default         *               0.0.0.0         U     0      0        0 wg0
 
 To disconnect the ConnMan service:
 
-```text
+```
 RPi4:~ # connmanctl disconnect vpn_185_210_30_121
 ```
 
@@ -122,7 +124,7 @@ Check `ifconfig` again and the WireGuard interface will be gone.
 
 Create a systemd wireguard.service file to start the connection automatically on boot, after the network starts, and before Kodi is launched. The sample wireguard.service file looks like:
 
-```text
+```
 [Unit]
 Description=WireGuard VPN Service
 After=network-online.target nss-lookup.target wait-time-sync.service connman-vpn.service
@@ -140,19 +142,19 @@ WantedBy=multi-user.target
 
 Copy the sample wireguard.service file to `/storage/.config/system.d/wireguard.service`
 
-```text
+```
 cp /storage/.config/system.d/wireguard.service.sample /storage/.config/system.d/wireguard.service
 ```
 
 Replace **vpn\_service\_name\_goes\_here** with your service name, e.g. `vpn_185_210_30_121` using nano. Use `ctrl+o` to save changes and `ctrl+x` to exit nano:
 
-```text
+```
 nano /storage/.config/system.d/wireguard.service
 ```
 
 Now we can enable and start the service:
 
-```text
+```
 RPi4:~ # systemctl enable /storage/.config/system.d/wireguard.service
 Created symlink /storage/.config/system.d/multi-user.target.wants/wireguard.service → /storage/.config/system.d/wireguard.service.
 RPi4:~ # systemctl start wireguard.service
@@ -162,11 +164,11 @@ Check the WireGuard tunnel is active using "ifconfig" and "ping" and if all is g
 
 ## Known Issues
 
-ConnMan makes wg0 route all traffic over the WireGuard tunnel by default, no matter what `WireGuard.AllowedIPs` configuration you set. To route only specific networks via the tunnel the ConnMan service order \(which influences routing order\) must be changed. 
+ConnMan makes wg0 route all traffic over the WireGuard tunnel by default, no matter what `WireGuard.AllowedIPs` configuration you set. To route only specific networks via the tunnel the ConnMan service order (which influences routing order) must be changed.
 
 Note the`sleep` and `connmanctl move-after` and `route add` commands used in the following tweaked systemd service file:
 
-```text
+```
 [Unit]
 Description=WireGuard VPN Service
 After=network-online.target nss-lookup.target connman.service connman-vpn.service bluetooth.service
@@ -186,9 +188,8 @@ ExecStop=/usr/bin/connmanctl disconnect vpn_X_klaus
 WantedBy=multi-user.target
 ```
 
-The following forum thread has tips and examples: [https://forum.libreelec.tv/thread/21906-wireguard-changes-the-default-route-although-not-configured/](https://forum.libreelec.tv/thread/21906-wireguard-changes-the-default-route-although-not-configured/) 
+The following forum thread has tips and examples: [https://forum.libreelec.tv/thread/21906-wireguard-changes-the-default-route-although-not-configured/](https://forum.libreelec.tv/thread/21906-wireguard-changes-the-default-route-although-not-configured/)
 
 ## Thanks
 
-Big thanks! to ConnMan maintainer Daniel Wagner \(wagi\) who worked with LibreELEC staff to implement WireGuard support in ConnMan \(he wrote the code, we ~~abused~~ tested it\).
-
+Big thanks! to ConnMan maintainer Daniel Wagner (wagi) who worked with LibreELEC staff to implement WireGuard support in ConnMan (he wrote the code, we ~~abused~~ tested it).
