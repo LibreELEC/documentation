@@ -36,7 +36,7 @@ WireGuard.AllowedIPs = Subnets accessed via the tunnel, 0.0.0.0/0 is "route all 
 WireGuard.EndpointPort = The **server** ListenPort\
 WireGuard.PersistentKeepalive = Periodic keepalive in seconds (optional)
 
-Note: Using WireGuard.PresharedKey is optional, but if your WireGuard configuration omits this you must remove the line from the config. If you leave it blank, e.g. `WireGuard.PresharedKey =` it will be actively with a null value, causing connections to fail.
+Note: Using WireGuard.PresharedKey is optional, but if your WireGuard configuration omits this you must remove the line from the config. If you leave it blank, e.g. `WireGuard.PresharedKey =` it will be active with a null value, causing connections to fail.
 
 ## Creating Keys
 
