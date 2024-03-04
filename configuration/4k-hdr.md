@@ -6,29 +6,26 @@ This page explains the configuration points:
 * Modeline Whitelist
 * Adjust Refresh
 * Deinterlacing
+* 4K60 Support
 * HDR Questions
 
 ### Desktop Resolution
 
-The primary impact of the Kodi desktop resolution is GUI performance, or how Kodi feels when you navigate around menus and libraries. Kodi leverages GPU hardware to accelerate rendering of GUI elements, but fanart and thumbnails are frequently adapted from original artwork on-the-fly as you scroll around, and even when all images have been pre-processed, they must still be read from disk caches before being displayed. Higher levels of CPU activity from larger artwork and media also mean higher power consumption from the HTPC device.
+The primary impact of the Kodi desktop resolution is GUI performance, or how Kodi feels when you navigate around menus and libraries. Kodi leverages GPU hardware to accelerate rendering of GUI elements, but fanart and thumbnails are frequently adapted from original artwork on-the-fly as you scroll around, and even when all images have been pre-processed, they must still be read from disk caches before being displayed. Higher levels of CPU and I/O activity from larger artwork and media also mean higher power consumption from the HTPC device.
 
-The second impact of the Kodi desktop resolution is how media is scaled. If "Adjust Refresh" is not enabled, Kodi will scale all media played up or down to the desktop resolution and refresh rate, which by default is 1080p @ 60 fps. Scaling SD and 720p media to 1080p while adding extra frames to match 60fps is handled well, as Kodi simply needs to duplicate frames to reach the higher fps rate, and the simple scaling algorithms which Kodi uses to reduce artefacts in the upscaled image move smaller amounts of data in/out of memory. Hardware as low-spec as the first generation Raspberry Pi can normally manage this well.
+The second impact of the Kodi desktop resolution is how media is scaled. If "Adjust Refresh" is not enabled, Kodi will scale all media played up or down to the desktop resolution and refresh rate, which by default is 1080p @ 60 fps. Scaling SD and 720p media up to 1080p while adding extra frames to match 60fps is handled well, as Kodi simply needs to duplicate frames to reach the higher fps rate, and the simple scaling algorithms Kodi uses to reduce artefacts in the upscaled image move smaller amounts of data in/out of memory. Hardware as low-spec as the first generation Raspberry Pi can normally manage this well.
 
 Scaling SD and 1080p media to 4K is a literally bigger challenge. Frame sizes for 4K media are 4x the size of 1080p so the amount of data being processed in/out of memory increases and the CPU resources needed also increase. Scaling 4K to 1080p is a larger challenge again. Source 4K media has huge frame sizes and sophisticated (down)scaling algorithms are required to create a lossy image without massive visual artefacts.
 
-Higher-spec Intel CPU devices with recent Core i7 chips and SSD storage can normally run the Kodi GUI at 4K with 60fps refresh rates and scale media with reasonable quality, but older and lower-spec Intel CPU devices and anything running from a spinning HDD or removable USB/SD media will struggle with a 4K desktop, and ARM SoC devices simply fail as they don't have the memory bandwidth or CPU speeds to process the data volumes needed.
+Higher-spec Intel CPU devices with recent Core i7 chips and SSD storage can normally run the Kodi GUI at 4K with 60fps refresh rates and scale media with reasonable quality, but older and lower-spec Intel CPU devices and anything running from a spinning HDD or removable USB/SD media will struggle with a 4K desktop. This also includes ARM SoC devices. They might be capable of displaying the Kodi desktop in 4K but the experience is poor since they don't have the memory bandwidth or CPU speeds to process the data volumes needed.
 
-However, all 4K resolution TV's have dedicated scaling hardware using sophisticated algorithms to upscale 1080p images to the native 4K resolution of the screen. TVs do this better and much more efficiently than Kodi can scale images itself.
+However, all 4K resolution TV's have dedicated scaling hardware with sophisticated algorithms to upscale 1080p images to the native 4K resolution of the screen. TVs do this better and much more efficiently than Kodi can scale images itself.
 
-<mark style="color:red;">**Recommendation: Keep the Desktop resolution at 1080p, with 60fps refresh rate. Allow Kodi to upscale SD media to HD, and let the TV handle upscaling to 4K**</mark>
+<mark style="color:red;">**Recommendation: Keep the Desktop resolution at 1080p, with 60fps refresh rate. Allow Kodi to upscale SD media to HD, and let the TV handle 1080p upscaling to 4K**</mark>
 
 ### Mode Whitelist
 
 Most 4K televisions support a broad range of resolutions and refresh rates to support different media standards. In Linux each output format is known as a "modeline" and Kodi allows you to configure a list of allowed modes to use in combination with the "Adjust Refresh" option.
-
-Raspberry Pi 4 devices require specific configuration in config.txt to enable 4K @ 60/59.94/50 mode output, but nearly all streaming media uses 4K@30/23.976 modes so most users do not need to enable these modes. Enabling 4K60 output also increases power consumption.
-
-4K @ 60/59.94/50 modes require hardware that supports HDMI 2.0 or higher, and an HDMI cable that supports the higher bandwidth needed. Suitable cables are normally sold as 4K@60 "certified" cables. Cheaper and lower-spec cables that support HDMI 1.4 modes (up to 4K@30) are a frequent cause of "I enabled 4K@60 but have a blank screen" issue reports in the forums.
 
 Some hardware supports 4096x2160 modes. Kodi evaluates the whitelist using the height (2160) and refresh rate, so if you include these in your whitelist selection Kodi will switch to them instead of 3840x2160 modes which are an exact or more accurate match with 4K streaming media. If you see black bars on the sides of 4K media while playing, remove 4096 modes from the whitelist.
 
@@ -39,7 +36,7 @@ Some hardware supports 4096x2160 modes. Kodi evaluates the whitelist using the h
 
 ### Adjust Refresh
 
-Kodi can either upscale media to match the desktop resolution and refresh rate, or automatically switch to a resolution and rate that exactly or better matches the media. Switching to match the rate can eliminate or minimise the need for Kodi to make corrections (to keep things in-sync) by adding or dropping frames. Adding frames to the stream is generally harmless and rarely causes noticeable artefacts, but dropping frames causes skips, glitches and audio pops.
+Kodi can either upscale media to match the desktop resolution and refresh rate, or switch to a resolution and rate that exactly or better matches the media. Switching to match the rate can eliminate or minimise the need for Kodi to make corrections (to keep things in-sync) by adding or dropping frames. Adding frames to the stream is generally harmless and rarely causes noticeable artefacts, but dropping frames causes skips, glitches and audio pops.
 
 Kodi has three "Adjust Refresh" settings:
 
@@ -60,6 +57,19 @@ Kodi converts interlaced media for progressive output by doubling the original r
 
 <mark style="color:red;">**Recommendation: Remove 1080 @ 30, 29.97 and 25 fps rates from the Modelist**</mark>
 
+### 4K @ 60Hz
+
+Successful 4K output at 60Hz depends on HDMI output capabilities from the HTPC device, certified cables that can provide the higher bandwidth required for higher bit-depth video and higher bit-rate audio, HDMI input ports on the TV or AVR that match the outputs from the HTPC, and media that aligns to the hardware capabilities. Common problems that we see include:
+
+* Some TV's and AVR's support different HDMI capabilities on different ports. Some support 4K60 4:2:2 (12-bit) input on specific ports, while other ports support 4K60 4:2:0 (8/10-bit) input.
+* Some TV's and AVR's require 4K60 4:2:2 capabilities to be enabled in TV settings else the port defaults to 4K60 4:2:0 input. There is no standardised naming among vendors so we have seen "Deep Colour" and "Enhanced HDMI" used to describe 4K60 4:2:2 support.
+* Raspberry Pi 4/5 boards notably do not support 4K60 4:2:0 output. If the TV or connected port only supports 4K60 4:2:0 input the 4K60 modes will (correctly) not be available.
+* Raspberry Pi 4 boards need configuration in `/flash/config.txt` to enable 4K @ 60/59.94/50 mode output. This is not enabled by default because it increases power consumption, and as most media uses 4K@30/23.976 most users do not need to enable 4K60 modes.
+* Raspberry Pi 5 devices support 4K60 output by default and do not require `/flash/config.txt` configuration. This is one reason why Raspberry Pi 5 boards require a higher rated PSU. If you do not need 4K60 output most 5V/3A PSU's used with RPi4 work fine with an RPi5 too.
+* 4K @ 60/59.94/50 modes require an HDMI 2.0 cable that supports the much higher bandwidth needed. Suitable cables are normally sold as 4K@60 "certified" cables. Cheaper and lower-spec cables that support HDMI 1.4 modes (up to 4K@30) are a frequent cause of "I've enabled 4K@60 but have a blank screen" issue reports in the forums.
+
+<mark style="color:red;">**If you are unable to use 4K60 modes: please check cables, check port capabilities, and if using SBC boards; check the PSU can handle the needed current draw before reporting issues in the forums!**</mark>
+
 ### HDR
 
 Broadcast and Internet media follow a multitude of formal standards for resolution, refresh-rate, bit-depth, video format and colour-space. HDR formats add static or dynamic metadata to the stream or even individual video frames to enhance how colours are displayed. Kodi on Linux can support static HDR formats like HLG and HDR10, but not dynamic (proprietary) formats like HDR10+ and Dolby Vision which do not have open-source implementations. Users should understand HDR is not a simple "My TV can do 4K" type standard. HDR is a collection of competing technical standards (format wars are in progress) and the number of variables that must be determined and processed to render something nice looking on screen is huge.
@@ -70,7 +80,7 @@ Kodi aims to hide the mind-bending complexity of choosing how HDR media will be 
 
 Here are some answers to common HDR questions:
 
-* Kodi does not (yet) support HDR to SDR conversion, known as tonemapping. If you play HDR media on a TV that does not support HDR, it will often play but colours will be muted and washed out. In the future Kodi may support conversion, but it is not currently implemented.
+* Kodi does not support HDR to SDR conversion (tonemapping) on Linux. If you play HDR media on a TV that does not support HDR, it will often play but colours will be muted and washed out. In the future Kodi may support conversion, but it is not currently implemented.
 * Kodi has no way to present OSD menus in SDR when playing HDR media, so menus will have bright saturated colours. In the future, plane based tonemapping may be able to correct this, but it is not currently implemented and not all hardware supports multiple planes.
 * Kodi will attempt to output in the highest bit-depth supported by the display pipeline, e.g. on a Raspberry Pi 4 it will attempt 12-bit before falling back to 10-bit, then 8-bit. Not all 4K HDR capable hardware supports higher 12-bit and 10-bit depths.
 * Kodi supports Dolby Vision under Android (if the device is licensed for it) but not Linux. Dolby requires manufacturers to license their Intellectual Property and use integration libraries to decode the HDR metadata. Until FFMpeg comes up with a "clean room" reverse engineered open-source implementation, Kodi will not support it.
