@@ -60,6 +60,12 @@ In most cases you will need a small pin, unfolded paper-clip, or toothpick to pr
 
 These images are built for Single Board Computer (SBC) devices which boot modern U-Boot via an SD card or removable eMMC module. Installation is normally simple requiring you to write the image to the SD card or eMMC module and boot the device. If the board has eMMC storage soldered (not on a removable module) it may be necessary to boot from the "box" image first. Once booted to a box image on SD card (so eMMC is not in use) you can write the correct `board` image to eMMC (overwriting Android or other factory-installed images) using `dd` to write the image. You can use the `emmctool` command to help that process (see below).
 
+## Android Images
+
+If you are searching for an Android firmware image to recover/restore a set-top box please be advised that the project cannot help you. We have no interest in Android and Android images and do not have a secret stash of vendor firmware files. Please contact the original manufacturer of your box, or use their support forum, or (often best) search Android focussed community forums like 4pda.
+
+> The sole exceptions are the WeTek Hub and Play2 devices: we have the original Android firmware update files and raw 'dd' images of the internal storage of the boxes.
+
 ## install2internal
 
 Community images using Amlogic Linux 3.14/4.9 kernels often include the `install2internal` script to reconfigure the factory boot process and run LibreELEC from internal eMMC storage. We do not provide or support this script. There are two main reasons:
