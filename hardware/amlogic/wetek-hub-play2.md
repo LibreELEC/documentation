@@ -8,7 +8,7 @@ Create a bootable SD card using the `AMLGX` "box" image, then edit the `uEnv.ini
 
 Once the box has booted into the "box" image you can download the latest WeTek "board" image and install LibreELEC to internal eMMC storage using `emmctool`. <mark style="color:red;">**This permanently overwrites the Android vendor OS with LibreELEC.**</mark>
 
-Find the URL for the relevant board image on the [download page](https://libreelec.tv/downloads/amlogic/). For example, the LibreELEC v11 beta 1 image for the WeTek Play2 will be:
+Find the URL for the relevant board image on the [download page](https://libreelec.tv/downloads/amlogic/). For example, the LibreELEC 11.0 image for the WeTek Play2 will be:
 
 ```
 https://releases.libreelec.tv/LibreELEC-AMLGX.arm-11.0.0-wetek-play2.img.gz
@@ -22,7 +22,6 @@ wget https://releases.libreelec.tv/LibreELEC-AMLGX.arm-11.0.0-wetek-play2.img.gz
 emmctool w LibreELEC-AMLGX.arm-11.0.0-wetek-play2.img.gz
 ```
 
-`The emmctool` utility will write the board image to eMMC, expand the /storage partition to 100% size and change the partition labels to `BOOT` and `DISK` to avoid clashing with the default labels used in the SD card image (so you can boot from SD card if needed).
+The `emmctool` utility will write the board image to eMMC, expand the /storage partition to 100% size and change the partition labels to `BOOT` and `DISK` to avoid name-clashing with the default labels used in the SD card image (so you can boot from SD card if needed).
 
 Once `emmctool` has finished, run `shutdown` and remove the SD card. Then cycle power to boot into LibreELEC running from the internal storage.
-

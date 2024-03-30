@@ -1,6 +1,6 @@
 # Amlogic
 
-Current LibreELEC 10.0+ images for Amlogic using modern Linux kernels use boot processes and device-tree files that are not compatible with older LibreELEC images that use Amlogic Linux 3.14 or 4.9 kernels. The change to boot processes means you cannot update from older releases and must make a new/clean installation.
+LibreELEC images for Amlogic with modern Linux kernels use boot processes and device-tree files that are not compatible with older LibreELEC images (LE 9.x and earlier) that use Amlogic Linux 3.14 or 4.9 kernels. The change to boot processes means you cannot update from older releases and must make a new/clean installation.
 
 There are two images supporting Amlogic Gen10+ (64-bit) SoCs and older Gen8 (32-bit) SoCs used in a range of Linux SBC and Android STB devices:
 
@@ -19,7 +19,7 @@ There are two images supporting Amlogic Gen10+ (64-bit) SoCs and older Gen8 (32-
 * Meson 8b (S802)
 * Meson 8m2 (S812)
 
-NB: The WeTek Play(1)/OpenELEC box uses Meson 6 (8726MX) hardware. There is little support for Meson 6 hardware in the upstream kernel and low probability of support evolving to the point where modern-kernel LibreELEC images are viable.
+> WeTek Play(1) aka WeTek OpenELEC uses Meson 6 (8726MX) hardware. There is little support for Meson 6 hardware in the upstream kernel and low probability of support evolving to the point where modern-kernel LibreELEC images are viable. Support ends with LibreELEC 9.0.
 
 `AMLGX` and `AMLMX` provide a "box" image for use with devices that run Amlogic (aka Vendor or Legacy) boot firmware (U-Boot 2015.01 with Amlogic and manufacturer customisations) and "board" images using modern boot firmware (mainline U-Boot) specific to a single SBC board or STB device. The image type can be identified by the filename `-suffix`:
 
@@ -36,14 +36,14 @@ As `box` images can be used on many devices you must configure the device-tree f
 For example, here is the default `uEnv.ini` file:
 
 ```
-dtb_name=/dtb/@@DTB_NAME@@
+dtb_name=/amlogic/@@DTB_NAME@@
 bootargs=boot=UUID=2306-0801 disk=UUID=8268da37-3a8d-4f6d-aba0-08918faded56 quiet systemd.debug_shell=ttyAML0 console=ttyAML0,115200n8 console=tty0
 ```
 
 To boot a Beelink GT-King box change `@@DTB_NAME@@` to `meson-g12b-gtking.dtb`
 
 ```
-dtb_name=/dtb/meson-g12b-gtking.dtb
+dtb_name=/amlogic/meson-g12b-gtking.dtb
 bootargs=boot=UUID=2306-0801 disk=UUID=8268da37-3a8d-4f6d-aba0-08918faded56 quiet systemd.debug_shell=ttyAML0 console=ttyAML0,115200n8 console=tty0
 ```
 
@@ -67,7 +67,7 @@ Community images using Amlogic Linux 3.14/4.9 kernels often include the `install
 1. Amlogic uses a proprietary partitioning scheme that relocates partition data structures to non-standard locations. This is supported in Amlogic Linux kernels and Amlogic-modified versions of tools like parted, fdisk and fsck used to create and manage filesystems. It is not supported in modern upstream Linux kernels or modern versions of filesystem tools. This means the Linux kernel used in AMLGX images cannot read the offset partition data to mount (and repurpose) Android partitions as a persistent /storage area.
 2. The script causes a high volume of support issues. When the script fails to modify the boot process or create partitions correctly the user ends up with a "bricked" box. Amlogic builds several factory-restore mechanisms into their software that mean it is always possible to recover the box, but this normally requires the user to find the correct Android image for the device and reflash it with a Windows OS tool that often has issues. Our forum staff are all volunteers who give time to the project for fun. Helping a never-ending stream of pissed-off inexperienced users recover bricked boxes is not fun, nor do we have a collection of Android images to use, so we actively discourage the existence and use of this script.
 
-In short: It was technically possible (but heavily discouraged) to use `install2internal` with our older LibreELEC images. It is not possible to use `install2internal` with AMLGX and running the script will either fail, or fail _and_ break boot. To run LibreELEC from eMMC storage please purchase a supported "board" device.
+In short: It was technically possible (but heavily discouraged) to use `install2internal` with older LibreELEC images. It is NOT POSSIBLE to use `install2internal` with AMLGX and running the script will either fail, or fail _and_ break boot. To run LibreELEC from eMMC storage please purchase a supported "board" device.
 
 ## emmctool
 
