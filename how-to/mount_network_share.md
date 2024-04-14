@@ -94,9 +94,7 @@ Connect to your LibreELEC HTPC [with SSH](https://app.gitbook.com/accessing\_lib
 
 #### 2. Create the systemd definition file
 
-**Important:** you need to set the filename for the definition file according to the folder where you want to mount your share .
-In our case: `storage-recordings.mount` represents the path -> `/storage/recordings`.
-If you add a subfolder: `storage-recordings-tv.mount` represents the path -> `/storage/recordings/tv`.
+**Important:** you need to set the filename for the definition file according to the folder where you want to mount your share . In our case: `storage-recordings.mount` represents the path -> `/storage/recordings`. If you add a subfolder: `storage-recordings-tv.mount` represents the path -> `/storage/recordings/tv`.
 
 `nano /storage/.config/system.d/storage-recordings.mount`
 
@@ -135,7 +133,7 @@ Options: At this section you are able to define specific NFS options, such as th
 
 To use an NFSv4 share:
 
-`Type=nfs4`&#x20;
+`Type=nfs4`
 
 #### 4. Start it for a test
 
@@ -205,19 +203,13 @@ Contents of the automount definition file:
 
 ```
 [Unit]
-
 Description=test automount for recordings
 
-
 [Automount]
-
 Where=/storage/recordings
-
 TimeoutIdleSec=0
 
-
 [Install]
-
 WantedBy=multi-user.target
 ```
 
