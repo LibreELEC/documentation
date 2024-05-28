@@ -56,6 +56,7 @@
 * [Blacklist Kernel Module](how-to/blacklist-kernel-module.md)
 * [Change Bootsplash](how-to/change-bootscreen.md)
 * [Force Add-on Update](how-to/force-add-on-update.md)
+* [Add content via Samba Shares](how-to/add-content-via-samba-shares.md)
 * [Mount Network Share](how-to/mount\_network\_share.md)
 
 ## Development
