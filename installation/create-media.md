@@ -1,20 +1,24 @@
 # Create Media
 
-The “LibreELEC USB-SD Creator” app helps you choose and download the latest image for your HTPC device and create bootable USB or SD Card media. The tool is available for Windows 10 and newer, macOS 10.9 and newer, and Ubuntu Linux 32/64 bit (and should also work on other Debian derivatives).
+The “LibreELEC USB-SD Creator” app helps you select and download the latest LibreELEC image for your HTPC device and create bootable USB or SD Card media. The tool is available for current 64-bit Windows 10/11 versions, and macOS v14.x and newer.
 
-* [LibreELEC.USB-SD.Creator.Win32.exe](https://releases.libreelec.tv/LibreELEC.USB-SD.Creator.Win32.exe)
-* ~~LibreELEC.USB-SD.Creator.macOS.dmg~~ ([currently not available](https://libreelec.tv/2022/04/05/usb-sd-creator-1-4/))
-* ~~LibreELEC.USB-SD.Creator.Linux-64bit.bin~~ ([currently not available](https://libreelec.tv/2022/04/05/usb-sd-creator-1-4/))
+Download Links:
+
+* [LibreELEC.USB-SD.Creator.x64.exe](https://releases.libreelec.tv/LibreELEC.USB-SD.Creator.x64.exe) ([sha256](https://releases.libreelec.tv/LibreELEC.USB-SD.Creator.x64.exe?mirrorlist))
+* [LibreELEC.USB-SD.Creator.macOS.dmg](https://releases.libreelec.tv/LibreELEC.USB-SD.Creator.macOS.dmg) ([sha256](https://releases.libreelec.tv/LibreELEC.USB-SD.Creator.macOS.dmg?mirrorlist))
+
+Note: The Linux version of the app for Ubuntu and Debian derivatives is not currently available. Please see the note on [#alternatives](create-media.md#alternatives "mention") below.&#x20;
 
 ## Step 1
 
 Choose the LibreELEC image and the app will show the latest stable release, e.g.
 
-* Generic x86\_64 - LibreELEC-Generic.x86\_64-11.0.1.img.gz
-* RaspberryPi 2/3 - LibreELEC-RPi2.arm-11.0.1.img.gz
-* RaspberryPi 4 - LibreELEC-RPi4.arm-11.0.1.img.gz
+* Generic x86\_64 - LibreELEC-Generic.x86\_64-12.0.1.img.gz
+* RaspberryPi 2/3 - LibreELEC-RPi2.arm-12.0.1.img.gz
+* RaspberryPi 4 - LibreELEC-RPi4.arm-12.0.1.img.gz
+* RaspberryPi 5 - LibreELEC-RPi5.arm-12.0.1.img.gz
 
-If you check 'Show all' the list also shows older stable releases and current Alpha (x.90.xxx) or Beta (x.95.0) releases.
+If you select the 'Show all' check-box the drop list includes older stable releases too.
 
 ## Step 2
 
@@ -31,3 +35,12 @@ After selecting an image and target device the `Write` button is available. Clic
 ## Support
 
 If you have problems with the app, please post in the [USB-SD Creator Support forum](https://forum.libreelec.tv/forum-41.html).
+
+### Alternatives
+
+Here are some alernative tools that can be used for creating LibreELEC boot media:
+
+* [Raspberry Pi Imager](https://www.raspberrypi.com/software/) can create Raspberry Pi images using files from our servers
+* [Balena Etcher](https://etcher.balena.io/) is popular but huge (almost the same size as our distro images!)
+* [Win32DiskImager](https://win32diskimager.org/) is a reliable tool for Windows OS devices
+* [dd](https://linux.die.net/man/1/dd) is available from most Linux OS command lines&#x20;
