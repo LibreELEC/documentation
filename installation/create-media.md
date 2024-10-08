@@ -36,7 +36,7 @@ After selecting an image and target device the `Write` button is available. Clic
 
 If you have problems with the app, please post in the [USB-SD Creator Support forum](https://forum.libreelec.tv/forum-41.html).
 
-### Alternatives
+## Alternatives
 
 Here are some alernative tools that can be used for creating LibreELEC boot media:
 
