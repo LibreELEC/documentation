@@ -88,6 +88,17 @@ dtoverlay=hifiberry-amp
 dtoverlay=iqaudio-dac
 dtoverlay=iqaudio-dacplus
 ```
+On RPi 5, using Libreelec 12 and upwards, different audio interfaces are needed:
+```text
+dtoverlay=hifiberry-dacplus
+dtoverlay=hifiberry-dacplus-std
+dtoverlay=hifiberry-dacplus-pro
+```
+
+With kernels older than 6.1.77 on RPi 5, "slave" mode must be forced:
+```text
+dtoverlay=hifiberry-dacplus,slave
+```
 
 Infra-Red Receivers:
 
