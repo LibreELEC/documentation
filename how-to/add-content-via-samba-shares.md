@@ -25,7 +25,7 @@ cp /storage/.config/samba.conf.sample /storage/.config/samba.conf
 After modifying the shares, restart Samba:
 
 ```
-systemctl smbd restart
+systemctl restart smbd
 ```
 
 ...or just reboot, and the new settings should take effect after a restart.
