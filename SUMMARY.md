@@ -33,10 +33,11 @@
 
 * [4K / HDR](configuration/4k-hdr.md)
 * [Blu-Ray Playback](configuration/blu-ray.md)
-* [Config.txt](configuration/config\_txt.md)
+* [Config.txt](configuration/config_txt.md)
 * [Cron](configuration/cron.md)
 * [Dual Boot](configuration/dual-boot.md)
 * [EDID](configuration/edid.md)
+* [Fonts](configuration/fonts.md)
 * [Hidden WiFi](configuration/hidden-wifi.md)
 * [Hypercon](configuration/hypercon.md)
 * [Hyperion](configuration/hyperion.md)
@@ -47,7 +48,7 @@
 * [Safe Mode](configuration/safe-mode.md)
 * [SSL/TLS Certificates](configuration/ssl-tls-certificates.md)
 * [Startup & Shutdown](configuration/startup-shutdown.md)
-* [Useful Scripts](configuration/useful\_scripts.md)
+* [Useful Scripts](configuration/useful_scripts.md)
 * [WireGuard](configuration/wireguard.md)
 
 ## How To
@@ -57,7 +58,7 @@
 * [Change Bootsplash](how-to/change-bootscreen.md)
 * [Force Add-on Update](how-to/force-add-on-update.md)
 * [Add content via Samba Shares](how-to/add-content-via-samba-shares.md)
-* [Mount Network Share](how-to/mount\_network\_share.md)
+* [Mount Network Share](how-to/mount_network_share.md)
 
 ## Development
 
