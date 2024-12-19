@@ -29,9 +29,12 @@ Next enable and start the `systemd` service:
 
 ```sh
 systemctl enable /storage/.config/system.d/hidden-ssid.service
-systemctl start /storage/.config/system.d/hidden-ssid.service
+systemctl start hidden-ssid.service
 ```
 
 Starting the service will initiate the connection and `ifconfig` should show an active NIC with an IP address. Ensure testing is done with Ethernet cables unplugged else the default traffic `route` will be on the `eth0` Ethernet connection.
 
-<mark style="color:red;">**NOTE: Users commonly hide the network SSID to improve privacy and network security, but it is disclosed in client connection requests making a hidden network easily discoverable to anyone sniffing WiFi packets and looking for it. Hiding the SSID provides zero protection.**</mark>
+{% hint style="info" %}
+**Users often hide the network SSID to improve privacy and network security, but the SSID is disclosed in client connection requests making a hidden network easily discoverable to anyone sniffing WiFi packets and looking for it. Hiding the SSID provides zero protection.**
+{% endhint %}
+
