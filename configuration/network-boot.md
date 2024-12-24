@@ -22,6 +22,16 @@ LABEL LibreELEC
 
 Replace `192.168.0.1` with the NFS server IP address. The `overlay` parameter is not required if you only intend to boot one system. LibreELEC is now configured to boot using TFTP and NFS!
 
+### NFSv4
+
+Today many server use NFSv4 while the kernel still default to NFSv3. In such a case set the correct NFS dialect via the `vers=` option:
+
+```text
+  APPEND ip=dhcp boot=NFS=192.168.0.1:/mnt/store/libreelec,vers=4.2 disk=NFS=192.168.0.1:/mnt/store/libreelec/storage,vers=4.2 overlay
+```
+
+Valid nfs versions are `2 3 4 4.0 4.1 4.2`.
+
 ## Server \(Ubuntu\)
 
 In Ubuntu we need to install and configure DHCP, TFTP, and NFS services:
