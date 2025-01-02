@@ -4,6 +4,14 @@ An official archive of all Alpha, Beta, and Release images is here: [http://arch
 
 Nightly test and development snapshot images are here: [https://test.libreelec.tv](https://test.libreelec.tv)
 
+## 12.0 (Kodi v21, Omega)
+
+| Version | Status                 | Release Post                                                    |
+| ------- | ---------------------- | --------------------------------------------------------------- |
+| 12.0.1  | Stable                 | [Blog](https://libreelec.tv/2024/08/26/libreelec-nexus-12-0-1/) |
+| 12.0.0  | Stable                 | [Blog](https://libreelec.tv/2024/05/01/libreelec-nexus-12-0-0/) |
+
+
 ## 11.0 (Kodi v20, Nexus)
 
 | Version | Status                 | Release Post                                                    |
