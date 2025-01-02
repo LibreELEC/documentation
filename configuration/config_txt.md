@@ -122,5 +122,5 @@ dtparam=spi=on
 
 ## Overclocking
 
-Please see [the Raspberry Pi Foundation Wiki](http://elinux.org/RPiconfig#Overclocking) for more details on overclocking.
+Please see [the Raspberry Pi documentation](https://www.raspberrypi.com/documentation/computers/config_txt.html#overclocking-options) for more details on overclocking.
 
