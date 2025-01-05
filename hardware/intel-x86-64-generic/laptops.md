@@ -4,7 +4,7 @@ description: How to disable the internal screen and force external HDMI/DP/VGA o
 
 # Laptops
 
-LibreELEC images are targetted at common HTPC device hardware: typically small form-factor and single-board computer devices that are static/attatched to a TV or AVR device. One characteristic of common target hardware is a single active display connection even if the hardware has severl output connector options. Laptops are not target hardware devices for the project, but the "Generic" x86\_64 image(s) boot and run on a wide range of x86\_64 devices and some users recycle old laptops as their HTPC. Laptops normally support multiple active display outputs: the internal LCD screen plus one of the following:
+LibreELEC images are targeted at common HTPC device hardware: typically small form-factor and single-board computer devices that are static/attached to a TV or AVR device. One characteristic of common target hardware is a single active display connection even if the hardware has several output connector options. Laptops are not target hardware devices for the project, but the "Generic" x86\_64 image(s) boot and run on a wide range of x86\_64 devices and some users recycle old laptops as their HTPC. Laptops normally support multiple active display outputs: the internal LCD screen plus one of the following:
 
 * HDMI
 * DisplayPort
@@ -50,4 +50,4 @@ Connectors are disabled by adding `video=` options, e.g. `video=eDP-1:d` will di
 APPEND boot=UUID=10B4-4A77 disk=UUID=93786be3-5652-e2f498d33733 quiet video=eDP-1:d
 ```
 
-After adding details for the connector you need to disable, save (ctr+o) and exit (ctrl+x) then `reboot` to test the change. On restart the external connector should be the only active connector and Kodi should appear on the external display device. As the output capabilities of the external connector will be different to the internal screen you may need to adjust the Kodi desktop resolution in Kodi display settings to match e.g. 720p or 1080p output.
+After adding the details for the connector, you need to disable, save (ctr+o) and exit (ctrl+x) then `reboot` to test the change. On restart, the external connector should be the only active connector and Kodi should appear on the external display device. As the output capabilities of the external connector will be different to the internal screen, you may need to adjust the Kodi desktop resolution in Kodi display settings to match e.g. 720p or 1080p output.
