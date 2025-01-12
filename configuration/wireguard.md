@@ -25,7 +25,7 @@ WireGuard.PersistentKeepalive = 25
 ```
 
 Name = AnythingYouLike\
-Host = IP of the WireGuard **server**\
+Host = IP of the WireGuard **server** (IP, not FQDN)\
 WireGuard.Address = The internal IP of the **client** node, e.g. a /24 address\
 WireGuard.ListenPort = The **client** listen port (optional)\
 WireGuard.PrivateKey = The **client** private key\
@@ -36,7 +36,13 @@ WireGuard.AllowedIPs = Subnets accessed via the tunnel, 0.0.0.0/0 is "route all 
 WireGuard.EndpointPort = The **server** ListenPort\
 WireGuard.PersistentKeepalive = Periodic keepalive in seconds (optional)
 
-Note: Using WireGuard.PresharedKey is optional, but if your WireGuard configuration omits this you must remove the line from the config. If you leave it blank, e.g. `WireGuard.PresharedKey =` it will be active with a null value, causing connections to fail.
+{% hint style="info" %}
+Using `WireGuard.PresharedKey` is optional, but if your WireGuard configuration omits this you must remove the line from the config. If you leave it blank it will be seen as active with a null value, causing connections to fail.
+{% endhint %}
+
+{% hint style="warning" %}
+`Host`must be an IP address not a qualified domain name. If you need to handle a VPN server that has a dynamic not static address, an external script (scheduled via cron or a systemd timer) must be used to detect the IP change, update the .config file used by the ConnMan VPN manager, and restart of the WireGuard connection systemd service.
+{% endhint %}
 
 ## Creating Keys
 
@@ -162,27 +168,28 @@ RPi4:~ # systemctl start wireguard.service
 
 Check the WireGuard tunnel is active using "ifconfig" and "ping" and if all is good, reboot to test the WireGuard tunnel comes up automatically on boot.
 
-## Known Issues
+## WireGuard Routing
 
-ConnMan makes wg0 route all traffic over the WireGuard tunnel by default, no matter what `WireGuard.AllowedIPs` configuration you set. To route only specific networks via the tunnel the ConnMan service order (which influences routing order) must be changed.
+ConnMan configures wg0 to route all traffic over the WireGuard tunnel by default, no matter what `WireGuard.AllowedIPs` configuration is set. To route only specific networks via the tunnel the ConnMan service order (which influences routing order) must be changed.
 
-Note the`sleep` and `connmanctl move-after` and `route add` commands used in the following tweaked systemd service file:
+In the example below note the`sleep` and `connmanctl move-after` and `route add` commands used in the following tweaked systemd service file:
 
 ```
 [Unit]
 Description=WireGuard VPN Service
-After=network-online.target nss-lookup.target connman.service connman-vpn.service bluetooth.service
-Wants=network-online.target nss-lookup.target connman.service connman-vpn.service bluetooth.service
+After=network-online.target nss-lookup.target wait-time-sync.service connman-vpn.service
+Before=kodi.service
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/bin/sleep 5
-ExecStart=/usr/bin/connmanctl connect vpn_X_klaus
-ExecStart=/usr/bin/connmanctl move-after vpn_X_klaus ethernet_b827eb10c45a_cable
-ExecStart=/usr/bin/connmanctl move-after vpn_X_klaus ethernet_b827eb10c45a_cable
-ExecStart=/usr/sbin/route add -net 192.168.2.0 netmask 255.255.255.0 gw 10.0.0.2
-ExecStop=/usr/bin/connmanctl disconnect vpn_X_klaus
+ExecStartPre=/usr/bin/sleep 5
+ExecStart=/usr/bin/connmanctl connect vpn_service_name
+ExecStartPost=/usr/bin/connmanctl move-after vpn_service_name ethernet_b827eb10c45a_cable
+ExecStartPost=/usr/bin/connmanctl move-after vpn_service_name ethernet_b827eb10c45a_cable
+ExecStartPost=/usr/sbin/route add -net 192.168.2.0 netmask 255.255.255.0 gw 10.0.0.2
+ExecStartPost=/usr/sbin/route add 64.109.130.11/32 via 192.168.0.1 dev eth0
+ExecStop=/usr/bin/connmanctl disconnect vpn_service_name
 
 [Install]
 WantedBy=multi-user.target
