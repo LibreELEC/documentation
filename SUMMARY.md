@@ -46,6 +46,7 @@
 * [Network Boot](configuration/network-boot.md)
 * [Pulseaudio](configuration/pulseaudio.md)
 * [Safe Mode](configuration/safe-mode.md)
+* [Samba](configuration/samba.md)
 * [SSL/TLS Certificates](configuration/ssl-tls-certificates.md)
 * [Startup & Shutdown](configuration/startup-shutdown.md)
 * [Useful Scripts](configuration/useful_scripts.md)
