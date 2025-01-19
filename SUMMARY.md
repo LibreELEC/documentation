@@ -12,6 +12,7 @@
 * [Create Media](installation/create-media.md)
 * [Add-Ons](installation/add-ons.md)
 * [Containers](installation/docker.md)
+* [Security](installation/security.md)
 
 ## Hardware
 
