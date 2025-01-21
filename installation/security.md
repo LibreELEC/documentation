@@ -20,7 +20,7 @@ In a conventional Linux distro users access the OS with a non-privileged user ac
 
 In LibreELEC there is a single`root`user and most internal services run as the root user. This reduces distro maintainance and eliminates the need for `sudo` to provide a simple console experience for users with typically low or no Linux CLI experience. Although users have `root`privileges, most of the filesystem exists in a read-only state so there is limited scope for unskilled users to misconfigure the OS from its default known-good state.
 
-As the default `root/libreelec`credential is a well-known secret we support changing the root user password and the first-run wizard prompts for it to be changed. It can also be changed from the console using `passwd`. It is _not_ possible to add users, groups, or change the `user:group` context applications run under without creating a custom OS image with baked-in changes.&#x20;
+As the default `root/libreelec`credential is a well-known secret the first-run wizard prompts for it to be changed. It can also be changed from the console using `passwd`. It is _not_ possible to add users, groups, or change the `user:group` context applications run under without creating a custom OS image with baked-in changes.&#x20;
 
 {% hint style="danger" %}
 Users are strongly advised to change default credentials. The default `root/libreelec` and `libreelec/libreelec` have long been observed in common password dictionary lists that are available to anyone.
@@ -34,7 +34,11 @@ The OS is intended for use inside a home network behind a NAT router/firewall de
 
 Samba is enabled by default to facilitate end-user access to the `\Logfiles` share when installation completes but the system does not boot to the Kodi home screen. Accessing the`\Logfiles`share auto-generates a zip archive containing logs and config info that can be downloaded and shared with project staff and end-users providing support assistance in the forum.
 
-On successful boot the first-run wizard is shown and users can disable Samba. After the wizard has completed Samba services can be enabled/disabled or reconfigured via the LibreELEC settings add-on. Here you can enable authentication and change the default `libreelec/libreelec`credential used to access the Samba server.&#x20;
+On successful boot the first-run wizard is shown and users can disable Samba. After the wizard has completed Samba services can be enabled/disabled or reconfigured via the LibreELEC settings add-on. Here you can enable authentication and change the default credential used to access the Samba server. You can also downgrade SMB protocol support to min/max SMBv1 to support legacy devices that cannot connect to an SMBv2/v3 capable server.
+
+{% hint style="info" %}
+Samba **server** configuration located in the LibreELEC settings add-on, has nothing to do with Kodi SMB **client** configuration located in Kodi settings. These are separate functions with separate configuration.
+{% endhint %}
 
 ## SSH
 
