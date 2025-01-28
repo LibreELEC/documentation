@@ -6,7 +6,7 @@ The following table summarises LibreELEC support for HEVC media on different Ras
 
 | Device               | 9.2.8                       | 10.x and newer            |
 | -------------------- | --------------------------- | ------------------------- |
-| Raspberry Pi 0/1     | Up to 720p in Software      | No longer supported       |
+| Raspberry Pi 0/1     | Not supported               | Not supported             |
 | Raspberry Pi 2/3     | Up to 1080p in Software     | Up to SD in Software      |
 | Raspberry Pi 4 / 400 | Up to 4K, basic HDR (8-bit) | Up to 4K, 8/10/12-bit HDR |
 | Raspberry Pi 5       | Not supported               | Up to 4K, 8/10/12-bit HDR |
