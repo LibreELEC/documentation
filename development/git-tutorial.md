@@ -10,7 +10,7 @@ The goal of this page is to explain essential git workflow and terms. Git is min
 
 ## Forking and Cloning
 
-The project maintains its primary git repository (repo) at [https://github.com/LibreELEC/LibreELEC.tv/](https://github.com/LibreELEC/LibreELEC.tv/). The repo hosts the `master` development branch where the next release takes shape, and stable release branches, e.g. `libreelec-11.0` and `libreelec-10.0` that accumulate release-specific changes (commits) over time.
+The project maintains its primary git repository (repo) at [https://github.com/LibreELEC/LibreELEC.tv/](https://github.com/LibreELEC/LibreELEC.tv/). The repo hosts the `master` development branch where the next release takes shape, and stable release branches, e.g. `libreelec-12.0` and `libreelec-11.0` that accumulate release-specific changes (commits) over time.
 
 To self-build an image and test something you can simply `git clone` our sources and start building, but if you want to maintain personal customisations and changes over time it's better to `fork` our sources to your own git repo. Having your own fork makes the process of storing, sustaining, and sharing your changes easier. Forking is done online by visiting the LibreELEC repo and then pressing the fork button (top right of the screen). GitHub will make a copy of our sources under your own user account. Now instead of cloning OUR sources you `git clone` a copy of YOUR sources to your local hard-drive.
 
@@ -21,7 +21,7 @@ cd LibreELEC.tv
 
 ## Origin and Upstream
 
-Like ours, your fork will have a `master` branch and release branches like `libreelec-9.2` which contain a sequence of commits. When you clone your repo to your local drive, git automatically creates references to your copy on GitHub which is the `origin` of your local sources. To update your local branches with changes from our `upstream` branches, we will define a `remote` repo. You can add many remote(s), but we will add just one:
+Like ours, your fork will have a `master` branch and release branches like `libreelec-12.0` which contain a sequence of commits. When you clone your repo to your local drive, git automatically creates references to your copy on GitHub which is the `origin` of your local sources. To update your local branches with changes from our `upstream` branches, we will define a `remote` repo. You can add many remote(s), but we will add just one:
 
 ```
 git remote add upstream https://github.com/LibreELEC/LibreELEC.tv.git
@@ -29,10 +29,10 @@ git remote add upstream https://github.com/LibreELEC/LibreELEC.tv.git
 
 ## Topic Branches
 
-One of the most important principles of git is **NEVER WORK IN THE MASTER BRANCH !!**. To make a one-time change then build an image it's fine, but if you make changes in branches that we maintain (upstream) it becomes complicated to maintain your local (downstream) changes. It's best to keep your changes in a separate "topic" branch. To create a new topic branch, you `checkout` a new branch from the one you want to modify. For example, to modify the `libreelec-9.2` branch, we switch to it, then create the "mychanges" topic branch:
+One of the most important principles of git is **NEVER WORK IN THE MASTER BRANCH !!**. To make a one-time change then build an image it's fine, but if you make changes in branches that we maintain (upstream) it becomes complicated to maintain your local (downstream) changes. It's best to keep your changes in a separate "topic" branch. To create a new topic branch, you `checkout` a new branch from the one you want to modify. For example, to modify the `libreelec-12.0` branch, we switch to it, then create the "mychanges" topic branch:
 
 ```
-git checkout libreelec-11.0
+git checkout libreelec-12.0
 git checkout -b mychanges
 ```
 
@@ -55,27 +55,27 @@ Most users will make changes first, then build and test them, then `commit` the 
 
 ## Fetching and Rebasing
 
-Over time staff and users contribute changes to our `upstream` branches and your local fork falls behind. To update your "mychanges" topic branch you must first commit any unsaved changes, then switch back to the branch it was based upon, e.g. the `libreelec-9.2` branch:
+Over time staff and users contribute changes to our `upstream` branches and your local fork falls behind. To update your "mychanges" topic branch you must first commit any unsaved changes, then switch back to the branch it was based upon, e.g. the `libreelec-12.0` branch:
 
 ```
-git checkout libreelec-11.0
+git checkout libreelec-12.0
 ```
 
 Next we need to `fetch` the latest changes from the `upstream` branch to our local cache, then reset the local copy of the branch to match the upstream one:
 
 ```
-git fetch upstream libreelec-11.0
-git reset --hard upstream/libreelec-11.0
+git fetch upstream libreelec-12.0
+git reset --hard upstream/libreelec-12.0
 ```
 
-Now the local `libreelec-11.0` branch contains the latest changes we can change back to our `mychanges` topic branch and `rebase` the branch. Rebasing re-applies the single or handful of changes that you made (and committed) to the branch you are rebasing against, e.g.
+Now the local `libreelec-12.0` branch contains the latest changes we can change back to our `mychanges` topic branch and `rebase` the branch. Rebasing re-applies the single or handful of changes that you made (and committed) to the branch you are rebasing against, e.g.
 
 ```
 git checkout mychanges
-git rebase libreelec-11.0
+git rebase libreelec-12.0
 ```
 
-If you look at the log of commits you will see the `mychanges` branch matches the upstream `libreelec-11.0` branch, with your local changes applied on top.
+If you look at the log of commits you will see the `mychanges` branch matches the upstream `libreelec-12.0` branch, with your local changes applied on top.
 
 ```
 git log --pretty=oneline
