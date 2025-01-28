@@ -39,7 +39,7 @@ Before you can build, it is important to update the OS and install build depende
 ```
 sudo apt update
 sudo apt upgrade
-sudo apt install gcc make git unzip wget xz-utils bc gperf zip g++ xfonts-utils xsltproc openjdk-11-jre-headless curl
+sudo apt install bc curl g++ gcc git gperf make openjdk-11-jre-headless rsync unzip xfonts-utils xsltproc xz-utils zip
 ```
 
 Note: The first time the build-system runs it will validate and prompt you to install any missing package dependencies.
@@ -59,13 +59,13 @@ cd LibreELEC.tv
 After cloning you are now at the current `HEAD` position of the `master` development branch. To compile a specific LibreELEC release we need to `checkout` the specific version `tag` or `githash` associated with the release, e.g. to build the LibreELEC 11.0.1 release we checkout the `11.0.1` tag:
 
 ```
-git checkout 11.0.1
+git checkout 12.0.2
 ```
 
 You can also build at a specific point in the git revision history identified by a commit githash:
 
 ```
-git checkout aae861df88959402cde174cf95e505d942d8451e
+git checkout f3fdd11916f8a47dc5a11c3a4c99cb7c7ffac78b
 ```
 
 You are now in the root folder of the build-system and ready to build!
