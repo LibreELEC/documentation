@@ -8,6 +8,7 @@ Nightly test and development snapshot images are here: [https://test.libreelec.t
 
 | Version | Status                 | Release Post                                                    |
 | ------- | ---------------------- | --------------------------------------------------------------- |
+| 12.0.2  | Stable                 | [Blog](https://libreelec.tv/2025/01/22/libreelec-nexus-12-0-2/) |
 | 12.0.1  | Stable                 | [Blog](https://libreelec.tv/2024/08/26/libreelec-nexus-12-0-1/) |
 | 12.0.0  | Stable                 | [Blog](https://libreelec.tv/2024/05/01/libreelec-nexus-12-0-0/) |
 
