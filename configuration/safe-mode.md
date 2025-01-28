@@ -48,9 +48,9 @@ Be aware, that if we haven't fixed anything, that you will again enter the safe 
 
 ### How to disable safe mode
 
-It can be completely disabled by creating `/storage/.config/safemode.disable` .
+Safe mode can be completely disabled using a flag file `/storage/.config/safemode.disable` .
 
-Login via SSH and type touch `/storage/.config/safemode.disable`
+Login via SSH and type `touch /storage/.config/safemode.disable`
 
 ### How to fix a broken add-on
 
