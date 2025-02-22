@@ -66,14 +66,14 @@ If you are searching for an Android firmware image to recover/restore a set-top 
 
 > The sole exceptions are the WeTek Hub and Play2 devices: we have the original Android firmware update files and raw 'dd' images of the internal storage of the boxes.
 
-## install2internal
+## installtointernal
 
-Community images using Amlogic Linux 3.14/4.9 kernels often include the `install2internal` script to reconfigure the factory boot process and run LibreELEC from internal eMMC storage. We do not provide or support this script. There are two main reasons:
+Community images using Amlogic Linux 3.14/4.9 kernels often include the `installtointernal` script to reconfigure the factory boot process and run LibreELEC from internal eMMC storage. We do not provide or support this script. There are two main reasons:
 
 1. Amlogic uses a proprietary partitioning scheme that relocates partition data structures to non-standard locations. This is supported in Amlogic Linux kernels and Amlogic-modified versions of tools like parted, fdisk and fsck used to create and manage filesystems. It is not supported in modern upstream Linux kernels or modern versions of filesystem tools. This means the Linux kernel used in AMLGX images cannot read the offset partition data to mount (and repurpose) Android partitions as a persistent /storage area.
 2. The script causes a high volume of support issues. When the script fails to modify the boot process or create partitions correctly the user ends up with a "bricked" box. Amlogic builds several factory-restore mechanisms into their software that mean it is always possible to recover the box, but this normally requires the user to find the correct Android image for the device and reflash it with a Windows OS tool that often has issues. Our forum staff are all volunteers who give time to the project for fun. Helping a never-ending stream of pissed-off inexperienced users recover bricked boxes is not fun, nor do we have a collection of Android images to use, so we actively discourage the existence and use of this script.
 
-In short: It was technically possible (but heavily discouraged) to use `install2internal` with older LibreELEC images. It is NOT POSSIBLE to use `install2internal` with AMLGX and running the script will either fail, or fail _and_ break boot. To run LibreELEC from eMMC storage please purchase a supported "board" device.
+In short: It was technically possible (but heavily discouraged) to use `installtointernal` with older LibreELEC images. It is NOT POSSIBLE to use `installtointernal` with AMLGX and running the script will either fail, or fail _and_ break boot. To run LibreELEC from eMMC storage please purchase a supported "board" device.
 
 ## emmctool
 
