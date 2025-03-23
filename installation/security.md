@@ -52,7 +52,7 @@ Enabling the "Disable SSH Password" feature does not disable the password login 
 
 ## VPN
 
-Connecting to any commercial or private VPN server that provides a public IP address to the VPN tunnel network interface requires the server to block inbound connections or the[#firewall](security.md#firewall "mention") to be enabled with either `Home` or `Public` profiles. Services like Samba and SSH listen on all available interfaces so the VPN connection exposes services to the public internet.
+Connecting to any commercial or private VPN server that provides a public IP address to the VPN tunnel network interface requires the server to block inbound connections or the [#firewall](security.md#firewall "mention") to be enabled with either `Home` or `Public` profiles. Services like Samba and SSH listen on all available interfaces so the VPN connection exposes services to the public internet.
 
 ## WSDD2
 
