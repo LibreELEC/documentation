@@ -42,7 +42,7 @@ Samba **server** configuration located in the LibreELEC settings add-on, has not
 
 ## SSH
 
-SSH services are disabled by default but can be enabled on succsseful boot in the first-run wizard. If you enable services you are prompted to change the default `root/libreelec`credential. After the wizard has completed SSH services can be enabled/disabled or reconfigured via the LibreELEC settings add-on. Here you can reset the root password. The password can also be changed from the local console or SSH console using the standard Linux `passwd`tool.&#x20;
+SSH services are disabled by default but can be enabled on successful boot in the first-run wizard. If you enable services you are prompted to change the default `root/libreelec`credential. After the wizard has completed SSH services can be enabled/disabled or reconfigured via the LibreELEC settings add-on. Here you can reset the root password. The password can also be changed from the local console or SSH console using the standard Linux `passwd`tool.&#x20;
 
 For better security and convenience, add a public key to `/storage/.ssh/authorized_keys` and then disable password authentication in the LibreELEC settings add-on. You can replace the default 2048-bit RSA keys generated on first-boot and stored in the `/storage/.ssh` directory. New SSH keys must be secured with 600 permissions else the SSH daemon will not start.
 
