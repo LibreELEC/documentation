@@ -10,6 +10,6 @@ redirects:
     libreelec: README.md
     libreelec_usb-sd_creator: installation/create-media.md
     mirrors: project/mirrors.md
-    raspberry_pi_faq: hardware/raspberry-pi.md
+    raspberry_pi_faq: hardware/raspberry-pi/README.md
+    configuration/config_txt.md: hardware/raspberry-pi/config_txt.md
     releases: project/releases.md
-
