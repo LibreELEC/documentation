@@ -21,14 +21,13 @@ LibreComputer preinstalls their eMMC modules with Android, so if you power on th
 
 ### Updating U-Boot in SPI
 
-LibreComputer provides [U-Boot firmware](http://share.loverpi.com/board/libre-computer-project/libre-computer-board/aml-s805x-ac/firmware/) files for updating the SPI flash. LibreELEC does not need a minimum version to boot, but newer U-Boot firmware fixes some graphical on-screen glitches seen in the early boot stages. To update:
+LibreComputer provides [U-Boot firmware](https://boot.libre.computer/release/aml-s805x-ac/) files for updating the SPI flash. LibreELEC does not need a minimum version to boot, but newer U-Boot firmware fixes some graphical on-screen glitches seen in the early boot stages. To update:
 
-1. Download the latest U-Boot `.bin` and `.scr` files to a FAT formatted USB stick
-2. Rename the `.scr` file to `boot.scr`
-3. Connect the USB drive to the socket furthest from the GPIO header
-4. Power on the board
-5. Current U-Boot checks if the new image matches existing firmware, and when it does not (as it is newer) the firmware will be updated. When complete:
-6. Power off the board and remove the USB stick
+1. Download the latest `aml-s805x-ac-spiflash.img` and flash it to a USB stick
+2. Connect the USB drive to the socket furthest from the GPIO header
+3. Power on the board
+4. Current U-Boot checks if the new image matches existing firmware, and when it does not (as it is newer) the firmware will be updated. When complete:
+5. Power off the board and remove the USB stick
 
 ### UART
 
