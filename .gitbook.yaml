@@ -1,4 +1,5 @@
-redirects:  
+redirects:
+    configuration/config.txt: configuration/config_txt
     de/main_page: README.md
     de/releases: project/releases.md
     how_to/add_firmware: how-to/add-firmware.md
