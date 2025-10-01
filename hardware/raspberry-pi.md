@@ -1,5 +1,23 @@
 # Raspberry Pi
 
+## Composite Output
+
+LibreELEC images for all Raspberry Pi boards ship pre-configured for HDMI output. Two simple changes are required to swich the image into Composite mode:
+
+First, edit `config.txt` in the root folder of the SD card to comment out `include distroconfig.txt` and uncomment `include distroconfig-composite.txt` , e.g. the comments should look like this:
+
+```
+#include distroconfig.txt
+include distroconfig-composite.txt
+```
+
+Second, edit `cmdline.txt` in the root folder of the SD card to configure PAL or NTSC output. This is done by appending a `video=Composite-1` option to the line of boot params in the file. Append to the existing single line; do not add them on a new/separate line. The two options are:
+
+* &#x20;`video=Composite-1:720x576@50ie`  for PAL output
+* &#x20;`video=Composite-1:720x480@60ie`  for NTSC output
+
+Boot after saving the changes and HDMI will be disabled and Composite enabled. You may also need to adjust audio output preferences in Kodi as the pre-configured default is for HDMI.
+
 ## HEVC on LibreELEC 9.2.x and 10.x or newer
 
 The following table summarises LibreELEC support for HEVC media on different Raspberry Pi hardware generations:
