@@ -1,50 +1,20 @@
 # Network Boot
 
-PXE booting with `SYSTEM` and `/storage` mounted via NFS is supported on Generic x86\_64 and Raspberry Pi devices. In the following writeup the server is Ubuntu 18.04 LTS.
+PXE booting with `SYSTEM` and `/storage` mounted via NFS is supported on Generic x86\_64 and current Raspberry Pi devices (Pi 4 and newer).  Older Raspberry Pi devices can also be booted over the network, but they require a different procedure. In the following writeup the server is Ubuntu 18.04 LTS.
 
-## Client \(LibreELEC\)
-
-Download the image for your device.
-
-* Create a readonly nfs export and place `KERNEL` and `SYSTEM` files into it 
-* Create a read-write nfs export for storage
-* Create `pxelinux.cfg` with the MAC address of your device, e.g. `90-91-92-93-94-95`
-* Edit this file and add:
-
-```text
-DEFAULT LibreELEC
-PROMPT 0
-
-LABEL LibreELEC
-  KERNEL libreelec/KERNEL
-  APPEND ip=dhcp boot=NFS=192.168.0.1:/mnt/store/libreelec disk=NFS=192.168.0.1:/mnt/store/libreelec/storage overlay
-```
-
-Replace `192.168.0.1` with the NFS server IP address. The `overlay` parameter is not required if you only intend to boot one system. LibreELEC is now configured to boot using TFTP and NFS!
-
-### NFSv4
-
-Today many server use NFSv4 while the kernel still default to NFSv3. In such a case set the correct NFS dialect via the `vers=` option:
-
-```text
-  APPEND ip=dhcp boot=NFS=192.168.0.1:/mnt/store/libreelec,vers=4.2 disk=NFS=192.168.0.1:/mnt/store/libreelec/storage,vers=4.2 overlay
-```
-
-Valid nfs versions are `2 3 4 4.0 4.1 4.2`.
-
-## Server \(Ubuntu\)
+## Server (Ubuntu)
 
 In Ubuntu we need to install and configure DHCP, TFTP, and NFS services:
 
-```text
+```
 sudo apt install isc-dhcp-server tftpd-hpa nfs-kernel-server
 ```
 
 ### DHCP
 
-Edit `/etc/dhcp/dhcpd.conf` and change the DHCP `range` if needed. Create entries in the `host` section for your client\(s\):
+Edit `/etc/dhcp/dhcpd.conf` and change the DHCP `range` if needed. Create entries in the `host` section for your client(s):
 
-```text
+```
 authoritative;
 allow booting;
 allow bootp;
@@ -75,7 +45,7 @@ subnet 192.168.0.0 netmask 255.255.255.0
 
 Edit `/etc/default/isc-dhcp-server` to set the interface name handling DHCP requests:
 
-```text
+```
 INTERFACES="eth0"
 ```
 
@@ -83,21 +53,29 @@ INTERFACES="eth0"
 
 Create the directories that will contain your `/storage` userdata and TFTP boot files, e.g.
 
-```text
+```
 sudo mkdir /mnt/media/storage
 sudo mkdir -m777 /mnt/tftpboot
 ```
 
-Copy the `KERNEL` and `SYSTEM` files into the `/mnt/tftpboot` directory:
+Download the LibreELEC image for your device. On x86 systems, copy the `KERNEL` and `SYSTEM` files into the `/mnt/tftpboot` directory:
 
-```text
+```
 sudo cp KERNEL /mnt/tftpboot
 sudo cp SYSTEM /mnt/tftpboot
 ```
 
+On a Raspberry Pi, just copy all files into the `/mnt/tftpboot` directory:
+
+```
+sudo cp * /mnt/tftpboot
+```
+
+NOTE: If you want to place the files in a subdirectory it is required to adjust the include directive in `config.txt`.
+
 Then add the following lines to the `/etc/exports` file:
 
-```text
+```
 /mnt/media/storage      192.168.0.2/255.255.255.0(no_root_squash,rw,async,no_subtree_check)
 /mnt/tftpboot           192.168.0.2/255.255.255.0(no_root_squash,rw,async,no_subtree_check)
 ```
@@ -106,7 +84,7 @@ Then add the following lines to the `/etc/exports` file:
 
 Create directories for the TFTP bootfiles. In this example they are served from a different disk:
 
-```text
+```
 sudo mkdir /mnt/tftpboot/pxelinux.cfg
 sudo cp -p /usr/lib/syslinux/pxelinux.0 /mnt/tftpboot
 ```
@@ -115,7 +93,7 @@ You may also want to copy the `KERNEL` and `SYSTEM` files to `/mnt/tftpboot`
 
 Add the following lines to `/etc/default/tftpd-hpa` and save the file:
 
-```text
+```
 RUN_DAEMON="yes"
 TFTP_USERNAME="tftp"
 TFTP_DIRECTORY="/mnt/tftpboot"
@@ -123,9 +101,9 @@ TFTP_ADDRESS="0.0.0.0:69"
 TFTP_OPTIONS="--secure"
 ```
 
-Create `/mnt/tftpboot/pxelinux.cfg/default` and insert the following:
+Create `/mnt/tftpboot/pxelinux.cfg/default` (or instead of default use the MAC-Address of your device in the format `90-91-92-93-94-95`) and insert the following:
 
-```text
+```
 DEFAULT LibreELEC
 PROMPT 0
 
@@ -134,11 +112,23 @@ kernel /KERNEL
 append ip=dhcp boot=NFS=192.168.0.2:/mnt/tftpboot disk=NFS=192.168.0.2:/mnt/media/storage
 ```
 
+Replace `192.168.0.1` with the NFS server IP address. The `overlay` parameter is not required if you only intend to boot one system. LibreELEC is now configured to boot using TFTP and NFS!
+
+### NFSv4
+
+Today many server use NFSv4 while the kernel still default to NFSv3. In such a case set the correct NFS dialect via the `vers=` option:
+
+```
+  APPEND ip=dhcp boot=NFS=192.168.0.1:/mnt/store/libreelec,vers=4.2 disk=NFS=192.168.0.1:/mnt/store/libreelec/storage,vers=4.2 overlay
+```
+
+Valid nfs versions are `2 3 4 4.0 4.1 4.2`.
+
 ### Firewall
 
-If using the default Ubuntu firewall \(UFW\) add the following rules to allow ports for TFTP \(69\) and ONRPC \(111\):
+If using the default Ubuntu firewall (UFW) add the following rules to allow ports for TFTP (69) and ONRPC (111):
 
-```text
+```
 sudo ufw allow proto udp from 192.168.0.0/24 to any port 69
 sudo ufw allow proto tcp from 192.168.0.0/24 to any port 111
 ```
@@ -147,13 +137,13 @@ Clients normally connect to the NFS server on random ports, so it the firewall i
 
 Edit `/etc/default/nfs-kernel-server` and replace the current `RPCMOUNTDOPTS` line. In the example below `8765` is a randomly chosen port:
 
-```text
+```
 RPCMOUNTDOPTS="-p 8765"
 ```
 
 Create a matching firewall rule to allow the port:
 
-```text
+```
 sudo ufw allow proto tcp from 192.168.0.0/24 to any port 8765
 ```
 
@@ -161,9 +151,8 @@ sudo ufw allow proto tcp from 192.168.0.0/24 to any port 8765
 
 And finally, start services:
 
-```text
+```
 sudo service isc-dhcp-server start
 sudo service nfs-kernel-server start
 sudo service tftpd-hpa start
 ```
-
