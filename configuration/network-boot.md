@@ -71,7 +71,9 @@ On a Raspberry Pi, just copy all files into the `/mnt/tftpboot` directory:
 sudo cp * /mnt/tftpboot
 ```
 
-NOTE: If you want to place the files in a subdirectory it is required to adjust the include directive in `config.txt`.
+{% hint style="info" %}
+If you want to place the files in a subdirectory it is required to adjust the include directive in `config.txt`.
+{% endhint %}
 
 Then add the following lines to the `/etc/exports` file:
 
