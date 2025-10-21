@@ -2,19 +2,21 @@
 
 ## Introduction
 
-Modern Linux kernels (used in LibreELEC) have built-in support for IR remotes. IR signals are decoded by the kernel and programs see button presses from IR remotes in the same way as key presses from a normal keyboard, as Linux input events. This approach is the successor to LIRC where a separate program, lircd, decodes IR signals and programs obtain button presses from a socket as LIRC events.
+Modern Linux kernels (used in LibreELEC) have built-in support for IR remotes. IR signals are decoded by the kernel and programs see button presses from IR remotes in the same way as key presses from a keyboard, as Linux input events. This supersedes the older LIRC approach where a separate program, lircd, decodes IR signals and programs obtain button presses from a socket as LIRC events.
 
-While this new scheme is really handy, there's a small gotcha: Kodi's remote handling is built for LIRC and it doesn't cope well with Linux input events. In general all buttons also present on a normal keyboard, like arrows and numbers, work fine but rather important buttons like `OK` and `channel up/down` don't. To solve this LibreELEC runs `eventlircd` in the background to translate Linux input events into LIRC events. So "under the hood" the new scheme is being used, but remote buttons still show up as LIRC events in Kodi.
+However, Kodi's remote handling was built for LIRC so LibreELEC runs the `eventlircd` service in the background to translate Linux input events into LIRC events. So "under the hood" the kernel scheme is being used, but remote buttons are still handled as LIRC events in Kodi.
 
-Kodi translates the received LIRC events to Kodi button names via `Lircmap.xml` and then buttons are mapped to Kodi actions via `remote.xml` and `keyboard.xml` files. This wiki page describes the LibreELEC configuration. Information on Kodi configuration is available in the [Kodi LIRC](http://web.archive.org/web/20201111212253/https://kodi.wiki/view/LIRC) and [Kodi Keyboard.xml](http://web.archive.org/web/20201111212253/https://kodi.wiki/view/Keyboard.xml) wiki pages.
+Kodi translates the received LIRC events to Kodi button names via `Lircmap.xml` and then buttons are mapped to Kodi actions via `remote.xml` and `keyboard.xml` files. This wiki page describes LibreELEC configuration. Information on Kodi configuration is available in the [Kodi LIRC](http://web.archive.org/web/20201111212253/https://kodi.wiki/view/LIRC) and [Kodi Keyboard.xml](http://web.archive.org/web/20201111212253/https://kodi.wiki/view/Keyboard.xml) wiki pages.
 
-LibreELEC still ships with LIRC so IR remotes with non-standard protocols and rather special setups can be supported. In general, use LIRC only in exceptional cases where you actually need it.
+{% hint style="info" %}
+LIRC is still shipped in LibreELEC so IR remotes with non-standard protocols that need special setups can still be supported, but it is disabled by default. LIRC is only required in exceptional cases.
+{% endhint %}
 
 Note that LIRC requires compatible hardware to decode IR signals. An in-depth discussion of IR decoder hardware is outside the scope of this document. On a Raspberry Pi, LibreELEC can use the GPIO pins to communicate with a hardware IR receiver diode, as long as `config.txt` has been suitably modified to enable GPIO support.
 
 ## Configuration
 
-Like most current Linux distros LibreELEC uses `ir-keytable` to configure Infra-Red Remotes. Each IR receiver kernel driver installs a default `keytable` which specifies the IR protocol to use, e.g. RC5, RC6, NEC, and the scancode to Linux keycode mappings.
+Like most modern Linux distros LibreELEC uses `ir-keytable` to configure Infra-Red remotes. Each IR receiver kernel driver installs a default `keytable` which specifies the IR protocol to use, e.g. RC5, RC6, NEC, and the scancode to Linux keycode mappings.
 
 Most universal receivers work with the rc-rc6-mce table so RC6 MCE remotes can be used without further configuration. Drivers for DVB devices sold with a remote usually install their own keytable, e.g. the Hauppauge remote that came with a Hauppauge DVB stick.
 
@@ -35,20 +37,20 @@ The default `libreelec_multi` keytable allows us to support Xbox 360/One remotes
 *       rc-rc6-mce               libreelec_multi
 ```
 
-## Can I use?
+## Can I use any remote?
 
 While most IR receivers can be used with a large variety of remotes the answer to “Can I use remote X with IR receiver Y?” depends on many factors:
 
 * Some IR receivers cannot be configured and you can only use the remote they came with.
 * Some receivers only support a subset of protocols, e.g. only RC5, not RC6.
-* If a remote uses a protocol not supported by the IR receiver, or a protocol not supported by the Linux kernel, the last option is the RAW (lirc) protocol which allows userspace LIRC to configure it via a custom `lirc.conf` file.
+* If a remote uses a protocol not supported by the IR receiver, or a protocol not supported by the Linux kernel, the last option is the RAW (lirc) protocol which allows userspace LIRC to be configured though a custom `lirc.conf` file.
 
 ## Configuration (Basic)
 
-LibreELEC includes 100+ remote keytable files included with the upstream Linux kernel so there is a good chance your remote has a known configuration, or a partially working keytable that can be used as a starting point for adding the missing buttons (see the "Advanced" section).
+LibreELEC ships with 100+ remote keytable files so there is a good chance of finding an existing remote configuration that works, or a partially working keytable that can be used as a starting point for adding the missing buttons (see the "Advanced" section).
 
-1. Look at the keytable files in `/usr/lib/udev/rc_keymaps/`.
-2. If one of the filenames suggests it could match your remote, try using it.
+1. Look at the keytable files in `/usr/lib/udev/rc_keymaps/`
+2. If one of the filenames suggests it could match your remote, try using it
 3. If it doesn't work, keep trying..
 
 To test a different keytable file run `ir-keytable -c -w /path/to/keytable-file` e.g.
@@ -68,15 +70,15 @@ Invalid protocols selected
 Couldn't change the IR protocols
 ```
 
-If the keytable loaded without errors press the up, down, left, right and OK buttons to see if navigation in Kodi works?
+If the keytable loaded without errors try pressing the up, down, left, right and OK buttons to see if GUI navigation in Kodi works?
 
-If you find a working keytable file the config can be made persistent by creating `/storage/.config/rc_maps.cfg` with the name of the keytable, e.g. if the `samsung` keytable works the file with the following content:
+If you find a working keytable make the config persistent by creating `/storage/.config/rc_maps.cfg` with the name of the keytable, e.g. if the `samsung` keytable works, create `rc_maps.cfg` with:
 
 ```
 * * samsung
 ```
 
-Running `ir-keytable -a /storage/.config/rc_maps.cfg` and the output should look like:
+Then run `ir-keytable -a /storage/.config/rc_maps.cfg` and the output should look like:
 
 ```
 LibreELEC:~ # ir-keytable -a /storage/.config/rc_maps.cfg
@@ -85,7 +87,7 @@ Wrote 30 keycode(s) to driver
 Protocols changed to nec
 ```
 
-Test the buttons work again, and if all is okay, reboot.
+Test the buttons work again, and if all is okay, you can reboot.
 
 ## Configuration (Advanced)
 
@@ -111,7 +113,9 @@ variant = "nec"
 0x48 = "KEY_HOME"
 ```
 
-Older LibreELEC releases (v7.x to v9.x) use a older plain text format not `toml` which can be seen in the existing keymaps in `/usr/lib/udev/rc_keymaps`.
+{% hint style="info" %}
+Older LibreELEC releases (v7.x to v9.x) use a plain text format not `toml` but the process is essentially the same. Look at existing keymaps in `/usr/lib/udev/rc_keymaps` to crib the format.
+{% endhint %}
 
 To capture the keycodes you must stop Kodi and eventlircd first, or these services capture IR input and you will see no output from `ir-keytable`:
 
