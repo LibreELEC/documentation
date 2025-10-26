@@ -18,7 +18,7 @@ Bluetooth is enabled by default if hardware is detected to facilitate connection
 
 In a conventional Linux distro users access the OS with a non-privileged user account and use `sudo`to elevate privileges to perform tasks as the `root`user. This provides security isolation between user and system processes, with the side benefit of preventing easy end-user access to disruptive configuration options that are easily changed or misconfigured resulting in complex support activity.
 
-In LibreELEC there is a single`root`user and most internal services run as the root user. This reduces distro maintainance and eliminates the need for `sudo` to provide a simple console experience for users with typically low or no Linux CLI experience. Although users have `root`privileges, most of the filesystem exists in a read-only state so there is limited scope for unskilled users to misconfigure the OS from its default known-good state.
+In LibreELEC there is a single`root`user and most internal services run as the root user. This reduces distro maintenance and eliminates the need for `sudo` to provide a simple console experience for users with typically low or no Linux CLI experience. Although users have `root`privileges, most of the filesystem exists in a read-only state so there is limited scope for unskilled users to misconfigure the OS from its default known-good state.
 
 As the default `root/libreelec`credential is a well-known secret the first-run wizard prompts for it to be changed. It can also be changed from the console using `passwd`. It is _not_ possible to add users, groups, or change the `user:group` context applications run under without creating a custom OS image with baked-in changes.&#x20;
 
