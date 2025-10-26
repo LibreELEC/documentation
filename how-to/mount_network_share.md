@@ -185,7 +185,7 @@ Because we enable the automount service, we can disable the mount service. Which
 
 Follow the relevant instructions above to create a systemd `.mount` definition file for your network share.
 
-**IMPORTANT:** It is recommened to follow the instructions above completey and add the mounted path to your library in Kodi before proceeding with the instructions below.
+**IMPORTANT:** It is recommended to follow the instructions above completely and add the mounted path to your library in Kodi before proceeding with the instructions below.
 
 #### 2. Disable the mount service in systemd
 
