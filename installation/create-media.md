@@ -38,7 +38,7 @@ If you have problems with the app, please post in the [USB-SD Creator Support fo
 
 ## Alternatives
 
-Here are some alernative tools that can be used for creating LibreELEC boot media:
+Here are some alternative tools that can be used for creating LibreELEC boot media:
 
 * [Raspberry Pi Imager](https://www.raspberrypi.com/software/) can create Raspberry Pi images using files from our servers
 * [Balena Etcher](https://etcher.balena.io/) is popular but huge (almost the same size as our distro images!)

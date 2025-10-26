@@ -27,7 +27,7 @@ In summary:
 
 ## Composite Output
 
-LibreELEC images for all Raspberry Pi boards ship pre-configured for HDMI output. Two simple changes are required to swich the image into Composite mode:
+LibreELEC images for all Raspberry Pi boards ship pre-configured for HDMI output. Two simple changes are required to switch the image into Composite mode:
 
 First, edit `config.txt` in the root folder of the SD card to comment out `include distroconfig.txt` and uncomment `include distroconfig-composite.txt` , e.g. the comments should look like this:
 

@@ -14,6 +14,6 @@ All content is licensed under the Creative Commons [CC BY-NC-SA 4.0](https://cre
 
 ## Support
 
-User support is managed through our forum: [https://forum.libreelec.tv](https://forum.libreelec.tv) and the #libreelec IRC channel on LIbera Chat. Start a forum thread to ask a question, and someone will reply. Please be patient and wait for answers, we are all unpaid volunteers with jobs and families!
+User support is managed through our forum: [https://forum.libreelec.tv](https://forum.libreelec.tv) and the #libreelec IRC channel on Libera Chat. Start a forum thread to ask a question, and someone will reply. Please be patient and wait for answers, we are all unpaid volunteers with jobs and families!
 
 For support on Kodi itself, please refer to the official [Kodi Wiki](https://kodi.wiki/view/Main\_Page) and [Kodi Forums](https://forum.kodi.tv).

@@ -32,7 +32,7 @@ reboot
 ```
 
 ## Editing on your computer
-Turn off the Raspberry Pi, remove the SD card on USB drive on which LibreELEC is installed, and use a card reader connected to your Windows, Linux, or macOS computer.
+Turn off the Raspberry Pi, remove the SD card or USB drive on which LibreELEC is installed, and use a card reader connected to your Windows, Linux, or macOS computer.
 
 If using Windows, use a text editor capable of saving text files in Unix format, e.g. [Notepad++](https://notepad-plus-plus.org/downloads) or Wordpad.exe \(not Notepad.exe\).
 

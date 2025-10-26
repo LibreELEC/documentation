@@ -8,7 +8,7 @@ LibreELEC is designed for home networks and the out-of-box configuration is a co
 
 ## Avahi
 
-Avahi (Zeroconf) runs in the background to annouce services like Kodi, Samba, SSH over mDNS to the local network to make connecting from mDNS-aware OS and client applications easier. The service list is updated automatically when individual services are enabled or disabled. Avahi can be disabled in the LibreELEC settings add-on.
+Avahi (Zeroconf) runs in the background to announce services like Kodi, Samba, SSH over mDNS to the local network to make connecting from mDNS-aware OS and client applications easier. The service list is updated automatically when individual services are enabled or disabled. Avahi can be disabled in the LibreELEC settings add-on.
 
 ## Bluetooth
 
