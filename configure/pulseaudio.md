@@ -98,7 +98,7 @@ Select the audio output device in Kodi if you want audio from your device, and f
 
 This requires another computer or device running pulseaudio, e.g. an MPD music player or another LibreELEC device.
 
-On the pulseaudio target device, ensure the the `native-protocol-tcp` and `zeroconf-publish` modules are loaded:
+On the pulseaudio target device, ensure the `native-protocol-tcp` and `zeroconf-publish` modules are loaded:
 
 ```
 pactl load-module module-native-protocol-tcp auth-anonymous=1

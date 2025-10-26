@@ -32,7 +32,7 @@ reboot
 ```
 
 ## Editing on your computer
-Turn off the Raspberry Pi, remove the SD card on USB drive on which LibreELEC is installed, and use a card reader connected to your Windows, Linux, or macOS computer.
+Turn off the Raspberry Pi, remove the SD card or USB drive on which LibreELEC is installed, and use a card reader connected to your Windows, Linux, or macOS computer.
 
 If using Windows, use a text editor capable of saving text files in Unix format, e.g. [Notepad++](https://notepad-plus-plus.org/downloads) or Wordpad.exe \(not Notepad.exe\).
 
@@ -80,7 +80,7 @@ If any key that you purchased shows `disabled` check that:
 
 ### Overlays for HATs and extra hardware
 
-Raspberry Pi kernels use a board-specific device-tree file to describe the board's hardware and how things are connected. As the Raspberry Pi is designed to be extended with extra hardware via HATs and peripheral connectors the kernel also supports device-tree "overlay" files. When configured, these overlay "fragments" of device-tree content that describe the extra hardware on the board device-tree, and the the kernel reads them as a single combined file.
+Raspberry Pi kernels use a board-specific device-tree file to describe the board's hardware and how things are connected. As the Raspberry Pi is designed to be extended with extra hardware via HATs and peripheral connectors the kernel also supports device-tree "overlay" files. When configured, these overlay "fragments" of device-tree content that describe the extra hardware on the board device-tree, and the kernel reads them as a single combined file.
 
 Overlays can be found in `/flash/overlays` and they are configured in `config.txt` in the root folder of the SD card that you boot the Raspberry Pi from. The following are examples of common overlay changes.
 

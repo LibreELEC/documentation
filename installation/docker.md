@@ -12,7 +12,7 @@ Docker containers often ship in multiple CPU "architecture" or "arch" variants. 
 * LibreELEC-RPi4.**arm**-11.0.1.img.gz has `arm` userspace
 * LibreELEC-RPi4.**aarch64**-12.0-nightly-20230310.img.gz has `aarch64` userspace
 
-Userspace CPU arch can also be read from the `/etc/os-release` file in the filestem, e.g.
+Userspace CPU arch can also be read from the `/etc/os-release` file in the filesystem, e.g.
 
 ```
 RPi4:~ # cat /etc/os-release 

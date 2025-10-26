@@ -6,7 +6,7 @@ To change the order of turning on your devices (normally your HTPC has to be pow
 
 In the steps below we will explain how this can be done:
 
-**Note:** Your devices should all be turned on and you should have a screen and audio working. Otherwise the EDID information aren't provided properly and this How-To won't work.
+**Note:** Your devices should all be turned on and you should have a screen and audio working. Otherwise the EDID information isn't provided properly and this How-To won't work.
 
 In the sections below we explain different ways to dump and use the EDID information. We also provide a script which performs the specific steps for the various devices automatically.
 
