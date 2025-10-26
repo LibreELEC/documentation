@@ -1,6 +1,6 @@
 # Mirrors
 
-To provide a better download experience and offload bandwidth and hosting charges from the project, our main downloads (releases and installers) are distributed over a global network of volunteer mirror servers. The project is always interesting in adding new mirrors to our pool, and we welcome offers of assistance!
+To provide a better download experience and offload bandwidth and hosting charges from the project, our main downloads (releases and installers) are distributed over a global network of volunteer mirror servers. The project is always interested in adding new mirrors to our pool, and we welcome offers of assistance!
 
 If you would like to help, you should:
 
