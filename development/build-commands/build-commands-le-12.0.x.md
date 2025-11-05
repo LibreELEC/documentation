@@ -35,4 +35,4 @@ Several ARM SoC devices have a `UBOOT_SYSTEM=box` configuration which excludes u
 
 ### Environment
 
-Official releases were built using Ubuntu 22.04 LTS.
+Official releases were built using Ubuntu 24.04 LTS.
