@@ -33,7 +33,7 @@
 ## Configuration
 
 * [4K / HDR](configuration/4k-hdr.md)
-* [Blu-Ray Playback](configuration/blu-ray.md)
+* [Blu-ray Playback](configuration/blu-ray.md)
 * [Config.txt](configuration/config_txt.md)
 * [Cron](configuration/cron.md)
 * [Dual Boot](configuration/dual-boot.md)
