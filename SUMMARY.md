@@ -50,6 +50,7 @@
 * [Samba](configuration/samba.md)
 * [SSL/TLS Certificates](configuration/ssl-tls-certificates.md)
 * [Startup & Shutdown](configuration/startup-shutdown.md)
+* [Tailscale](configuration/tailscale.md)
 * [Useful Scripts](configuration/useful_scripts.md)
 * [WireGuard](configuration/wireguard.md)
 
