@@ -10,13 +10,13 @@ If for whatever reason Kodi crashes and therefore created a crashlog more than 5
 
 ### Behind the scenes
 
-What has happened once you entered the save mode? Pretty simple. Once you end up in safe mode, we did a backup of your existing Kodi installation in a different folder. From a technical point of view we simply renamed the existing (and failing) `/storage/.kodi` folder to `/storage/.kodi.FAILED` and triggered a reboot after that. That will mean your next Kodi start will end up with a vanilla Kodi but with a special red background and a notification screen, that you now have entered the save mode. It will look like this:
+What has happened once you entered the safe mode? Pretty simple. Once you end up in safe mode, we did a backup of your existing Kodi installation in a different folder. From a technical point of view we simply renamed the existing (and failing) `/storage/.kodi` folder to `/storage/.kodi.FAILED` and triggered a reboot after that. That will mean your next Kodi start will end up with a vanilla Kodi but with a special red background and a notification screen, that you now have entered the safe mode. It will look like this:
 
 ![](../.gitbook/assets/kodi-safe\_1.png)
 
 ### What to do now?
 
-First you should read the infos given from from the notification screen above and also probably make notes if you might think you can't remember them later. Once that is done, you should follow this section which is similar to the "first run wizard" and gives you specific options to either enter a hostname, enable Samba and/or SSH or setting up your network connection like shown in the screenshots below:
+First you should read the infos given from the notification screen above and also probably make notes if you might think you can't remember them later. Once that is done, you should follow this section which is similar to the "first run wizard" and gives you specific options to either enter a hostname, enable Samba and/or SSH or setting up your network connection like shown in the screenshots below:
 
 ![Set up the hostname](../.gitbook/assets/kodi-safe\_2.png)
 
