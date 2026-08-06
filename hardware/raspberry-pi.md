@@ -4,14 +4,14 @@
 
 The following table summarises LibreELEC support for HEVC media on different Raspberry Pi hardware generations:
 
-| Device               | 9.2.8                       | 10.x and newer            |
-| -------------------- | --------------------------- | ------------------------- |
-| Raspberry Pi 0/1     | Not supported               | Not supported             |
-| Raspberry Pi 2/3     | Up to 1080p in Software     | Up to SD in Software      |
-| Raspberry Pi 4 / 400 | Up to 4K, basic HDR (8-bit) | Up to 4K, 8/10/12-bit HDR |
-| Raspberry Pi 5       | Not supported               | Up to 4K, 8/10/12-bit HDR |
+| Device                    | 9.2.8                       | 10.x and newer            |
+| ------------------------- | --------------------------- | ------------------------- |
+| Raspberry Pi 0/1          | Not supported               | Not supported             |
+| Raspberry Pi 2/3          | Up to 1080p in Software     | Up to SD in Software      |
+| Raspberry Pi 4/400 (2GB+) | Up to 4K, basic HDR (8-bit) | Up to 4K, 8/10/12-bit HDR |
+| Raspberry Pi 5/500 (2GB+) | Not supported               | Up to 4K, 8/10/12-bit HDR |
 
-Raspberry Pi 4, 400, and 5 are the ONLY devices with native hardware decoding of HEVC content, and in LE10 and newer releases (LE11 for RPi5) we support 8/10/12-bit output for great results with 4K HDR material. Note that the original LE 9.2.9 release for RPi4/400 devices only supports 8-bit output for basic playback.
+Raspberry Pi 4 and 5 are the ONLY devices with native hardware decoding of HEVC content, and in LE10 and newer releases (LE11 for RPi5) we support 8/10/12-bit output for great results with 4K HDR material. Note that the original LE 9.2.9 release for RPi4/400 devices only supports 8-bit output for basic playback, and the 1GB variants of RPi4/5 do not have enough RAM to support 4K playback of normal 4K media, so are effectively limited to 1080p.
 
 Older Raspberry Pi devices support only software decoded HEVC. In practice Raspberry Pi 3 devices running LE 9.2.x with mild overclocking can play lower-bitrate 1080p content without issues, but if media has higher bitrates and larger filesizes you should expect poor results. Raspberry Pi 2/1/0 models can normally manage 720p media but will struggle with 1080p.
 
@@ -38,7 +38,7 @@ include distroconfig-composite.txt
 
 Second, edit `cmdline.txt` in the root folder of the SD card to configure PAL or NTSC output. This is done by appending a `video=Composite-1` option to the line of boot params in the file. Append to the existing single line; do not add them on a new/separate line. The two options are:
 
-* &#x20;`video=Composite-1:720x576@50ie`  for PAL output
-* &#x20;`video=Composite-1:720x480@60ie`  for NTSC output
+* `video=Composite-1:720x576@50ie` for PAL output
+* `video=Composite-1:720x480@60ie` for NTSC output
 
 Boot after saving the changes and HDMI will be disabled and Composite enabled. You may also need to adjust audio output preferences in Kodi as the pre-configured default is for HDMI.
