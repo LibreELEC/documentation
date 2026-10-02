@@ -51,7 +51,7 @@ PROJECT=Generic ARCH=x86_64 DEBUG=yes make image
 To also include valgrind:
 
 ```
-PROJECT=Generic ARCH=x86_64 DEBUG=yes VALGRIND=yes make image
+PROJECT=Generic ARCH=x86_64 DEBUG=yes VALGRIND_SUPPORT=yes make image
 ```
 
 Note: The resulting image will be considerably larger than normal. The default boot partition is 512MB, but debug images may exceed this and require a 1GB partition.
