@@ -53,9 +53,13 @@ Kodi has three "Adjust Refresh" settings:
 * Kodi cannot output interlaced frames, it always outputs progressive frames
 * Kodi cannot detect media is interlaced until you start playing it
 
-Kodi converts interlaced media for progressive output by doubling the original refresh rate and rendering each half-frame in its own full frame, e.g. PAL 1080i @ 25fps media becomes 1080p @ 50fps, and NTSC 1080i @ 29.97 becomes 1080p @ 59.94fps. For this rate doubling to work, we need to ensure the whitelisted 1080p modes do not contain 1080p @ 25/29.97/30Hz rates, else Kodi will see an exact match against resolution and refresh rate and you will see high CPU loads and 50% of frames being dropped. If the modes are removed, Kodi will use 50Hz/59.94Hz rates, and if the media is interlaced, Kodi can still render 100% of the frames.
+Kodi converts interlaced media for progressive output by doubling the original refresh rate and rendering each half-frame in its own full frame, e.g. PAL 1080i @ 25fps media becomes 1080p @ 50fps, and NTSC 1080i @ 29.97 becomes 1080p @ 59.94fps. 
 
-<mark style="color:red;">**Recommendation: Remove 1080 @ 30, 29.97 and 25 fps rates from the Modelist**</mark>
+This rate doubling should work automatically, even with both the original and double framerates in the whitelist.
+
+On some older versions of Kodi you may need to modify the whitelist for this rate doubling to work. If the whitelisted 1080p modes contain 1080p @ 25/29.97/30Hz rates Kodi will see an exact match against resolution and refresh rate and you will see high CPU loads and 50% of frames being dropped. If the modes are removed, Kodi will use 50Hz/59.94Hz rates, and if the media is interlaced, Kodi can still render 100% of the frames.
+
+<mark style="color:red;">**Recommendation: Leave 1080 @ 30, 29,97 and 25 fps rates in the Modelist unless you see see playback that is not doubling the framerate properly**</mark>
 
 ### 4K @ 60Hz
 
