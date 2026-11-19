@@ -1,12 +1,18 @@
 # Hyperion
+{% hint style="warning" %}
+WARNING: Hyperion does not support the GBM/V4L2 video pipeline used in LibreELEC 10.x and 11.x: including all Raspberry Pi and Generic x86\_64 (GBM) releases. Users with x86\_64 hardware can update to the Generic\_Legacy (X11) image. Users with Raspberry Pi hardware must use an external grabber hardware device or remain on older releases. Changes to add GBM support to Hyperion were proposed but did not reach a stable enough state to be added. The work was tracked in [hyperion-ng pull request #1422](https://github.com/hyperion-project/hyperion.ng/pull/1422)
+{% endhint %}
 
-<mark style="color:red;">WARNING: Hyperion does not support the GBM/V4L2 video pipeline used in LibreELEC 10.x and 11.x: including all Raspberry Pi and Generic x86\_64 (GBM) releases. Users with x86\_64 hardware can update to the Generic\_Legacy (X11) image. Users with Raspberry Pi hardware must use an external grabber hardware device or remain on older releases. Changes to add GBM support to Hyperion are tracked here:</mark> https://github.com/hyperion-project/hyperion.ng/pull/1422
+[Hyperion](https://github.com/hyperion-project/hyperion.ng) is an open source project providing an ambient lighting system, compatible with Kodi.
 
-[Hyperion](https://github.com/hyperion-project/hyperion) is an open source project that provides an ambient lighting system, compatible with Kodi. Hyperion requires hardware and software configuration. This page describes the process to add Hyperion to Generic x86\_64 and Raspberry Pi hardware. For software configuration please head over to [Hypercon](hypercon.md).
+Hyperion requires some hardware and software configuration. This page will describe the process of adding Hyperion to Generic x86\_64 and Raspberry Pi hardware.
 
+For the software configuration, please head over to [Hypercon](hypercon.md). 
+
+# Hardware
 ## Adalight
 
-If you want hardware that will work on any LibreELEC device, an "Adalight" setup is the best choice. It works by sending serial data to an Arduino micro controller which controls the LEDs. You need:
+If you want hardware that will work on any LibreELEC device, an Adalight setup may be a good choice. It works by sending serial data to an Arduino micro controller which controls the LEDs. You need:
 
 * Arduino (Uno, nano, etc)
 * WS2801 LED strand
